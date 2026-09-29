@@ -1,0 +1,148 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Tooltip — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item active" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="tooltip">
+      <div class="eyebrow"><span class="n">15</span> Components · Tooltip</div>
+      <h2 class="t-title-page">Tooltip <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Tooltips · 3 variants · node 852:30668</span></h2>
+      <p class="lead">A short label that names an icon-only control. Three variants on a <b>Property 1</b> axis (Default State, Top, Bottom) — the two directional variants ship with a caret arrow; Default State is arrowless. <ph-chat-teardrop weight="bold" size="16" style="vertical-align:-3px;"></ph-chat-teardrop></p>
+
+      <div class="subhead"><h3 class="t-title-section">All variants</h3></div>
+      <div class="panel" style="display:flex;gap:32px;justify-content:center;padding:48px 24px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="height:24px;padding:4px 8px;border-radius:8px;background:var(--sunken);font-family:'Geist',system-ui;font-size:12px;font-weight:500;color:var(--text-2);display:inline-flex;align-items:center;">Tool tip</div>
+          <span class="mono" style="font-size:11px;color:var(--text-3);margin-top:12px;">Default State</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div style="height:24px;padding:4px 8px;border-radius:8px;background:var(--sunken);font-family:'Geist',system-ui;font-size:12px;font-weight:500;color:var(--text-2);display:inline-flex;align-items:center;">Tool tip</div>
+          <svg width="16" height="8" viewBox="0 0 16 8" style="display:block;"><path d="M0 0h16L8 8Z" fill="var(--sunken)"/></svg>
+          <button class="pvfab sz-md" style="margin-top:4px;"><ph-info weight="bold" size="20"></ph-info></button>
+          <span class="mono" style="font-size:11px;color:var(--text-3);margin-top:12px;">Top</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <button class="pvfab sz-md"><ph-info weight="bold" size="20"></ph-info></button>
+          <svg width="16" height="8" viewBox="0 0 16 8" style="display:block;margin-top:4px;"><path d="M0 8h16L8 0Z" fill="var(--sunken)"/></svg>
+          <div style="height:24px;padding:4px 8px;border-radius:8px;background:var(--sunken);font-family:'Geist',system-ui;font-size:12px;font-weight:500;color:var(--text-2);display:inline-flex;align-items:center;">Tool tip</div>
+          <span class="mono" style="font-size:11px;color:var(--text-3);margin-top:12px;">Bottom</span>
+        </div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <p class="usage">Content pill: <code>24px</code> tall, padding <code>4/8/4/8</code>, radius <code>8</code>, fill <code>#ECEBE7</code> (<code>--sunken</code>), text <code>12px medium</code> in <code>#6B6862</code> (<code>--text-2</code>), default label "Tool tip". The <b>Top</b> variant stacks pill → 16×8 down-pointing arrow → anchor Button. <b>Bottom</b> reverses it (anchor → up-pointing arrow → pill). <b>Default State</b> renders the pill alone with no arrow — used when the tooltip is manually positioned.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Property 1</td><td class="val">VARIANT</td><td class="val">Default State</td><td class="usage">Default State · Top · Bottom</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Attach the tooltip via <code>aria-describedby</code> pointing at its id — never <code>aria-label</code> on the control itself (that replaces the accessible name).</p></div>
+        <div class="rule"><span class="num mono"></span><p>Trigger on both hover and focus; dismiss on blur, mouseleave, or Escape. Content must be plain text, never interactive.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Attach to icon-only controls that need a name. Keep to 1–4 words.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Never put an action, link, or form inside a tooltip. If the content is interactive, it belongs in a Popover, not a Tooltip.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Name an icon-only Button with 1–4 words</li>
+          <li>Choose Top/Bottom by which side has space</li>
+          <li>Trigger on hover and focus</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Put a link, button, or form control inside</li>
+          <li>Use a tooltip for critical info a mouse user might miss</li>
+          <li>Wrap a long sentence in a tooltip — use Popover</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-tooltip"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-tooltip</span></div>
+<script type="application/json" id="ds-contract-tooltip">
+{
+  "section": "tooltip",
+  "component": "Tooltips",
+  "nodeId": "852:30668",
+  "variantCount": 3,
+  "axes": { "Property 1": ["Default State", "Top", "Bottom"] },
+  "pill": { "height": 24, "padding": "4/8/4/8", "radius": 8, "fill": "#ECEBE7 (--sunken)", "textColor": "#6B6862 (--text-2)", "textSize": 12, "textWeight": "medium", "defaultLabel": "Tool tip" },
+  "arrow": { "size": "16x8", "fill": "#ECEBE7 (--sunken)", "renderedIn": ["Top", "Bottom"] },
+  "rules": [
+    "Attach to icon-only controls; 1–4 words max.",
+    "Never put interactive content in a tooltip — use Popover.",
+    "aria-describedby on the control; trigger on hover + focus."
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">Extracted from <b>the design system Figma file</b> · node <span class="mono">852:30668</span>. Documented 2026-09-10.</div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>

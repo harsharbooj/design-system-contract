@@ -1,0 +1,292 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Color System — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item active" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="color">
+      <div class="eyebrow"><span class="n">02</span> Color System</div>
+      <h2 class="t-title-page">Color system</h2>
+      <p class="lead">Two layers. <b>Primitives</b> are the raw ramps (single value, no theme). <b>Semantic</b> tokens are role-based and mode-aware — they alias primitives and flip between Light and Dark. <b>Screens must consume semantic tokens only</b>; primitives exist to feed them. Dark mode lives entirely in the semantic layer.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Primitives</h3><span class="note">53 raw colors · single "Value" mode</span></div>
+
+      <div class="ramp-title"><h4>Neutral</h4><span class="mono">warm-gray · 0 → 950</span></div>
+      <div class="ramp" id="ramp-neutral"></div>
+      <div class="ramp-title"><h4>Brand</h4><span class="mono">teal-green · 50 → 900</span></div>
+      <div class="ramp" id="ramp-brand"></div>
+      <div class="ramp-title"><h4>Lime</h4><span class="mono">accent-2 · 50 → 900</span></div>
+      <div class="ramp" id="ramp-lime"></div>
+      <div class="ramp-title"><h4>Status ramps</h4><span class="mono">green · red · amber · blue</span></div>
+      <div class="ramp" id="ramp-status"></div>
+
+      <div class="subhead"><h3 class="t-title-section">Semantic tokens</h3><span class="note">109 tokens · Light / Dark · swatches show both modes</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Light / Dark</th><th>Value (L → D)</th><th>Mantine var</th><th>Usage</th></tr></thead>
+          <tbody id="semantic-body"></tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Label palette</h3><span class="note">30 categorical hues · hardcoded per mode (not aliased)</span></div>
+      <div class="labels" id="labels-grid"></div>
+
+      <div class="subhead"><h3 class="t-title-section">New this pass · action/primary/fglink</h3><span class="note">the newest addition (196th variable)</span></div>
+      <p class="usage" style="max-width:74ch;">A brand-color foreground token intended for text-as-link on the primary surface. Values: <code>brand.600</code> (Light) / <code>brand.500</code> (Dark). Mantine var: <code>var(--mantine-color-action-primary-fglink)</code>. Added after an a11y contrast pass on the primary Button's inline link/underlined label, where the previous <code>action/primary/fg</code> (white) failed WCAG AA against the tinted accent surface once an underlined label was involved.</p>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Component</th><th>Where used</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Button</td><td class="val">inline link label on primary Button variant</td><td class="usage">Replaces the previous hardcoded <code>--accent-fg</code> in the rare "link-inside-primary" pattern.</td></tr>
+            <tr><td class="tok">Tag</td><td class="val">active tag label when nested inside an accent surface</td><td class="usage">Prevents the label from disappearing on tint-on-tint.</td></tr>
+            <tr><td class="tok">Action Modal</td><td class="val">inline text link inside the modal body when the surface is accent-tinted</td><td class="usage">Matches Button's inline link treatment.</td></tr>
+            <tr><td class="tok">Tooltip</td><td class="val">text-link supporting-text (rare)</td><td class="usage">Only if the tooltip surface has been tinted accent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Other new semantic tokens this pass</h3><span class="note">appended alongside <code>action/primary/fglink</code></span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Value (Light → Dark)</th><th>Mantine var</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">text/destructive</td><td class="val">red.600 → red.500</td><td class="mant">var(--mantine-color-text-destructive)</td></tr>
+            <tr><td class="tok">icon/destructive</td><td class="val">red.600 → red.500</td><td class="mant">var(--mantine-color-icon-destructive)</td></tr>
+            <tr><td class="tok">border/Inverse</td><td class="val">neutral.700 → neutral.150</td><td class="mant">var(--mantine-color-border-Inverse) <span class="flag">stray capital I retained</span></td></tr>
+            <tr><td class="tok">space/64</td><td class="val">64 (dimension)</td><td class="mant">var(--mantine-spacing-64)</td></tr>
+            <tr><td class="tok">text/warning</td><td class="val">amber.600 (both modes)</td><td class="mant">var(--mantine-color-text-warning)</td></tr>
+            <tr><td class="tok">text/sucess</td><td class="val">green.600 → green.500</td><td class="mant">var(--mantine-color-text-sucess) <span class="flag">typo retained</span></td></tr>
+            <tr><td class="tok">icon/success</td><td class="val">green.600 → green.500</td><td class="mant">var(--mantine-color-icon-success)</td></tr>
+            <tr><td class="tok">border/destructive</td><td class="val">red.600 → red.500</td><td class="mant">var(--mantine-color-border-destructive)</td></tr>
+            <tr><td class="tok">bg/dissable</td><td class="val">neutral.400 → neutral.700</td><td class="mant">var(--mantine-color-bg-active) <span class="flag">codeSyntax bug — should be <code>bg-disabled</code></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Screens bind to <b>semantic tokens only</b> — <code>bg/*</code>, <code>text/*</code>, <code>border/*</code>, <code>icon/*</code>, <code>action/*</code>, <code>status/*</code>. A primitive (<code>neutral/0</code>, <code>brand/600</code>) on a screen fill is a defect to flag.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Surfaces stack <code>bg/canvas</code> (page) → <code>bg/surface</code> (cards) → <code>bg/sunken</code> (wells, segmented tracks). Don't paint a card with the canvas color or vice-versa.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Use the <b>status</b> families for meaning (success / danger / warning / info), each with <code>fg · bg · solid · border</code>. Don't hand-pick a green when <code>status/success/*</code> exists.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The <b>label palette</b> is for categorical tags only. It carries its own per-mode hex and must not be used for UI chrome or state.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Never read a hex off a swatch. Bind the token; let mode-switching resolve Light vs Dark. Typos <code>text/sucess</code> and <code>border/Inverse</code> should be aliased on the way into code.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Fill cards with <code>bg/surface</code>, stroke with <code>border/default</code></li>
+          <li>Use <code>action/primary/bg</code> + <code>action/primary/fg</code> on the primary button</li>
+          <li>Reach for <code>status/warning/{bg,border,fg}</code> for the recommendation banner</li>
+          <li>Let <code>text/*</code> resolve per theme automatically</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Bind a screen fill to <code>neutral/0</code> or <code>brand/600</code></li>
+          <li>Hardcode <code>#C22E22</code> where <code>status/danger/solid</code> exists</li>
+          <li>Use a <code>label/*</code> hue for a button or border</li>
+          <li>Maintain a second dark value by hand — the alias does it</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-color"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-color</span></div>
+<script type="application/json" id="ds-contract-color">
+{
+  "section": "color",
+  "layers": { "primitives": 53, "semantic": 109, "modes": ["Light", "Dark"] },
+  "primitiveScales": {
+    "neutral": ["#FFFFFF","#FAF9F7","#F4F3F0","#ECEBE7","#E4E2DD","#D8D6D0","#BCB8B1","#928E87","#6B6862","#47443F","#2C2A26","#1A1815","#0E0D0B"],
+    "brand":   ["#EAF4F0","#CFE7E0","#A2CFC4","#6FB2A4","#3C9081","#10735F","#045646","#06463A","#06382E","#052A23"],
+    "lime":    ["#F3F7E8","#E6EFCC","#CFE09B","#B7D06B","#A3C452","#93B941","#7A9E32","#5F7C27","#4A611F","#384A18"],
+    "green":   ["#EAF6EC","#CDE9D3","#2FA24F","#23823F","#1B6633"],
+    "red":     ["#FCEBE9","#F7D3CF","#DE4133","#C22E22","#9C271E"],
+    "amber":   ["#FBF2DA","#F4E3AD","#D9920F","#B0740A","#8A5B08"],
+    "blue":    ["#E8F1FB","#CCE0F5","#2C7FD1","#1F63A8","#184E83"]
+  },
+  "tokens": [
+    { "name": "bg/canvas",        "value": "#FAF9F7 → #0E0D0B", "mantineVar": "--mantine-color-body",        "usage": "Page background" },
+    { "name": "bg/surface",       "value": "#FFFFFF → #1A1815", "mantineVar": "other.bgSurface",             "usage": "Cards, panels, sidebar" },
+    { "name": "bg/sunken",        "value": "#F4F3F0 → #141210", "mantineVar": "other.bgSunken",              "usage": "Wells, segmented tracks" },
+    { "name": "border/subtle",    "value": "#E4E2DD → #2C2A26", "mantineVar": "other.borderSubtle",          "usage": "Dividers, low-emphasis edges" },
+    { "name": "border/default",   "value": "#D8D6D0 → #47443F", "mantineVar": "other.borderDefault",         "usage": "Card and control borders" },
+    { "name": "text/primary",     "value": "#1A1815 → #FAF9F7", "mantineVar": "--mantine-color-text",        "usage": "Headings, primary text" },
+    { "name": "text/secondary",   "value": "#6B6862 → #BCB8B1", "mantineVar": "other.textSecondary",         "usage": "Body secondary, metadata" },
+    { "name": "text/tertiary",    "value": "#928E87 → #928E87", "mantineVar": "--mantine-color-dimmed",      "usage": "Captions, table headers" },
+    { "name": "action/primary/bg","value": "#045646 → #10735F", "mantineVar": "brand.6 (filled Button)",     "usage": "Primary button fill" },
+    { "name": "action/primary/fg","value": "#FFFFFF → #FFFFFF", "mantineVar": "white",                       "usage": "Primary button label/icon" },
+    { "name": "action/secondary/bg","value": "#FFFFFF → #2C2A26","mantineVar": "default Button",             "usage": "Secondary button fill" },
+    { "name": "action/secondary/border","value": "#D8D6D0 → #47443F","mantineVar": "other.borderDefault",    "usage": "Secondary button border" },
+    { "name": "status/success/*", "value": "fg/bg/solid/border", "mantineVar": "color='green'",              "usage": "Positive state, verdict perfect" },
+    { "name": "status/danger/*",  "value": "fg/bg/solid/border", "mantineVar": "color='red'",                "usage": "Errors, destructive, not-perfect" },
+    { "name": "status/warning/*", "value": "fg/bg/solid/border", "mantineVar": "color='yellow'",             "usage": "Recommendation banner, not-annotated" },
+    { "name": "status/info/*",    "value": "fg/bg/solid/border", "mantineVar": "color='blue'",               "usage": "Informational callouts" },
+    { "name": "accent/*",         "value": "brand-based",        "mantineVar": "brand.*",                     "usage": "Selection, focus ring, links" },
+    { "name": "accent-2/*",       "value": "lime-based",         "mantineVar": "lime.*",                      "usage": "Secondary accent" },
+    { "name": "label/{hue}",      "value": "30 hues, per-mode",  "mantineVar": "other.label.{hue}",          "usage": "Categorical tags only" }
+  ],
+  "rules": [
+    "Screens consume semantic tokens only; primitives feed them.",
+    "Surface stack: bg/canvas > bg/surface > bg/sunken.",
+    "Use status/* families for meaning; do not hand-pick greens/reds.",
+    "label/* is for categorical tags only, never UI chrome."
+  ],
+  "forbidden": [
+    "Binding a screen fill to a primitive (neutral/*, brand/*)",
+    "Hardcoding a hex where a semantic token exists",
+    "Using label/* hues for buttons, borders, or state",
+    "Maintaining a separate dark hex by hand"
+  ],
+  "knownIssues": ["text/sucess (typo)", "border/Inverse (stray capital)", "label/* not aliased to primitives"]
+}
+</script>
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- data pulled from Figma ---------- */
+const NEUTRAL = [["0","#FFFFFF"],["50","#FAF9F7"],["100","#F4F3F0"],["150","#ECEBE7"],["200","#E4E2DD"],["300","#D8D6D0"],["400","#BCB8B1"],["500","#928E87"],["600","#6B6862"],["700","#47443F"],["800","#2C2A26"],["900","#1A1815"],["950","#0E0D0B"]];
+const BRAND = [["50","#EAF4F0"],["100","#CFE7E0"],["200","#A2CFC4"],["300","#6FB2A4"],["400","#3C9081"],["500","#10735F"],["600","#045646"],["700","#06463A"],["800","#06382E"],["900","#052A23"]];
+const LIME = [["50","#F3F7E8"],["100","#E6EFCC"],["200","#CFE09B"],["300","#B7D06B"],["400","#A3C452"],["500","#93B941"],["600","#7A9E32"],["700","#5F7C27"],["800","#4A611F"],["900","#384A18"]];
+const STATUS = [["green/500","#2FA24F"],["green/600","#23823F"],["green/700","#1B6633"],["red/500","#DE4133"],["red/600","#C22E22"],["red/700","#9C271E"],["amber/500","#D9920F"],["amber/600","#B0740A"],["amber/700","#8A5B08"],["blue/500","#2C7FD1"],["blue/600","#1F63A8"],["blue/700","#184E83"]];
+
+const SEMANTIC = [
+  ["bg/canvas","#FAF9F7","#0E0D0B","--mantine-color-body","Page background"],
+  ["bg/surface","#FFFFFF","#1A1815","other.bgSurface","Cards, panels, sidebar"],
+  ["bg/surface-raised","#FFFFFF","#2C2A26","other.bgSurfaceRaised","Popovers, raised menus"],
+  ["bg/sunken","#F4F3F0","#141210","other.bgSunken","Wells, segmented tracks"],
+  ["bg/hover","#F4F3F0","#2C2A26","other.bgHover","Row / item hover"],
+  ["bg/active","#ECEBE7","#47443F","other.bgActive","Pressed background"],
+  ["bg/inverse","#1A1815","#FFFFFF","other.bgInverse","Tooltips, inverse chips"],
+  ["border/subtle","#E4E2DD","#2C2A26","other.borderSubtle","Dividers, low-emphasis edges"],
+  ["border/default","#D8D6D0","#47443F","other.borderDefault","Card & control borders"],
+  ["border/strong","#BCB8B1","#6B6862","other.borderStrong","High-contrast edges"],
+  ["border/destructive","#C22E22","#DE4133","other.borderDestructive","Error field borders"],
+  ["text/primary","#1A1815","#FAF9F7","--mantine-color-text","Headings, primary text"],
+  ["text/secondary","#6B6862","#BCB8B1","other.textSecondary","Body secondary, metadata"],
+  ["text/tertiary","#928E87","#928E87","--mantine-color-dimmed","Captions, table headers"],
+  ["text/placeholder","#BCB8B1","#6B6862","other.textPlaceholder","Input placeholders"],
+  ["text/disabled","#D8D6D0","#47443F","other.textDisabled","Disabled labels"],
+  ["text/inverse","#FFFFFF","#1A1815","other.textInverse","Text on inverse surfaces"],
+  ["text/link","#06463A","#6FB2A4","other.textLink","Hyperlinks"],
+  ["text/destructive","#C22E22","#DE4133","other.textDestructive","Destructive labels"],
+  ["icon/primary","#1A1815","#FAF9F7","other.iconPrimary","High-emphasis glyphs"],
+  ["icon/secondary","#6B6862","#BCB8B1","other.iconSecondary","Default nav / inline icons"],
+  ["icon/tertiary","#928E87","#928E87","other.iconTertiary","Low-emphasis icons"],
+  ["icon/on-solid","#FFFFFF","#FFFFFF","other.iconOnSolid","Icons on filled buttons"],
+  ["icon/destructive","#C22E22","#E56C6C","other.iconDestructive","Delete / exit glyphs"],
+  ["action/primary/bg","#045646","#10735F","brand.6 (filled Button)","Primary button fill"],
+  ["action/primary/bg-hover","#06463A","#045646","brand.7","Primary hover"],
+  ["action/primary/fg","#FFFFFF","#FFFFFF","white","Primary label / icon"],
+  ["action/secondary/bg","#FFFFFF","#2C2A26","default Button","Secondary button fill"],
+  ["action/secondary/border","#D8D6D0","#47443F","other.borderDefault","Secondary button border"],
+  ["action/secondary/fg","#1A1815","#FAF9F7","other.textSecondaryBtn","Secondary label"],
+  ["action/destructive/bg","#C22E22","#DE4133","red.6 (filled)","Destructive button fill"],
+  ["accent/fg","#045646","#6FB2A4","brand.6 / brand.3","Accent text, active nav"],
+  ["accent/bg","#EAF4F0","#0C2620","brand.0 / dark","Selected / active nav fill"],
+  ["accent/solid","#045646","#10735F","brand.6","Solid accent surfaces"],
+  ["accent/border","#045646","#3C9081","brand.6 / brand.4","Selected borders"],
+  ["accent-2/fg","#5F7C27","#B7D06B","lime.7 / lime.3","Secondary accent text"],
+  ["accent-2/solid","#93B941","#93B941","lime.5","Secondary accent solid"],
+  ["focus/ring","#10735F","#3C9081","--mantine-color-focus","Keyboard focus ring"],
+  ["selected/bg","#EAF4F0","#052A23","brand.0 / brand.9","Selected row / cell"],
+  ["status/success/fg","#1B6633","#CDE9D3","green.7 / green.1","Success text"],
+  ["status/success/bg","#EAF6EC","#1B6633","green.0 / green.7","Success surface"],
+  ["status/success/solid","#2FA24F","#2FA24F","green.5","Success solid / dot"],
+  ["status/success/border","#CDE9D3","#23823F","green.1 / green.6","Success border"],
+  ["status/danger/fg","#9C271E","#F7D3CF","red.7 / red.1","Danger text"],
+  ["status/danger/bg","#FCEBE9","#9C271E","red.0 / red.7","Danger surface"],
+  ["status/danger/solid","#DE4133","#DE4133","red.5","Danger solid"],
+  ["status/danger/border","#F7D3CF","#C22E22","red.1 / red.6","Danger border"],
+  ["status/warning/fg","#8A5B08","#F4E3AD","amber.7 / amber.1","Warning text"],
+  ["status/warning/bg","#FBF2DA","#8A5B08","amber.0 / amber.7","Warning surface (banner)"],
+  ["status/warning/solid","#D9920F","#D9920F","amber.5","Warning solid"],
+  ["status/warning/border","#F4E3AD","#B0740A","amber.1 / amber.6","Warning border"],
+  ["status/info/fg","#184E83","#CCE0F5","blue.7 / blue.1","Info text"],
+  ["status/info/bg","#E8F1FB","#184E83","blue.0 / blue.7","Info surface"],
+  ["status/info/solid","#2C7FD1","#2C7FD1","blue.5","Info solid"],
+  ["status/info/border","#CCE0F5","#1F63A8","blue.1 / blue.6","Info border"],
+  ["overlay/scrim","#1A1815","#0E0D0B","other.scrim","Modal backdrop (with alpha)"],
+  ["verdict/perfect","#23823F","#2FA24F","green.6 / green.5","OCR verdict: perfect"],
+  ["verdict/not-perfect","#C22E22","#DE4133","red.6 / red.5","OCR verdict: not perfect"],
+  ["capture/annotated","#23823F","#2FA24F","green.6 / green.5","Capture: annotated"],
+  ["capture/not-annotated","#B0740A","#D9920F","amber.6 / amber.5","Capture: not annotated"]
+];
+
+const LABELS = [
+  ["red","#BE2D2D","#E56C6C"],["coral","#D85331","#E88A73"],["orange","#D37522","#EA9953"],["amber","#D39517","#F0B642"],["gold","#C19B1F","#EBC547"],["yellow","#C1AB1F","#EED84F"],["olive","#859438","#B8C95E"],["lime","#7CAB2B","#ABDC56"],["moss","#538A38","#7DC559"],["green","#309141","#56D26A"],["emerald","#2C9661","#54D494"],["mint","#389F80","#69D3B3"],["teal","#298E86","#4BD2C7"],["aqua","#2E959E","#5CCCD6"],["cyan","#2B92AB","#56C1DC"],["sky","#2D89BE","#63B4E3"],["azure","#2C7AC9","#61A3E5"],["blue","#2F61C6","#638EE3"],["cobalt","#2F4BBC","#5E78DE"],["indigo","#4539C6","#7A71E0"],["violet","#7941C8","#A579E2"],["grape","#8F45C4","#B67BE0"],["purple","#A13DC2","#C373DE"],["plum","#AA41AA","#D671D6"],["magenta","#C133A5","#E067C8"],["fuchsia","#CF309A","#E56CBD"],["pink","#D53F8A","#EB7AB2"],["rose","#CF3058","#E76A89"],["brown","#8D5A35","#BE8760"],["slate","#626D84","#99A3B8"]
+];
+
+/* ---------- render ---------- */
+function rampEl(id, arr, prefix){
+  const el = document.getElementById(id); if(!el) return;
+  el.innerHTML = arr.map(([n,hex])=>`<div class="chip"><div class="fill" style="background:${hex}"></div><div class="meta"><div class="cname">${prefix?prefix+"/":""}${n}</div><div class="chex">${hex}</div></div></div>`).join("");
+}
+rampEl("ramp-neutral", NEUTRAL, "neutral");
+rampEl("ramp-brand", BRAND, "brand");
+rampEl("ramp-lime", LIME, "lime");
+{ const el=document.getElementById("ramp-status"); el.innerHTML = STATUS.map(([n,hex])=>`<div class="chip"><div class="fill" style="background:${hex}"></div><div class="meta"><div class="cname">${n}</div><div class="chex">${hex}</div></div></div>`).join(""); }
+
+document.getElementById("semantic-body").innerHTML = SEMANTIC.map(([tok,l,d,mant,use])=>
+  `<tr><td class="tok">${tok}</td><td><span class="sw-pair"><span class="sw" style="background:${l}"></span><span class="sw" style="background:${d}"></span></span></td><td class="val">${l} → ${d}</td><td class="mant">${mant}</td><td class="usage">${use}</td></tr>`
+).join("");
+
+document.getElementById("labels-grid").innerHTML = LABELS.map(([n,l,d])=>
+  `<div class="lbl"><span class="dot" style="background:${l}"></span><span class="ln">${n}</span><span class="lh">${l}</span></div>`
+).join("");
+
+</script>
+</body></html>

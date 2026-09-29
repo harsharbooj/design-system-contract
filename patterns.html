@@ -1,0 +1,149 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Usage Patterns — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item active" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="patterns">
+      <div class="eyebrow"><span class="n">05</span> Usage Patterns</div>
+      <h2 class="t-title-page">Usage patterns</h2>
+      <p class="lead">How the tokens actually assemble, read straight off the <span class="mono">VD Main — Trained</span> and <span class="mono">Projects</span> screens. Each recipe lists the real bound tokens. Patterns marked <b>no component</b> are built from raw frames today and are the first candidates for promotion into the library.</p>
+
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P1</span><h4>Surface card</h4></div>
+        <p class="pbody">The base container for metric tiles, the Description panel and Labels-used. Surface fill, default border, medium radius, comfortable padding. There is <b>no Card component</b> — every screen rebuilds this from a frame.</p>
+        <div class="recipe">
+          <span class="r">fill <b>bg/surface</b></span><span class="r">stroke <b>border/default</b></span><span class="r">radius <b>radius/md · 8</b></span><span class="r">padding <b>space/16</b></span><span class="r">gap <b>space/12</b></span><span class="r">title <b>Title/Sub</b></span>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P2</span><h4>Metric / KPI card</h4></div>
+        <p class="pbody">The four performance tiles. An uppercase eyebrow, a large mono figure, and a signed delta badge in status color. Note the <b>18px</b> vertical padding — off-scale, flagged in §03.</p>
+        <div class="recipe">
+          <span class="r">label <b>Overline</b> · text/tertiary</span><span class="r">value <b>Mono/Metric-L · 32</b></span><span class="r">delta <b>status/success·bg+fg</b></span><span class="r">padding <b>18 / 20 ⚠</b></span><span class="r">radius <b>radius/md</b></span>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P3</span><h4>Button — primary &amp; secondary</h4></div>
+        <p class="pbody">Actions in the page header (Retrain, Manual test). Primary is a brand fill; secondary is a bordered surface. Both carry a 20px leading icon and the Button text style. <span class="mono">Button</span> component exists (32 variants).</p>
+        <div class="recipe">
+          <span class="r">primary fill <b>action/primary/bg</b></span><span class="r">fg <b>action/primary/fg</b></span><span class="r">secondary <b>action/secondary/bg + border</b></span><span class="r">radius <b>radius/sm · 6</b></span><span class="r">pad <b>8 / 9</b></span><span class="r">gap <b>space/8</b></span>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P5</span><h4>Status banner</h4></div>
+        <p class="pbody">The recommendation strip ("screw_left / screw_right confused…"). A tinted status background, matching border, a status-colored icon and text — swap the family for danger / info as needed. <b>No dedicated component.</b></p>
+        <div class="recipe">
+          <span class="r">fill <b>status/warning/bg</b></span><span class="r">stroke <b>status/warning/border</b></span><span class="r">icon+text <b>status/warning/fg</b></span><span class="r">radius <b>radius/md</b></span><span class="r">pad <b>14 / 16</b></span><span class="r">gap <b>space/12</b></span>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P6</span><h4>Segmented control</h4></div>
+        <p class="pbody">The All / Annotated / Not-annotated filter. A sunken track holds segments; the active one lifts to a bordered surface. Built from frames — a <span class="mono">Tab</span> set exists but the segmented pattern isn't componentised. <b>Promotion candidate.</b></p>
+        <div class="recipe">
+          <span class="r">track <b>bg/sunken</b></span><span class="r">track radius <b>radius/sm</b></span><span class="r">active <b>bg/surface + border/default</b></span><span class="r">active radius <b>radius/xs · 4</b></span><span class="r">inset <b>space/2</b></span><span class="r">label <b>Button</b></span>
+        </div>
+      </div>
+
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P7</span><h4>Data table</h4></div>
+        <p class="pbody">The Projects list. Uppercase Overline column headers in <code>text/tertiary</code>, rows divided by <code>border/subtle</code>, cell text in Body, a leading checkbox and a trailing Icon button per row. <b>No Table component</b> — a custom frame.</p>
+        <div class="recipe">
+          <span class="r">header <b>Overline</b> · text/tertiary</span><span class="r">row divider <b>border/subtle</b></span><span class="r">cell <b>Body</b></span><span class="r">row action <b>Icon button</b></span><span class="r">select <b>Checkbox</b></span>
+        </div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-patterns"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-patterns</span></div>
+<script type="application/json" id="ds-contract-patterns">
+{
+  "section": "patterns",
+  "observedOn": ["VD Main — Trained (Redesign)", "Projects (List)"],
+  "patterns": [
+    { "name": "Surface card", "component": "none (raw frame)", "recipe": { "fill": "bg/surface", "border": "border/default", "radius": "radius/md (8)", "padding": "space/16", "gap": "space/12", "title": "Title/Sub" } },
+    { "name": "Metric/KPI card", "component": "none", "recipe": { "label": "Overline + text/tertiary", "value": "Mono/Metric-L (32)", "delta": "status/success|danger bg+fg", "padding": "18/20 (18 off-scale)", "radius": "radius/md" } },
+    { "name": "Button primary/secondary", "component": "Button (32 variants)", "recipe": { "primaryBg": "action/primary/bg", "primaryFg": "action/primary/fg", "secondary": "action/secondary/bg + action/secondary/border", "radius": "radius/sm (6)", "padding": "8/9", "gap": "space/8", "label": "Button" } },
+    { "name": "Status banner", "component": "none", "recipe": { "fill": "status/{tone}/bg", "border": "status/{tone}/border", "iconText": "status/{tone}/fg", "radius": "radius/md", "padding": "14/16", "gap": "space/12" } },
+    { "name": "Segmented control", "component": "none (Tab set exists)", "recipe": { "track": "bg/sunken", "trackRadius": "radius/sm", "active": "bg/surface + border/default", "activeRadius": "radius/xs (4)", "inset": "space/2", "label": "Button" } },
+    { "name": "Data table", "component": "none", "recipe": { "header": "Overline + text/tertiary", "rowDivider": "border/subtle", "cell": "Body", "rowAction": "Icon button", "select": "Checkbox" } }
+  ],
+  "libraryComponents": ["Button","Icon button","Input","Select","Textarea","Checkbox","Radio","Switch","Avatar","Badge","Tab","Tooltip","Progress","Divider","Link","Chip","Kbd","Skeleton","Spinner"],
+  "promotionCandidates": ["Card / Surface panel","Metric card","Delta badge","Status banner","Segmented control","Breadcrumb","Data table + Table row","Capture thumbnail"],
+  "rules": [
+    "Rebuild nothing that already exists as a component (Button, Input, Badge, Avatar).",
+    "For patterns with no component, compose strictly from the recipe tokens above.",
+    "When a repeated pattern has no component, flag it for promotion — do not fork a variant.",
+    "Keep card/banner/segment recipes identical across screens for agent legibility."
+  ],
+  "forbidden": [
+    "Hardcoding pattern values instead of the listed tokens",
+    "Inventing a new card or banner variant per screen",
+    "Using the off-scale 18px padding in new metric cards",
+    "Building a button/input from a div when the component exists"
+  ]
+}
+</script>
+      </div>
+
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>

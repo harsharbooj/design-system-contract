@@ -1,0 +1,374 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Tab Status — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item active" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="tab-status">
+      <div class="eyebrow"><span class="n">18</span> Components · Tab Status</div>
+      <h2 class="t-title-page">Tab Status <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">node 852:10158 · a tissue built from Tab atom + Line atom</span></h2>
+      <p class="lead">Tab Status is a <b>tissue</b> — the whole tab bar you drop into a page. It's assembled from two smaller pieces that don't ship on their own: a <b>Tab atom</b> (one clickable label) and a <b>Line atom</b> (the underline that carries the selected state in the line variant). Two variants ship: <code>Segmented</code> (pill track, atoms only) and <code>Line</code> (underline strip, each atom wrapped in a Line atom).</p>
+
+      <div class="subhead"><h3 class="t-title-section">Composition</h3><span class="note">how the pieces assemble</span></div>
+      <div class="tabst-tissue-map">
+        <div class="tabst-map-node"><div class="role">Molecule</div><div class="name">Tab atom</div><div class="sub">852:10111</div></div>
+        <div class="tabst-map-plus">+</div>
+        <div class="tabst-map-node"><div class="role">Molecule</div><div class="name">Line atom</div><div class="sub">857:389</div></div>
+        <div class="tabst-map-arrow">→</div>
+        <div class="tabst-map-node tissue"><div class="role">Tissue</div><div class="name">Tab Status</div><div class="sub">852:10158</div></div>
+      </div>
+      <p class="usage" style="margin-top:8px;max-width:74ch;">In <b>Segmented</b>, only Tab atom is used — the selected state is drawn by the atom itself (accent fill + border). In <b>Line</b>, each Tab atom is wrapped by a Line atom whose bottom border becomes the underline when selected. Line atom exists <i>only</i> to serve the Line variant.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">click any tab to select · watch how each variant resolves the selected state differently</span></div>
+      <div class="tabst-controls">
+        <span>Variant</span>
+        <div class="tabst-seg" id="ts-variant" role="tablist" aria-label="Variant">
+          <button class="on" data-v="Segmented" role="tab" aria-selected="true">Segmented</button>
+          <button data-v="Line" role="tab" aria-selected="false">Line</button>
+        </div>
+        <span id="ts-caption" class="mono" style="font-size:11px;color:var(--text-4);"></span>
+      </div>
+      <div class="tabst-stage"><div id="ts-mount"></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <p class="usage" style="max-width:78ch;">Both variants share the same three-tab payload: <span class="mono">All (512) · Annotated (480) · Not annotated (32)</span> with a folder glyph. <b>Segmented</b>: outer track fills <code>bg/sunken</code>, wraps atoms with <code>2px</code> padding + <code>2px</code> gap; the selected atom fills <code>selected/bg</code> and strokes <code>accent/border</code>. <b>Line</b>: outer track has a <code>1px</code> <code>border/subtle</code> bottom, <code>4px</code> gap, no fill; the selected Line atom paints a <code>2px</code> <code>accent/border</code> bottom border. Tab atom padding differs by container — <code>12px</code> in Segmented, <code>8px</code> in Line — because the Line atom carries a slim outer padding of its own.</p>
+
+      <div class="subhead"><h3 class="t-title-section">The molecules</h3><span class="note">click a card to expand · toggle state to compare</span></div>
+      <div class="mol-grid">
+
+        <div class="mol is-open" id="mol-tab">
+          <div class="mol-head" data-toggle="mol-tab" role="button" aria-expanded="true" tabindex="0">
+            <span class="kind">Molecule</span>
+            <h4>Tab atom</h4>
+            <span class="spacer"></span>
+            <span class="nid">852:10111</span>
+            <span class="chev"><ph-caret-right weight="bold" size="14"></ph-caret-right></span>
+          </div>
+          <div class="mol-body">
+            <div class="tabst-controls" style="margin-top:0;">
+              <span>State</span>
+              <div class="tabst-seg" data-mol="tab" role="group" aria-label="Tab atom state">
+                <button class="on" data-v="Default">Default</button>
+                <button data-v="Selected">Selected</button>
+              </div>
+            </div>
+            <div class="mol-preview" id="mol-tab-preview"></div>
+            <p class="usage" style="margin:0 0 10px;">The clickable pill. Height <b>40</b>, icon <b>18</b>, gap <b>12</b> between icon and label, radius <b>6</b>. Font shifts from <code>Body/Strong</code> (14/22) in Default to <code>Label</code> (13/18) in the Segmented Selected state — the tighter type keeps the pill from growing when the 1px accent border is added.</p>
+            <div class="props">
+              <div class="prow"><span class="pname">Icon</span><span class="ptype">boolean</span><span class="pdesc">Show or hide the leading glyph. Default: <code>true</code>.</span></div>
+              <div class="prow"><span class="pname">Section heading</span><span class="ptype">text</span><span class="pdesc">Label copy. Default: <code>"Project"</code>.</span></div>
+              <div class="prow"><span class="pname">Instance</span><span class="ptype">instance-swap</span><span class="pdesc">Which icon component to render (Phosphor set).</span></div>
+              <div class="prow"><span class="pname">Type</span><span class="ptype">variant</span><span class="pdesc"><code>Default</code> | <code>Selected</code> — flips fill, border, text color and font size.</span></div>
+            </div>
+            <table class="mini-tbl">
+              <thead><tr><th>Aspect</th><th>Default</th><th>Selected (Segmented)</th></tr></thead>
+              <tbody>
+                <tr><td>Fill</td><td>transparent</td><td><code>selected/bg</code> #EAF4F0</td></tr>
+                <tr><td>Border</td><td>transparent</td><td><code>accent/border</code> #045646</td></tr>
+                <tr><td>Text</td><td><code>text/secondary</code></td><td><code>text/label</code> #06463A</td></tr>
+                <tr><td>Type style</td><td>Body/Strong 14/22</td><td>Label 13/18</td></tr>
+                <tr><td>Padding X</td><td>12 (Segmented) / 8 (Line)</td><td>same as Default</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mol" id="mol-line">
+          <div class="mol-head" data-toggle="mol-line" role="button" aria-expanded="false" tabindex="0">
+            <span class="kind">Molecule</span>
+            <h4>Line atom</h4>
+            <span class="spacer"></span>
+            <span class="nid">857:389</span>
+            <span class="chev"><ph-caret-right weight="bold" size="14"></ph-caret-right></span>
+          </div>
+          <div class="mol-body">
+            <div class="tabst-controls" style="margin-top:0;">
+              <span>State</span>
+              <div class="tabst-seg" data-mol="line" role="group" aria-label="Line atom state">
+                <button class="on" data-v="Default">Default</button>
+                <button data-v="Selected">Selected</button>
+              </div>
+            </div>
+            <div class="mol-preview" id="mol-line-preview"></div>
+            <p class="usage" style="margin:0 0 10px;">A wrapper that only paints a bottom border. It carries no fill of its own — it exists to render the underline indicator around a Tab atom in the Line variant of Tab Status. In the Segmented variant it is not used.</p>
+            <div class="props">
+              <div class="prow"><span class="pname">Type</span><span class="ptype">variant</span><span class="pdesc"><code>Default</code> | <code>Selected</code> — Selected paints the 2px bottom border.</span></div>
+              <div class="prow"><span class="pname">Contains</span><span class="ptype">instance</span><span class="pdesc">Exactly one Tab atom inside, with padding X = <code>8</code>.</span></div>
+            </div>
+            <table class="mini-tbl">
+              <thead><tr><th>Aspect</th><th>Default</th><th>Selected</th></tr></thead>
+              <tbody>
+                <tr><td>Border-bottom</td><td>none (2px space reserved)</td><td>2px <code>accent/border</code></td></tr>
+                <tr><td>Fill</td><td>transparent</td><td>transparent</td></tr>
+                <tr><td>Nested Tab atom</td><td>Type = Default</td><td>Type = Default (color inherits)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Token reference (tissue)</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Part</th><th>Token</th><th>Value</th><th>Mantine var</th></tr></thead>
+          <tbody>
+            <tr><td class="val">Segmented · track fill</td><td class="tok">bg/sunken</td><td class="val">#F4F3F0</td><td class="mant">var(--mantine-color-bg-sunken)</td></tr>
+            <tr><td class="val">Segmented · track radius</td><td class="tok">radius/sm</td><td class="val">6</td><td class="mant">var(--mantine-radius-sm)</td></tr>
+            <tr><td class="val">Segmented · inner padding</td><td class="tok">space/2</td><td class="val">2</td><td class="mant">var(--mantine-spacing-2)</td></tr>
+            <tr><td class="val">Segmented · atom gap</td><td class="tok">space/2</td><td class="val">2</td><td class="mant">var(--mantine-spacing-2)</td></tr>
+            <tr><td class="val">Line · bottom stroke</td><td class="tok">border/subtle</td><td class="val">#E4E2DD</td><td class="mant">var(--mantine-color-border-subtle)</td></tr>
+            <tr><td class="val">Line · atom gap</td><td class="tok">space/4</td><td class="val">4</td><td class="mant">var(--mantine-spacing-4)</td></tr>
+            <tr><td class="val">Selected fill (Segmented)</td><td class="tok">selected/bg</td><td class="val">#EAF4F0</td><td class="mant">var(--mantine-color-selected-bg)</td></tr>
+            <tr><td class="val">Selected border / underline</td><td class="tok">accent/border</td><td class="val">#045646</td><td class="mant">var(--mantine-color-accent-border)</td></tr>
+            <tr><td class="val">Selected label</td><td class="tok">text/label</td><td class="val">#06463A</td><td class="mant">var(--mantine-color-text-label)</td></tr>
+            <tr><td class="val">Default label / icon</td><td class="tok">text/secondary</td><td class="val">#6B6862</td><td class="mant">var(--mantine-color-text-secondary)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Choose <b>Segmented</b> when tabs sit inside a card or filter well — the sunken track visually contains them. Choose <b>Line</b> when tabs anchor a page or section header — the underline sits directly against the surface.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Exactly one Tab atom in the set carries the Selected state at any time. Zero-selected and multi-selected are both defects.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Never build a tab or an underline by hand. Every tab in a Tab Status is an instance of <b>Tab atom</b>; every underline slot in the Line variant is a <b>Line atom</b>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Icon is optional on Tab atom (per its <code>Icon</code> boolean). Keep it consistent inside a single Tab Status — either all atoms show icons or none do.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Never use a Tab atom on its own as a "just one filter" chip. If a control has only one option, it is not tabs — reach for <b>Tag</b> (§08).</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>Property=Segmented</code> for in-card filter tabs</li>
+          <li>Use <code>Property=Line</code> for section headers on a surface</li>
+          <li>Bind fills to <code>bg/sunken</code> and <code>selected/bg</code>, borders to <code>accent/border</code></li>
+          <li>Change label copy through the <code>Section heading</code> text property, not by detaching</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Draw the underline as a raw 2px rectangle — use the Line atom</li>
+          <li>Hardcode <code>#EAF4F0</code> for the selected pill — use <code>selected/bg</code></li>
+          <li>Mix Segmented and Line variants in the same view</li>
+          <li>Leave zero or two Tab atoms in the Selected state at once</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-tab-status"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-tab-status</span></div>
+<script type="application/json" id="ds-contract-tab-status">
+{
+  "section": "tab-status",
+  "component": "Tab Status",
+  "kind": "tissue",
+  "nodeId": "852:10158",
+  "variants": ["Segmented", "Line"],
+  "slots": {
+    "Slot":  "Segmented tabs — hosts Tab atoms directly",
+    "Slott": "Line tabs — hosts Line atoms, each wrapping a Tab atom"
+  },
+  "tissueGeometry": {
+    "Segmented": { "fill": "bg/sunken", "padding": 2, "gap": 2, "radius": 6, "atomPaddingX": 12 },
+    "Line":      { "borderBottom": "1px border/subtle", "gap": 4, "padding": "0 2", "atomPaddingX": 8, "indicator": "2px accent/border on selected Line atom" }
+  },
+  "composedFrom": [
+    {
+      "name": "Tab atom",
+      "kind": "molecule",
+      "nodeId": "852:10111",
+      "properties": {
+        "Icon":            { "type": "boolean",        "default": true },
+        "Section heading": { "type": "text",           "default": "Project" },
+        "Instance":        { "type": "instance-swap",  "default": "86:1119" },
+        "Type":            { "type": "variant",        "values": ["Default", "Selected"] }
+      },
+      "geometry": { "height": 40, "iconSize": 18, "iconLabelGap": 12, "radius": 6 },
+      "states": {
+        "default":            { "fill": "transparent", "border": "transparent",   "text": "text/secondary", "typeStyle": "Body/Strong 14/22" },
+        "selectedSegmented":  { "fill": "selected/bg", "border": "accent/border", "text": "text/label",     "typeStyle": "Label 13/18" },
+        "selectedLine":       { "fill": "transparent", "border": "transparent",   "text": "text/label",     "typeStyle": "Body/Strong 14/22", "indicatorFrom": "wrapping Line atom" }
+      }
+    },
+    {
+      "name": "Line atom",
+      "kind": "molecule",
+      "nodeId": "857:389",
+      "properties": { "Type": { "type": "variant", "values": ["Default", "Selected"] } },
+      "role": "Wraps exactly one Tab atom in the Line variant; paints the underline via a 2px bottom border on Selected.",
+      "states": {
+        "default":  { "borderBottom": "none" },
+        "selected": { "borderBottom": "2px accent/border" }
+      }
+    }
+  ],
+  "rules": [
+    "Choose Segmented inside cards/wells; choose Line for section headers on a surface.",
+    "Exactly one Tab atom is Selected at any time.",
+    "Never construct a tab or an underline by hand — always instantiate Tab atom and Line atom.",
+    "Icon on Tab atom is optional but must be consistent across all tabs in a Tab Status.",
+    "Segmented uses only Tab atoms; Line requires each Tab atom wrapped in a Line atom."
+  ],
+  "forbidden": [
+    "Drawing the underline as a raw 2px rectangle instead of using Line atom",
+    "Hardcoding #EAF4F0 for the selected pill fill instead of selected/bg",
+    "Mixing Segmented and Line variants within a single view",
+    "Zero or two Tab atoms in the Selected state at once"
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">Extracted from <b>the design system Figma file</b> · Tab Status <span class="mono">852:10158</span> with molecules <span class="mono">852:10111 (Tab atom)</span> and <span class="mono">857:389 (Line atom)</span>. Documented 2026-09-11 via Figma MCP.</div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  const FOLDER = '<span class="glyph" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6c0-.6.5-1.1 1.1-1.1h3.9l1.3 1.6h7.1c.6 0 1.1.5 1.1 1.1v6.9c0 .6-.5 1.1-1.1 1.1H3.6c-.6 0-1.1-.5-1.1-1.1V6Z"/></svg></span>';
+  const TABS = [
+    { label:'All (512)',           icon:true },
+    { label:'Annotated (480)',     icon:true },
+    { label:'Not annotated (32)',  icon:true }
+  ];
+  const state = { variant:'Segmented', selected:1 };
+  const mount = document.getElementById('ts-mount');
+  const cap   = document.getElementById('ts-caption');
+
+  function render(){
+    if(!mount) return;
+    if(state.variant === 'Segmented'){
+      mount.innerHTML =
+        '<div class="ts-segmented" role="tablist" aria-label="Filter">' +
+        TABS.map((t,i)=>{
+          const sel = i===state.selected;
+          return '<button class="tab-atom'+(sel?' is-selected':'')+'" data-idx="'+i+'" role="tab" aria-selected="'+sel+'" tabindex="'+(sel?'0':'-1')+'">'+
+            (t.icon?FOLDER:'')+'<span>'+t.label+'</span></button>';
+        }).join('') + '</div>';
+    } else {
+      mount.innerHTML =
+        '<div class="ts-line" role="tablist" aria-label="Filter">' +
+        TABS.map((t,i)=>{
+          const sel = i===state.selected;
+          return '<div class="line-atom'+(sel?' is-selected':'')+'" data-idx="'+i+'">'+
+            '<button class="tab-atom" role="tab" aria-selected="'+sel+'" tabindex="'+(sel?'0':'-1')+'">'+
+            (t.icon?FOLDER:'')+'<span>'+t.label+'</span></button>'+
+            '</div>';
+        }).join('') + '</div>';
+    }
+    mount.querySelectorAll('[data-idx]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const idx = parseInt(el.dataset.idx,10);
+        if(!isNaN(idx)){ state.selected = idx; render(); }
+      });
+    });
+    if(cap) cap.textContent = state.variant + ' · selected [' + state.selected + '] "' + TABS[state.selected].label + '"';
+  }
+
+  document.querySelectorAll('#ts-variant button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('#ts-variant button').forEach(x=>{ x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
+      b.classList.add('on'); b.setAttribute('aria-selected','true');
+      state.variant = b.dataset.v; render();
+    });
+  });
+  render();
+
+  document.querySelectorAll('.mol-head[data-toggle]').forEach(h=>{
+    function toggle(){
+      const card = document.getElementById(h.dataset.toggle);
+      const open = card.classList.toggle('is-open');
+      h.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    h.addEventListener('click', toggle);
+    h.addEventListener('keydown', ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); toggle(); }});
+  });
+
+  const tabPrev = document.getElementById('mol-tab-preview');
+  function renderTabMol(v){
+    tabPrev.innerHTML =
+      '<div class="mol-mini"><span class="lb">'+v+'</span>'+
+        '<div class="ts-segmented" style="background:transparent;border:none;box-shadow:none;padding:0;">'+
+          '<button class="tab-atom'+(v==='Selected'?' is-selected':'')+'">'+FOLDER+'<span>Annotated (480)</span></button>'+
+        '</div>'+
+      '</div>';
+  }
+  renderTabMol('Default');
+  document.querySelectorAll('[data-mol="tab"] button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('[data-mol="tab"] button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on'); renderTabMol(b.dataset.v);
+    });
+  });
+
+  const linePrev = document.getElementById('mol-line-preview');
+  function renderLineMol(v){
+    linePrev.innerHTML =
+      '<div class="mol-mini"><span class="lb">'+v+'</span>'+
+        '<div class="ts-line" style="border-bottom:none;padding:0;">'+
+          '<div class="line-atom'+(v==='Selected'?' is-selected':'')+'">'+
+            '<button class="tab-atom">'+FOLDER+'<span>Annotated (480)</span></button>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+  }
+  renderLineMol('Default');
+  document.querySelectorAll('[data-mol="line"] button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('[data-mol="line"] button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on'); renderLineMol(b.dataset.v);
+    });
+  });
+})();
+</script>
+</body></html>

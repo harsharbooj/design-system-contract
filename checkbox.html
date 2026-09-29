@@ -1,0 +1,287 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Checkbox — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item active" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="checkbox">
+      <div class="eyebrow"><span class="n">11</span> Components · Checkbox</div>
+      <h2 class="t-title-page">Checkbox <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Checkbox · 6 variants · node 842:365</span></h2>
+      <p class="lead">A form-choice control for options that submit later — the counterpart to Switch's "takes effect immediately" toggle (see §09). A single variant axis, <b>State</b>, resolves to 6 published variants: <code>Unchecked</code>, <code>Checked</code>, <code>Indeterminate</code>, <code>Disabled Uncheck</code>, <code>Disabled Checked</code>, <code>Disabled Indetermined</code>. All six share the same <code>16×16</code>, <code>radius/xs</code> box; only the fill and the interior mark change. Disabled variants use a flat gray fill (<code>--text-3</code>) instead of accent, with the check/dash rendered in a slightly darker gray (<code>--text-2</code>).</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">toggle the axis — the preview and Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="cb-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">State</span><div class="seg" data-axis="state"><button data-v="Unchecked" class="on">Unchecked</button><button data-v="Checked">Checked</button><button data-v="Indeterminate">Indeterminate</button><button data-v="Disabled Uncheck">Disabled Uncheck</button><button data-v="Disabled Checked">Disabled Checked</button><button data-v="Disabled Indetermined">Disabled Indetermined</button></div></div>
+          <div class="ctl"><span class="lab">Label (paired)</span><input class="tin" id="cb-label" value="Select all rows" maxlength="32" aria-label="Checkbox label"></div>
+          <div class="rowsw"><span>Show paired label</span><button class="swt on" id="cb-pair" role="switch" aria-checked="true" aria-label="Show paired label"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React</span><span class="vn" id="cb-figma">State=Unchecked</span></div>
+        <pre id="cb-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">All states</h3><span class="note">every variant, default props · matches the Figma component set at node 842:365</span></div>
+      <div class="panel"><div class="pvcb-row" id="cb-all"></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-cb"></div></div>
+        <ol>
+          <li><b>Box</b> — <code>16×16</code>, <code>radius/xs</code> (4) — same corner radius as the Icon Button (§10). <b>Unchecked</b> is <code>bg/surface</code> with a <code>border/strong</code> 1px stroke; <b>Checked</b> and <b>Indeterminate</b> both fill solid with <code>accent/solid</code> and drop the stroke.</li>
+          <li><b>Check mark</b> — a <code>14×14</code> tick glyph in <code>accent/fg</code> (white), centered with a hair of inset padding. Only rendered in <b>Checked</b>.</li>
+          <li><b>Dash</b> — an <code>8×2</code> rounded bar in <code>accent/fg</code> (white), centered horizontally and vertically. Only rendered in <b>Indeterminate</b> — it replaces the check mark entirely, it does not layer on top of it.</li>
+          <li><b>Focus</b> — <code>2px</code> <code>focus/ring</code> halo, offset from the box edge. <span style="color:var(--warning-fg);">Not modelled as a Figma variant</span> — same gap already open on Switch, Button and Input.</li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">the API an agent instantiates against</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">State</td><td class="val">VARIANT</td><td class="val">Unchecked</td><td class="usage">Unchecked · Checked · Indeterminate · Disabled Uncheck · Disabled Checked · Disabled Indetermined</td><td class="mant">checked + indeterminate + disabled (see map)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Checkbox ships full 6-way coverage: all 3 interior marks (unchecked/checked/indeterminate) × 2 disabled states. There is no built-in label slot; a label is composed alongside the box by the screen, the same convention Switch uses.</p>
+
+      <div class="subhead"><h3 class="t-title-section">State → Mantine map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Fill</th><th>Interior mark</th><th>Mantine props</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Unchecked</td><td class="val">bg/surface + border/strong</td><td class="val">none</td><td class="mant">checked={false}</td></tr>
+            <tr><td class="tok">Checked</td><td class="val">accent/solid #045646</td><td class="val">11×8 check, accent/fg (white)</td><td class="mant">checked={true} color="brand"</td></tr>
+            <tr><td class="tok">Indeterminate</td><td class="val">accent/solid #045646</td><td class="val">8×1 bar, accent/fg (white)</td><td class="mant">indeterminate checked={false} color="brand"</td></tr>
+            <tr><td class="tok">Disabled Uncheck</td><td class="val">bg/surface + text/tertiary border</td><td class="val">none</td><td class="mant">checked={false} disabled</td></tr>
+            <tr><td class="tok">Disabled Checked</td><td class="val">bg/dissable #BCB8B1 (--text-3)</td><td class="val">11×8 check in --text-2</td><td class="mant">checked={true} disabled</td></tr>
+            <tr><td class="tok">Disabled Indetermined</td><td class="val">bg/dissable #BCB8B1 (--text-3)</td><td class="val">8×1 bar in --text-2</td><td class="mant">indeterminate disabled</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;"><b>Indeterminate is a programmatic display state, not a third click target.</b> A user can only toggle a checkbox between checked and unchecked; indeterminate is set in code (e.g. Mantine's <code>indeterminate</code> prop, which mirrors the DOM's <code>el.indeterminate</code>) to represent "some but not all" children checked in a group — clicking an indeterminate checkbox should resolve it to a definite <code>Checked</code>, never back to indeterminate.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Dimensions</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Value</th><th>Where</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Box</td><td class="val">16px</td><td class="usage"><code>size/icon-sm</code></td><td class="usage">On-scale — reuses the icon-sm size token, same as Switch's thumb.</td></tr>
+            <tr><td class="tok">Radius</td><td class="val">4px</td><td class="usage"><code>radius/xs</code></td><td class="usage">Matches Icon Button (§10); one step tighter than Button/Input's <code>radius/sm</code>.</td></tr>
+            <tr><td class="tok">Check glyph</td><td class="val">14px</td><td class="usage">no <code>size/icon-*</code> token</td><td class="usage">Off-scale — smaller than <code>size/icon-sm</code> (16) by design, so the mark sits inside the box with a 1px margin. Component-intrinsic constant.</td></tr>
+            <tr><td class="tok">Dash</td><td class="val">8×2px</td><td class="usage">no token</td><td class="usage">Component-intrinsic constant, centered in the 16×16 box.</td></tr>
+            <tr><td class="tok">Border</td><td class="val">1px</td><td class="usage"><code>stroke/thin</code></td><td class="usage">Unchecked only; Checked/Indeterminate rely on the solid fill instead.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Render a native <code>&lt;input type="checkbox"&gt;</code>. Set <b>Indeterminate</b> via the element's <code>.indeterminate</code> DOM property (or Mantine's <code>indeterminate</code> prop) — there is no <code>indeterminate</code> HTML attribute, and <code>aria-checked="mixed"</code> is applied automatically by the browser once the property is set.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Pair every checkbox with a visible, clickable <code>&lt;label for=""&gt;</code> — never a bare box with no associated text, and never rely on a wrapping <code>&lt;div&gt;</code> with a click handler instead of the native input/label relationship.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Focus binds to <code>focus/ring</code> at 2px. <span style="color:var(--warning-fg);">Gap: no Focus variant in Figma</span> — wire via <code>:focus-visible</code> in code until it lands.</p></div>
+        <div class="rule"><span class="num mono"></span><p>A disabled checkbox — see Findings, no Figma variant exists yet — must still use <code>:disabled</code> / <code>aria-disabled="true"</code> in code and visually desaturate, matching the grayscale treatment Switch already applies to its own Disabled states.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Use Checkbox for <b>choices that submit later</b> (a form field, a filter selection, "select all" in a table). Use Switch (§09) for settings that take effect immediately. This is the same boundary Switch's own usage rules already draw — never substitute one for the other.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Reserve <b>Indeterminate</b> for a "select all" checkbox whose children are partially selected. Never let a user click their way into indeterminate directly — it is only ever set programmatically from the state of a related group.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Compose from the <code>Checkbox</code> component; never rebuild the box from a styled <code>div</code>, and never hardcode <code>accent/solid</code>'s hex for the checked fill.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Only one size ships — <code>16×16</code>. Don't scale a checkbox up for "emphasis"; use its paired label's type style to carry visual weight instead.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>&lt;Checkbox label="Select all rows" checked={all} indeterminate={some} onChange={…} /&gt;</code></li>
+          <li>Set <code>indeterminate</code> from a derived "some children checked" value, never from user input directly</li>
+          <li>Pair every box with a clickable label</li>
+          <li>Resolve an indeterminate box to a definite Checked/Unchecked on the next click</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Rebuild the box from a styled <code>div</code> with a hardcoded <code>#045646</code></li>
+          <li>Ship a checkbox with no associated label</li>
+          <li>Use Checkbox for a setting that should take effect immediately — that's Switch</li>
+          <li>Leave a checkbox stuck in indeterminate after the user interacts with it</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Findings from this pass</h3><span class="note">no Figma edits made — surface for review before a consistency pass</span></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>No Disabled variant.</b> Switch ships all 4 combinations of checked × disabled; Checkbox ships none. A data table's "select all" header checkbox and its row checkboxes will need a disabled treatment sooner or later (e.g. a row that can't be bulk-actioned) — recommend adding <code>Disabled unchecked</code> / <code>Disabled checked</code> variants the same way Switch already models them.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>No Focus/Hover state.</b> Same open gap already flagged on Switch, Button and Input — wire <code>:focus-visible</code> to <code>focus/ring</code> in code until a variant is added.</div></div>
+        <div class="cl"><span class="st">Clean</span><div class="ct"><b>Fully tokened for the states it does define.</b> Box size reuses <code>size/icon-sm</code> (16), radius is <code>radius/xs</code>, fill is <code>accent/solid</code>, border is <code>border/strong</code> — nothing hand-hexed. The 14px check glyph and 8×2 dash are the only untokened constants, and both are intrinsic to the mark rather than layout values.</div></div>
+        <div class="cl"><span class="st">Clean</span><div class="ct"><b>Indeterminate correctly replaces, not layers on, the check mark.</b> The two interior marks are mutually exclusive in the component (see anatomy) — there's no risk of both rendering at once in code if the state mapping above is followed.</div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-checkbox"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-checkbox</span></div>
+<script type="application/json" id="ds-contract-checkbox">
+{
+  "section": "checkbox",
+  "component": "Checkbox",
+  "nodeId": "842:365",
+  "variantCount": 6,
+  "axes": { "State": ["Unchecked", "Checked", "Indeterminate", "Disabled Uncheck", "Disabled Checked", "Disabled Indetermined"] },
+  "properties": [
+    { "name": "State", "type": "VARIANT", "default": "Unchecked", "mantine": "checked + indeterminate + disabled" }
+  ],
+  "stateMap": {
+    "Unchecked":              { "fill": "bg/surface + border/strong 1px", "mark": "none",                       "mantine": "checked={false}" },
+    "Checked":                { "fill": "accent/solid #045646",           "mark": "11x8 check in accent/fg",    "mantine": "checked={true} color='brand'" },
+    "Indeterminate":          { "fill": "accent/solid #045646",           "mark": "8x1 bar in accent/fg",       "mantine": "indeterminate checked={false} color='brand'" },
+    "Disabled Uncheck":       { "fill": "bg/surface + text/tertiary border", "mark": "none",                    "mantine": "checked={false} disabled" },
+    "Disabled Checked":       { "fill": "bg/dissable #BCB8B1",            "mark": "11x8 check in text/secondary","mantine": "checked={true} disabled" },
+    "Disabled Indetermined":  { "fill": "bg/dissable #BCB8B1",            "mark": "8x1 bar in text/secondary",  "mantine": "indeterminate disabled" }
+  },
+  "dimensions": {
+    "box":   { "px": 16, "token": "size/icon-sm" },
+    "radius":{ "px": 4,  "token": "radius/xs" },
+    "check": { "px": 14, "token": null, "note": "smaller than size/icon-sm by design so the mark insets inside the box; component-intrinsic constant" },
+    "dash":  { "w": 8, "h": 2, "token": null, "note": "component-intrinsic constant" },
+    "border":{ "px": 1, "token": "stroke/thin", "note": "Unchecked only" }
+  },
+  "rules": [
+    "Use Checkbox for choices that submit later; use Switch for settings that take effect immediately.",
+    "Indeterminate is programmatic only — set via the DOM's .indeterminate property (or Mantine's indeterminate prop), never a user-clickable third state.",
+    "Compose from the Checkbox component; never rebuild the box from a div or hardcode accent/solid's hex.",
+    "Only one size ships (16x16) — don't scale up for emphasis; use the paired label's type style instead.",
+    "Every checkbox has a visible, clickable label association (native input + label)."
+  ],
+  "forbidden": [
+    "Rebuilding the box from a styled div",
+    "Hardcoding the accent hex (#045646) instead of accent/solid",
+    "Letting a user click directly into an indeterminate state",
+    "Shipping a checkbox with no associated label",
+    "Using Checkbox for an immediate-effect setting — that's Switch"
+  ],
+  "iconSource": null,
+  "knownIssues": [
+    "No Focus/Hover state in the Figma component set — wire :focus-visible to focus/ring in code (same open gap as Switch, Button, Input)",
+    "Disabled fill token bg/dissable is misspelled and its codeSyntax points at --mantine-color-bg-active (see Overview gaps)"
+  ],
+  "positives": [
+    "Every value that has a token uses it: size/icon-sm (16), radius/xs, accent/solid, border/strong, stroke/thin — only the 14px check glyph and 8x2 dash are untokened, and both are intrinsic to the mark, not layout",
+    "Checked and Indeterminate marks are mutually exclusive in the component — no risk of both rendering together"
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from <b>the design system Figma file</b> (node <span class="mono">842:365</span>) via the Figma MCP · 3 state variants, no component properties beyond State. This is a first-pass documentation of the component — no Figma edits were made; findings are listed above for review before a consistency pass (as was done for Button on 2026-09-08 and Input on 2026-09-09).
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Checkbox component: playground, anatomy, all-states, paired label ---------- */
+(function(){
+  const CHECK='<svg class="chk" viewBox="0 0 11 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.2 4.2 4 6.8 9.8 1.2"/></svg>';
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const STATES=['Unchecked','Checked','Indeterminate','Disabled Uncheck','Disabled Checked','Disabled Indetermined'];
+  function cb(state){
+    const checked=state==='Checked'||state==='Disabled Checked';
+    const mixed=state==='Indeterminate'||state==='Disabled Indetermined';
+    const dis=state.startsWith('Disabled');
+    const cls=state.replace(/ /g,'-');
+    return `<button class="pvcb st-${cls}" type="button" role="checkbox" aria-checked="${mixed?'mixed':checked}" ${dis?'aria-disabled="true" disabled':''}>${CHECK}<span class="dash" aria-hidden="true"></span></button>`;
+  }
+  function pair(state,label,paired){
+    if(!paired)return cb(state);
+    return `<span class="pvcb-pair"><span class="pl">${e(label)}</span>${cb(state)}</span>`;
+  }
+  const st={state:'Unchecked',label:'Select all rows',paired:true};
+  const mount=document.getElementById('cb-mount');
+  const codeEl=document.getElementById('cb-code');
+  const figmaEl=document.getElementById('cb-figma');
+  function mantine(o){
+    const a=[`label="${e(o.label)}"`];
+    const dis=o.state.startsWith('Disabled');
+    const mixed=o.state==='Indeterminate'||o.state==='Disabled Indetermined';
+    const checked=o.state==='Checked'||o.state==='Disabled Checked';
+    if(mixed){a.push('indeterminate');a.push('checked={false}');}
+    else{a.push(`checked={${checked}}`);}
+    if(dis)a.push('disabled');
+    a.push('color="brand"');
+    a.push('onChange={(e) => setValue(e.currentTarget.checked)}');
+    return `<Checkbox ${a.join(' ')} />`;
+  }
+  function render(){
+    if(mount)mount.innerHTML=pair(st.state,st.label,st.paired);
+    if(codeEl)codeEl.innerHTML=e(mantine(st));
+    if(figmaEl)figmaEl.textContent=`State=${st.state}`;
+  }
+  wireSegs('#checkbox .seg', st, render);
+  const lab=document.getElementById('cb-label');
+  if(lab)lab.addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  function swt(id,key){const el=document.getElementById(id);if(!el)return;el.addEventListener('click',()=>{const on=!el.classList.contains('on');el.classList.toggle('on',on);el.setAttribute('aria-checked',String(on));st[key]=on;render();});}
+  swt('cb-pair','paired');
+  render();
+
+  const anat=document.getElementById('anat-cb');
+  if(anat)anat.innerHTML=cb('Checked');
+
+  const all=document.getElementById('cb-all');
+  if(all)all.innerHTML=STATES.map(s=>`<div class="pvcb-cell">${cb(s)}<span class="cap">${e(s)}</span></div>`).join('');
+})();
+</script>
+
+</body></html>

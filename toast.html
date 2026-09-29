@@ -1,0 +1,244 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Toast — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item active" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="toast">
+      <div class="eyebrow"><span class="n">19</span> Components · Toast</div>
+      <h2 class="t-title-page">Toast <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">node 943:475 · non-blocking status notification</span></h2>
+      <p class="lead">A dismissible, non-blocking notification that appears at the edge of the viewport to confirm an action, deliver an update, or announce a system event. Five variants — <code>Default · Success · Info · Danger · Disabled</code> — resolve container fill, border, status glyph, and optional action-button colour from a single <b>State</b> variant axis. The Toast never blocks input; use <b>Action Modal (§17)</b> when the user must decide before continuing.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">switch state · watch container, glyph, and action button re-bind together</span></div>
+      <div class="toast-controls" id="toast-variant" role="tablist" aria-label="Toast state">
+        <button class="on" data-v="Default">Default</button>
+        <button data-v="Success">Success</button>
+        <button data-v="Info">Info</button>
+        <button data-v="Danger">Danger</button>
+      </div>
+      <div class="toast-stage"><div id="toast-mount"></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <p class="usage" style="max-width:78ch;">Container is a <code>440</code>-wide auto-layout row with <code>space/16</code> padding, <code>space/12</code> gap, and <code>radius/md</code> (8). Three children in order: <b>Status indicator</b> (20×20 icon instance from §04, glyph swaps per state — <code>Info filled</code> · <code>Check</code> · <code>info</code> · <code>Exclamtion</code>), a <b>Body</b> column (<code>space/8</code> gap) holding a text stack (<code>Title/Sub</code> title + <code>Body</code> description with <code>space/4</code> between them) and an <b>Actions</b> row, and a <b>Dismiss</b> control (<code>Icon Button §10 · Small</code>, 30×30, <code>Cancel</code> glyph inside). Action button in Default/Success/Info uses the <b>Secondary</b> Button recipe; in Danger it flips to <b>Destructive</b> (filled red) so the retry affordance carries the tone of the message. The action button now carries a <b>leading icon only</b> — the trailing icon Figma shipped in the first pass was removed upstream (see changelog).</p>
+
+      <div class="callout" style="border-color:var(--info-border);background:var(--info-bg);">
+        <ph-info weight="fill" size="18" color="var(--info)" style="flex:none;margin-top:1px;"></ph-info>
+        <div class="body" style="color:var(--info);"><b>Updated 2026-09-11 (re-sync).</b> Figma's Action button dropped its trailing icon across all four states — it now renders <code>leftSection</code> only. The playground, anatomy and contract below have been corrected to match; no other part of the Toast component changed in this pass.</div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Token reference</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>State</th><th>Container fill</th><th>Container border</th><th>Status glyph</th><th>Title / Description</th><th>Action button</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="val">bg/surface</td><td class="val">border/default</td><td class="val">icon/primary · <code>Info filled</code></td><td class="val">text/primary · text/secondary</td><td class="val">Secondary (§06)</td></tr>
+            <tr><td class="tok">Success</td><td class="val">status/success/bg</td><td class="val">status/success/border</td><td class="val">status/success/fg · <code>Check</code></td><td class="val">status/success/fg (both)</td><td class="val">Secondary (§06)</td></tr>
+            <tr><td class="tok">Info</td><td class="val">status/info/bg</td><td class="val">status/info/border</td><td class="val">status/info/fg · <code>info</code></td><td class="val">status/info/fg (both)</td><td class="val">Secondary (§06)</td></tr>
+            <tr><td class="tok">Danger</td><td class="val">status/danger/bg</td><td class="val">status/danger/border</td><td class="val">status/danger/fg · <code>Exclamtion</code></td><td class="val">status/danger/fg (both)</td><td class="val">Destructive (§06)</td></tr>
+            <tr><td class="tok">Disabled</td><td class="val">bg/sunken</td><td class="val">border/subtle</td><td class="val">text/disabled</td><td class="val">text/disabled (both)</td><td class="val">disabled (shared rule)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;max-width:74ch;">Shared geometry across every state: <code>space/16</code> padding · <code>space/12</code> child gap · <code>space/8</code> body gap · <code>space/4</code> title/description gap · <code>radius/md</code> container · <code>radius/xs</code> dismiss box · icon 20 · dismiss 30 · action-button height 28 · width 440.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Properties</h3><span class="note">Figma component set 943:475</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Values / default</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">State</td><td class="val">variant</td><td class="val">Default · Success · Info · Danger · Disabled</td><td class="usage">Flips container fill/border, status glyph, text colour, and action-button recipe.</td></tr>
+            <tr><td class="tok">Title</td><td class="val">text</td><td class="val">Title/Sub (16/24, 500)</td><td class="usage">Short outcome line — five to seven words. Never punctuate as a sentence when it fits as a label.</td></tr>
+            <tr><td class="tok">Description</td><td class="val">text</td><td class="val">Body (14/22, 400)</td><td class="usage">One-sentence explanation with the specific next step, if any.</td></tr>
+            <tr><td class="tok">Action</td><td class="val">boolean</td><td class="val">true</td><td class="usage">Shows the single action button. Set false for informational-only toasts.</td></tr>
+            <tr><td class="tok">Action label</td><td class="val">text</td><td class="val">"Install now" / "View update" / "Learn more" / "Retry publish"</td><td class="usage">Verb-first; matches the outcome the description describes.</td></tr>
+            <tr><td class="tok">Dismiss</td><td class="val">boolean</td><td class="val">true</td><td class="usage">Shows the trailing Cancel icon-button. Only false for auto-timeout system toasts.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Pick the state by the <b>meaning</b> of the message, not the desired colour. Success confirms a completed action; Info previews a scheduled or ambient event; Danger reports a failure that needs attention; Default carries a neutral update the user can act on when ready.</p></div>
+        <div class="rule"><span class="num mono"></span><p>One action button per toast — never more. If the user needs to choose between two paths, that decision belongs in <b>Action Modal (§17)</b>. The action label always leads with a verb and is bounded — <code>Install now</code>, <code>Retry publish</code>, <code>View update</code>, <code>Learn more</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The status glyph is an <b>instance</b> of the Icons library (§04): <code>Info filled</code> · <code>Check</code> · <code>info</code> · <code>Exclamtion</code>. Never draw a glyph inline; never substitute a same-shape icon from another set.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Dismiss uses the <b>Small Icon Button (§10)</b> with the <code>Cancel</code> glyph. Do not build it as a raw 30×30 frame or replace the glyph with an "X" character.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Toasts stack vertically with <code>space/12</code> between them, aligned to a viewport edge (bottom-right on desktop, top on mobile). Show at most three at once; older ones auto-dismiss first. Danger toasts stay until dismissed.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Auto-dismiss timing: Success <code>4s</code>, Info <code>6s</code>, Default <code>6s</code>, Danger <code>persist</code>. Hovering a toast pauses its timer; the dismiss control remains available regardless.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>State=Success</code> after a save/publish completes</li>
+          <li>Use <code>State=Danger</code> with a filled Destructive retry when a step failed</li>
+          <li>Bind fills to <code>status/{tone}/bg</code> and borders to <code>status/{tone}/border</code></li>
+          <li>Put the action <i>verb</i> up front — <code>Retry publish</code>, not <code>Publish retry</code></li>
+          <li>Instance the status glyph and Dismiss icon-button from their library components</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Ship a toast with two or more action buttons — use Action Modal (§17)</li>
+          <li>Use Danger to celebrate ("Deleted!") — Success is for expected outcomes</li>
+          <li>Hardcode <code>#FCEBE9</code> or the fg red — bind <code>status/danger/*</code></li>
+          <li>Replace the Cancel glyph with a text "×" or a filled circle-close</li>
+          <li>Block interaction behind a toast; if you need blocking, it is a modal</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-toast"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-toast</span></div>
+<script type="application/json" id="ds-contract-toast">
+{
+  "section": "toast",
+  "component": "Toast",
+  "kind": "molecule",
+  "nodeId": "943:475",
+  "variants": ["Default", "Success", "Info", "Danger", "Disabled"],
+  "geometry": {
+    "width": 440,
+    "container": { "padding": 16, "gap": 12, "radius": 8, "align": "items-start" },
+    "body":      { "gap": 8, "textStackGap": 4 },
+    "statusIcon":{ "size": 20 },
+    "dismiss":   { "size": 30, "radius": 4, "innerGlyph": 20 },
+    "actionBtn": { "height": 28, "radius": 4, "padding": 4, "icon": "leading only (16px) — trailing icon removed upstream 2026-09-11" }
+  },
+  "typography": {
+    "title": "Title/Sub (16/24, 500)",
+    "description": "Body (14/22, 400)",
+    "actionLabel": "Caption (12/16, 500)"
+  },
+  "states": {
+    "Default":  { "fill": "bg/surface",        "border": "border/default",        "glyph": "Info filled",  "iconColor": "icon/primary",       "titleColor": "text/primary",      "descColor": "text/secondary",     "actionRecipe": "Button/Secondary" },
+    "Success":  { "fill": "status/success/bg", "border": "status/success/border", "glyph": "Check",        "iconColor": "status/success/fg",  "titleColor": "status/success/fg", "descColor": "status/success/fg",  "actionRecipe": "Button/Secondary" },
+    "Info":     { "fill": "status/info/bg",    "border": "status/info/border",    "glyph": "info",         "iconColor": "status/info/fg",     "titleColor": "status/info/fg",    "descColor": "status/info/fg",     "actionRecipe": "Button/Secondary" },
+    "Danger":   { "fill": "status/danger/bg",  "border": "status/danger/border",  "glyph": "Exclamtion",   "iconColor": "status/danger/fg",   "titleColor": "status/danger/fg",  "descColor": "status/danger/fg",   "actionRecipe": "Button/Destructive" },
+    "Disabled": { "fill": "bg/sunken",         "border": "border/subtle",         "glyph": "Info filled",  "iconColor": "text/disabled",      "titleColor": "text/disabled",     "descColor": "text/disabled",      "actionRecipe": "Button/Secondary (disabled)" }
+  },
+  "composedFrom": [
+    { "role": "Status indicator", "kind": "instance", "component": "Icons (§04)",         "swap": ["Info filled", "Check", "info", "Exclamtion"] },
+    { "role": "Action",           "kind": "instance", "component": "Button (§06)",         "variants": { "default": "Secondary", "danger": "Destructive" }, "icon": "leftSection only, 16px — no rightSection" },
+    { "role": "Dismiss",          "kind": "instance", "component": "Icon Button (§10) · Small", "glyph": "Cancel" }
+  ],
+  "behavior": {
+    "blocking": false,
+    "stacking":     { "gap": 12, "maxVisible": 3, "anchor": { "desktop": "bottom-right", "mobile": "top" } },
+    "autoDismissMs":{ "Default": 6000, "Success": 4000, "Info": 6000, "Danger": null },
+    "hoverPausesTimer": true
+  },
+  "rules": [
+    "Pick the state by meaning, not by preferred colour.",
+    "One action button per toast; two choices belong in Action Modal (§17).",
+    "Status glyph is always an instance from Icons (§04) — never inline.",
+    "Dismiss is always the Small Icon Button (§10) with the Cancel glyph.",
+    "Danger toasts persist until dismissed; all others auto-dismiss per behavior.autoDismissMs.",
+    "Never block user interaction — if blocking is required, use Action Modal (§17)."
+  ],
+  "forbidden": [
+    "Hardcoded hex fills or borders in place of status/{tone}/* tokens",
+    "Two or more action buttons within a single toast",
+    "Replacing the Cancel icon-button with a raw '×' character or another close glyph",
+    "Using Danger tone for a successful outcome (or Success for a failure)",
+    "Rendering a toast as a modal-blocking overlay"
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">Extracted from <b>the design system Figma file</b> · Toasts component set <span class="mono">943:475</span> (variants <span class="mono">943:420 · 943:431 · 943:442 · 943:453</span>). Documented 2026-09-11 via Figma MCP; re-synced same day after the Action button's trailing icon was removed in Figma.</div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+    <script>
+    (function(){
+      const mount = document.getElementById('toast-mount');
+      if(!mount) return;
+      const GLYPH = {
+        Default: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><circle cx="10" cy="10" r="9"/><rect x="9.1" y="8.4" width="1.8" height="6.6" rx=".6" fill="#fff"/><circle cx="10" cy="5.6" r="1.2" fill="#fff"/></svg>',
+        Success: '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><circle cx="10" cy="10" r="9"/><path d="M6 10.5l2.7 2.7L14.5 7.4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        Info:    '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="8.2"/><path d="M10 9v5" stroke-linecap="round"/><circle cx="10" cy="6.4" r=".9" fill="currentColor" stroke="none"/></svg>',
+        Danger:  '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><circle cx="10" cy="10" r="9"/><rect x="9.1" y="5" width="1.8" height="7.2" rx=".6" fill="#fff"/><circle cx="10" cy="14.4" r="1.1" fill="#fff"/></svg>'
+      };
+      const DOWNLOAD = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5"/><path d="M4.5 7L8 10.5 11.5 7"/><path d="M2.5 13.5h11"/></svg>';
+      const CANCEL   = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"/></svg>';
+      const CONTENT = {
+        Default: { klass:'',           title:'Update available',      desc:'A new build is ready. You can install it whenever you are ready.', action:'Install now'   },
+        Success: { klass:'is-success', title:'Update published',      desc:'Your changes are live. Anyone with access can see the update now.', action:'View update'   },
+        Info:    { klass:'is-info',    title:'Scheduled maintenance', desc:'Training will pause for 20 minutes at 03:00 UTC while the queue rebalances.', action:'Learn more' },
+        Danger:  { klass:'is-danger',  title:'Update failed',         desc:'The publish step could not complete. Retry or view the logs for details.',    action:'Retry publish' }
+      };
+      let state = 'Default';
+      function render(){
+        const c = CONTENT[state];
+        mount.innerHTML =
+          '<div class="toast '+c.klass+'">'+
+            '<span class="tind">'+GLYPH[state]+'</span>'+
+            '<div class="tbody">'+
+              '<div class="ttext"><span class="ttitle">'+c.title+'</span><span class="tdesc">'+c.desc+'</span></div>'+
+              '<div class="tactions"><button class="tbtn">'+DOWNLOAD+'<span>'+c.action+'</span></button></div>'+
+            '</div>'+
+            '<button class="tdismiss" aria-label="Dismiss">'+CANCEL+'</button>'+
+          '</div>';
+      }
+      render();
+      document.querySelectorAll('#toast-variant button').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          document.querySelectorAll('#toast-variant button').forEach(x=>x.classList.remove('on'));
+          b.classList.add('on'); state = b.dataset.v; render();
+        });
+      });
+    })();
+    </script>
+
+</body></html>

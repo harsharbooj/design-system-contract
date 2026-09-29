@@ -1,0 +1,171 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Typography — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item active" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="typography">
+      <div class="eyebrow"><span class="n">01</span> Typography</div>
+      <h2 class="t-title-page">Typography</h2>
+      <p class="lead">Two families: <b>Geist</b> for interface and prose, <b>Geist Mono</b> for tokens, IDs, filenames and metrics. Fourteen named styles on a 11 / 12 / 13 / 14 / 15 / 16 / 20 / 24 / 32 scale. Weights stay within Regular · Medium · SemiBold; optical letter-spacing tightens as size grows and opens up for the uppercase Overline.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Specimen</h3><span class="note">rendered in the live styles</span></div>
+      <div class="panel">
+        <div class="spec"><div class="spec-meta"><span class="name">Display</span><span class="dims mono">Geist Medium · 32/40 · −2%</span></div><div class="spec-sample t-display">Current build · Trained</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Title/Page</span><span class="dims mono">Geist Medium · 24/32 · −1%</span></div><div class="spec-sample t-title-page">Model performance</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Title/Section</span><span class="dims mono">Geist Medium · 20/28 · −0.5%</span></div><div class="spec-sample t-title-section">Training data</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Title/Sub</span><span class="dims mono">Geist Medium · 16/24</span></div><div class="spec-sample t-title-sub">Labels used</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Body/Large</span><span class="dims mono">Geist Regular · 15/24</span></div><div class="spec-sample" style="font-size:15px;line-height:24px;">Intro and descriptive copy sits one step up from default body.</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Body</span><span class="dims mono">Geist Regular · 14/22</span></div><div class="spec-sample" style="font-size:14px;line-height:22px;">Default paragraph and cell text across every screen.</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Body/Strong</span><span class="dims mono">Geist Medium · 14/22</span></div><div class="spec-sample" style="font-size:14px;line-height:22px;font-weight:500;">Emphasised body — nav labels, row titles, filenames.</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Button</span><span class="dims mono">Geist Medium · 14/20</span></div><div class="spec-sample" style="font-size:14px;line-height:20px;font-weight:500;">Manual test</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Label</span><span class="dims mono">Geist Medium · 13/18</span></div><div class="spec-sample" style="font-size:13px;line-height:18px;font-weight:500;">Field label</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Caption</span><span class="dims mono">Geist Medium · 12/16</span></div><div class="spec-sample" style="font-size:12px;line-height:16px;font-weight:500;color:var(--text-3);">Created Jun 12, 2026 · Last trained 2h ago</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Overline</span><span class="dims mono">Geist SemiBold · 11/16 · +6% · UPPER</span></div><div class="spec-sample t-overline" style="color:var(--text-3);">Model performance</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Mono/Small</span><span class="dims mono">Geist Mono · 12/16</span></div><div class="spec-sample mono" style="font-size:12px;line-height:16px;">IMG_0421.jpg · 3 labels</div></div>
+        <div class="spec"><div class="spec-meta"><span class="name">Mono/Metric</span><span class="dims mono">Geist Mono Medium · 20/24</span></div><div class="spec-sample mono" style="font-size:20px;line-height:24px;font-weight:500;">512</div></div>
+        <div class="spec" style="border-bottom:none;"><div class="spec-meta"><span class="name">Mono/Metric-L</span><span class="dims mono">Geist Mono Medium · 32/36</span></div><div class="spec-sample mono" style="font-size:32px;line-height:36px;font-weight:500;">0.94</div></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Token reference</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Style</th><th>Value</th><th>Mantine prop / var</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Display</td><td class="val">32 / 40 · 500 · −2%</td><td class="mant">fz="h1" / rem(32)</td><td class="usage">Page hero title on detail screens</td></tr>
+            <tr><td class="tok">Title/Page</td><td class="val">24 / 32 · 500 · −1%</td><td class="mant">fz="h2"</td><td class="usage">Primary page title (list views)</td></tr>
+            <tr><td class="tok">Title/Section</td><td class="val">20 / 28 · 500</td><td class="mant">fz="xl" · 20</td><td class="usage">Section headings within a page</td></tr>
+            <tr><td class="tok">Title/Sub</td><td class="val">16 / 24 · 500</td><td class="mant">fz="md" · 16</td><td class="usage">Card and panel titles</td></tr>
+            <tr><td class="tok">Body/Large</td><td class="val">15 / 24 · 400</td><td class="mant">fz={15}</td><td class="usage">Intros, lead paragraphs</td></tr>
+            <tr><td class="tok">Body</td><td class="val">14 / 22 · 400</td><td class="mant">fz="sm" · 14</td><td class="usage">Default text, table cells</td></tr>
+            <tr><td class="tok">Body/Strong</td><td class="val">14 / 22 · 500</td><td class="mant">fz="sm" fw={500}</td><td class="usage">Nav labels, row titles, filenames</td></tr>
+            <tr><td class="tok">Button</td><td class="val">14 / 20 · 500</td><td class="mant">Button label (built-in)</td><td class="usage">All button and tab labels</td></tr>
+            <tr><td class="tok">Label</td><td class="val">13 / 18 · 500</td><td class="mant">Input label (built-in)</td><td class="usage">Form field labels</td></tr>
+            <tr><td class="tok">Caption</td><td class="val">12 / 16 · 500</td><td class="mant">fz="xs" · 12</td><td class="usage">Breadcrumbs, timestamps, helper text</td></tr>
+            <tr><td class="tok">Overline</td><td class="val">11 / 16 · 600 · +6% ↑</td><td class="mant">tt="uppercase" fz={11}</td><td class="usage">Metric-card labels, table headers</td></tr>
+            <tr><td class="tok">Mono/Small</td><td class="val">12 / 16 · Mono 400</td><td class="mant">ff="monospace" fz="xs"</td><td class="usage">IDs, filenames, inline code</td></tr>
+            <tr><td class="tok">Mono/Metric</td><td class="val">20 / 24 · Mono 500</td><td class="mant">ff="monospace" fz={20}</td><td class="usage">Inline counts (e.g. 512 captures)</td></tr>
+            <tr><td class="tok">Mono/Metric-L</td><td class="val">32 / 36 · Mono 500</td><td class="mant">ff="monospace" fz={32}</td><td class="usage">Hero KPI numbers (mAP, F1)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Always use <b>Body</b> (14/22) for form-field values and table cells, and <b>Label</b> (13/18) for the labels above them. Never set a raw <code>font-size</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Numbers that read as data — KPIs, counts, IDs, timestamps in tables — use a <b>Mono</b> style so digits align. <code>Mono/Metric-L</code> is reserved for hero KPI figures; don't use it for body counts.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>Overline</b> is the only uppercase style. Use it for metric-card eyebrows and table column headers; never uppercase a Title or Body style manually to fake it.</p></div>
+        <div class="rule"><span class="num mono"></span><p>One title style per level: <code>Title/Page</code> → <code>Title/Section</code> → <code>Title/Sub</code>. Don't skip a level or restyle a Body to stand in for a heading.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Only <b>Geist</b> and <b>Geist Mono</b> ship in the system. Any other family is off-contract and must be flagged, not substituted.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Apply the shared <code>Body</code> style to every field label and value</li>
+          <li>Use <code>Mono/Metric-L</code> for the four KPI numbers on the build screen</li>
+          <li>Let <code>Overline</code> carry table headers and card eyebrows</li>
+          <li>Bind text fills to <code>text/*</code> tokens, not primitives</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Type <code>fontSize: 14</code> when <code>Body</code> already means 14/22</li>
+          <li>Reach for <code>Mono/Metric-L</code> for ordinary counts</li>
+          <li>Uppercase a <code>Title</code> style to imitate an overline</li>
+          <li>Introduce a third typeface for "emphasis"</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-typography"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-typography</span></div>
+<script type="application/json" id="ds-contract-typography">
+{
+  "section": "typography",
+  "fontFamilies": { "sans": "Geist", "mono": "Geist Mono" },
+  "scalePx": [11, 12, 13, 14, 15, 16, 20, 24, 32],
+  "tokens": [
+    { "name": "Display",        "value": "32/40, 500, -2%",   "mantineVar": "fz='h1'",              "usage": "Detail-page hero title" },
+    { "name": "Title/Page",     "value": "24/32, 500, -1%",   "mantineVar": "fz='h2'",              "usage": "Primary page title" },
+    { "name": "Title/Section",  "value": "20/28, 500, -0.5%", "mantineVar": "fz='xl'",              "usage": "Section heading" },
+    { "name": "Title/Sub",      "value": "16/24, 500",        "mantineVar": "fz='md'",              "usage": "Card / panel title" },
+    { "name": "Body/Large",     "value": "15/24, 400",        "mantineVar": "fz={15}",              "usage": "Lead / intro copy" },
+    { "name": "Body",           "value": "14/22, 400",        "mantineVar": "fz='sm'",              "usage": "Default text, table cells" },
+    { "name": "Body/Strong",    "value": "14/22, 500",        "mantineVar": "fz='sm' fw={500}",     "usage": "Nav labels, row titles" },
+    { "name": "Button",         "value": "14/20, 500",        "mantineVar": "Button (built-in)",    "usage": "Button / tab labels" },
+    { "name": "Label",          "value": "13/18, 500",        "mantineVar": "Input label (built-in)","usage": "Form field labels" },
+    { "name": "Caption",        "value": "12/16, 500",        "mantineVar": "fz='xs'",              "usage": "Breadcrumbs, timestamps, helper" },
+    { "name": "Overline",       "value": "11/16, 600, +6%, UPPER", "mantineVar": "tt='uppercase' fz={11}", "usage": "Metric labels, table headers" },
+    { "name": "Mono/Small",     "value": "12/16, Mono 400",   "mantineVar": "ff='monospace' fz='xs'","usage": "IDs, filenames, inline code" },
+    { "name": "Mono/Metric",    "value": "20/24, Mono 500",   "mantineVar": "ff='monospace' fz={20}","usage": "Inline counts" },
+    { "name": "Mono/Metric-L",  "value": "32/36, Mono 500",   "mantineVar": "ff='monospace' fz={32}","usage": "Hero KPI numbers" }
+  ],
+  "rules": [
+    "Use Body for field values and table cells; never set a raw font-size.",
+    "Data figures (KPIs, counts, IDs) use a Mono style so digits align.",
+    "Overline is the only uppercase style — never uppercase a Title/Body to fake it.",
+    "Only Geist and Geist Mono exist in the system."
+  ],
+  "forbidden": [
+    "Raw fontSize values in place of a named style",
+    "Mono/Metric-L for non-hero counts",
+    "A third typeface for emphasis"
+  ]
+}
+</script>
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>

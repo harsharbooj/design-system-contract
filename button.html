@@ -1,0 +1,337 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Button — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item active" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="button">
+      <div class="eyebrow"><span class="n">06</span> Components · Button</div>
+      <h2 class="t-title-page">Button <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Button New · 32 variants</span></h2>
+      <p class="lead">The action primitive. Three variant axes — <b>Size</b> × <b>Type</b> × <b>State</b> — resolve to 32 published variants, plus five component properties (a text label, two icon-visibility booleans, two instance-swap icon slots). Every fill, label and border binds to a semantic <code>action/*</code> token. This page reflects the component <b>after the consistency pass</b> described in the changelog below.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">toggle the axes — the preview and the Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="pv-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Size</span><div class="seg" data-axis="size"><button data-v="Medium" class="on">Medium</button><button data-v="Small">Small</button></div></div>
+          <div class="ctl"><span class="lab">Type</span><div class="seg" data-axis="type"><button data-v="Primary" class="on">Primary</button><button data-v="Secondary">Secondary</button><button data-v="Tertiary">Tertiary</button><button data-v="Danger">Danger</button></div></div>
+          <div class="ctl"><span class="lab">State</span><div class="seg" data-axis="state"><button data-v="Default" class="on">Default</button><button data-v="Hover">Hover</button><button data-v="Loading">Loading</button><button data-v="Disabled">Disabled</button></div></div>
+          <div class="ctl"><span class="lab">Label</span><input class="tin" id="pv-label" value="Button" maxlength="24" aria-label="Button label"></div>
+          <div class="rowsw"><span>Show leading icon</span><button class="swt on" id="pv-lead" role="switch" aria-checked="true" aria-label="Show leading icon"></button></div>
+          <div class="rowsw"><span>Show trailing icon</span><button class="swt on" id="pv-trail" role="switch" aria-checked="true" aria-label="Show trailing icon"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React</span><span class="vn" id="pv-figma">Size=Medium, Type=Primary, State=Default</span></div>
+        <pre id="pv-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-btn"></div></div>
+        <ol>
+          <li><b>Container</b> — auto-layout row, fill + border by Type, <code>radius/sm</code> (6), height <code>size/control-md</code> 36 / <code>-sm</code> 28.</li>
+          <li><b>Leading icon</b> — instance-swap slot, <code>size/icon-md</code> 20 / <code>-sm</code> 16, color follows the label token. Toggle with <code>Show leading icon</code>.</li>
+          <li><b>Label</b> — <code>Button</code> text style (14/20) at Medium, <code>Caption</code> (12/16) at Small. Bound to the Type's foreground token.</li>
+          <li><b>Trailing icon</b> — second instance-swap slot, same sizing. Toggle with <code>Show trailing icon</code>.</li>
+          <li><b>Gap</b> — <code>space/8</code> at Medium, <code>space/4</code> at Small, between every slot.</li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">the API an agent instantiates against</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Size</td><td class="val">VARIANT</td><td class="val">Medium</td><td class="usage">Medium · Small</td><td class="mant">size="md" | "sm"</td></tr>
+            <tr><td class="tok">Type</td><td class="val">VARIANT</td><td class="val">Primary</td><td class="usage">Primary · Secondary · Tertiary · Danger</td><td class="mant">variant + color (see map)</td></tr>
+            <tr><td class="tok">State</td><td class="val">VARIANT</td><td class="val">Default</td><td class="usage">Default · Hover · Loading · Disabled</td><td class="mant">:hover · loading · disabled</td></tr>
+            <tr><td class="tok">Label#741:0</td><td class="val">TEXT</td><td class="val">"Button"</td><td class="usage">Any string</td><td class="mant">children</td></tr>
+            <tr><td class="tok">Show leading icon#741:33</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">leftSection present</td></tr>
+            <tr><td class="tok">Show trailing icon#741:66</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">rightSection present</td></tr>
+            <tr><td class="tok">Leading icon#741:99</td><td class="val">INSTANCE_SWAP</td><td class="val">Download</td><td class="usage">Any icon component</td><td class="mant">leftSection={&lt;Icon/&gt;}</td></tr>
+            <tr><td class="tok">Trailing icon#741:132</td><td class="val">INSTANCE_SWAP</td><td class="val">Download</td><td class="usage">Any icon component</td><td class="mant">rightSection={&lt;Icon/&gt;}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Type → Mantine map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Type</th><th>Container (Default)</th><th>Foreground</th><th>Hover</th><th>Mantine</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Primary</td><td class="val">action/primary/bg</td><td class="val">action/primary/fg</td><td class="val">action/primary/bg-hover</td><td class="mant">variant="filled" color="brand"</td></tr>
+            <tr><td class="tok">Secondary</td><td class="val">action/secondary/bg + border</td><td class="val">action/secondary/fg</td><td class="val">action/secondary/bg-hover</td><td class="mant">variant="default"</td></tr>
+            <tr><td class="tok">Tertiary</td><td class="val">transparent</td><td class="val">action/primary/fglink</td><td class="val">action/secondary/bg-hover</td><td class="mant">variant="subtle" color="brand"</td></tr>
+            <tr><td class="tok">Danger</td><td class="val">action/destructive/bg</td><td class="val">action/destructive/fg</td><td class="val">action/destructive/bg-hover</td><td class="mant">variant="filled" color="red"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">All four Types share <b>Disabled</b> = <code class="mono">bg/sunken</code> fill + <code class="mono">text/disabled</code> label, and <b>Loading</b> keeps the Default fill while both icon slots swap to the spinner. Radius is <code class="mono">radius/sm</code> (6) across every variant.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Variant matrix</h3><span class="note">Type × State, per size — rendered from the corrected tokens</span></div>
+      <div class="size-tag"><span class="b">Medium</span> · height 36 · label <span class="mono">Button 14/20</span> · icon 20 · gap 8 · pad 8</div>
+      <div class="matrix-wrap"><table class="matrix" id="matrix-Medium"></table></div>
+      <div class="size-tag"><span class="b">Small</span> · height 28 · label <span class="mono">Caption 12/16</span> · icon 16 · gap 4 · pad 4</div>
+      <div class="matrix-wrap"><table class="matrix" id="matrix-Small"></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">State machine</h3><span class="note">how Figma states map to code selectors</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Code selector</th><th>Behaviour</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="mant">—</td><td class="usage">Resting appearance</td></tr>
+            <tr><td class="tok">Hover</td><td class="mant">:hover</td><td class="usage">Darker fill (Primary/Danger) or tinted fill (Secondary/Tertiary)</td></tr>
+            <tr><td class="tok">Loading</td><td class="mant">[aria-busy="true"]</td><td class="usage">Both icon slots become the spinner; label stays; pointer disabled</td></tr>
+            <tr><td class="tok">Disabled</td><td class="mant">:disabled, [aria-disabled="true"]</td><td class="usage">bg/sunken fill, text/disabled label, no pointer</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Render a native <code>&lt;button&gt;</code>. Loading sets <code>aria-busy="true"</code> and keeps the button in the tab order but inert; Disabled uses <code>:disabled</code> / <code>aria-disabled</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Icons flanking a label are decorative — mark them <code>aria-hidden="true"</code>. An icon-only action must instead use the <b>Icon button</b> set and carry an <code>aria-label</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Focus is keyboard-visible via <code>focus/ring</code> (<code>#10735F</code> / <code>#3C9081</code>). <span style="color:var(--warning-fg);">Gap: the component set has no <code>Focus</code> variant yet — wire <code>:focus-visible</code> to the ring token in code until it's added in Figma.</span></p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Map Type to Mantine exactly: <b>Primary</b>=filled brand, <b>Secondary</b>=default, <b>Tertiary</b>=subtle, <b>Danger</b>=filled red. Never restyle a Secondary to imitate a Primary.</p></div>
+        <div class="rule"><span class="num mono"></span><p>One <b>Primary</b> per view. <b>Danger</b> is reserved for destructive, irreversible actions — never for ordinary confirms.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>Medium</b> (36px) is the default; <b>Small</b> (28px) is for dense toolbars and table rows. Don't invent intermediate heights.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Loading keeps the label and swaps icons for the spinner — never collapse to a bare spinner (it shifts layout and drops the action name).</p></div>
+        <div class="rule"><span class="num mono"></span><p>Compose from the <code>Button New</code> component and its props — never rebuild a button from a styled <code>div</code> or hardcode a fill.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>&lt;Button variant="filled" color="brand"&gt;</code> for the primary action</li>
+          <li>Set <code>leftSection</code> / <code>rightSection</code> for the icon slots</li>
+          <li>Drive Loading with the <code>loading</code> prop (sets <code>aria-busy</code>)</li>
+          <li>Drop to Small only in dense rows / toolbars</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Fake a Primary by recoloring a Secondary</li>
+          <li>Place two Danger buttons in the same view</li>
+          <li>Remove the label and leave a lone spinner</li>
+          <li>Hardcode <code>#045646</code> instead of the <code>action/*</code> token</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Changelog — consistency pass</h3><span class="note">applied to Button New in Figma on 2026-09-08 · 9 fixes across 30 variant edits</span></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Danger · Disabled raw hex.</b> Both sizes filled with an unbound <code>#CE5C54</code> <span class="arrow">→</span> rebound to <code>bg/sunken</code> + <code>text/disabled</code>, matching every other disabled Type.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Primary · Loading label token.</b> Bound to <code>action/destructive/fg</code> <span class="arrow">→</span> corrected to <code>action/primary/fg</code> (Medium + Small).</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Danger · Hover (Medium) had no hover color</b> (<code>action/destructive/bg</code> = Default) <span class="arrow">→</span> rebound to <code>action/destructive/bg-hover</code>.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Primary · Hover used the pressed token.</b> <code>action/primary/bg-pressed</code> <span class="arrow">→</span> <code>action/primary/bg-hover</code> (both sizes); hover/pressed no longer collapsed.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Tertiary · Default / Hover inverted.</b> Default carried a grey <code>bg-pressed</code> fill <span class="arrow">→</span> made transparent (true ghost); Hover stays <code>action/secondary/bg-hover</code>.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Small · Tertiary padding.</b> Used 8px pad + 8 gap, breaking the Small 4/4 rule <span class="arrow">→</span> reset to <code>space/4</code> across all four Small Tertiary variants.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Medium · Primary Hover asymmetric padding</b> (8/9) <span class="arrow">→</span> normalized to 8/8.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Secondary · Disabled inconsistency across sizes</b> (Medium <code>bg-hover</code>, Small <code>bg/sunken</code>+subtle border) <span class="arrow">→</span> unified to <code>bg/sunken</code> + <code>text/disabled</code>, no border. Small · Secondary Hover label <code>text/primary</code> <span class="arrow">→</span> <code>action/secondary/fg</code>.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>No Focus variant.</b> Not auto-added (it changes the 32-variant matrix). Recommend adding a <code>State=Focus</code> row bound to <code>focus/ring</code>; wired via <code>:focus-visible</code> in code meanwhile.</div></div>
+      </div>
+      <p class="usage" style="margin-top:10px;">These are edits to the <b>Button New</b> component's variants in Figma (fills, label bindings, padding/gap) — the underlying variable definitions were already correct, so no primitive or semantic <i>values</i> changed; only the component's <i>bindings</i> were corrected to use them consistently.</p>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-button"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-button</span></div>
+<script type="application/json" id="ds-contract-button">
+{
+  "section": "button",
+  "component": "Button New",
+  "nodeId": "741:30379",
+  "variantCount": 32,
+  "axes": {
+    "Size": ["Medium", "Small"],
+    "Type": ["Primary", "Secondary", "Tertiary", "Danger"],
+    "State": ["Default", "Hover", "Loading", "Disabled"]
+  },
+  "properties": [
+    { "name": "Label", "key": "741:0", "type": "TEXT", "default": "Button", "mantine": "children" },
+    { "name": "Show leading icon", "key": "741:33", "type": "BOOLEAN", "default": true, "mantine": "leftSection present" },
+    { "name": "Show trailing icon", "key": "741:66", "type": "BOOLEAN", "default": true, "mantine": "rightSection present" },
+    { "name": "Leading icon", "key": "741:99", "type": "INSTANCE_SWAP", "default": "Download", "mantine": "leftSection" },
+    { "name": "Trailing icon", "key": "741:132", "type": "INSTANCE_SWAP", "default": "Download", "mantine": "rightSection" }
+  ],
+  "stateMachine": {
+    "Default": null,
+    "Hover": ":hover",
+    "Loading": "[aria-busy=\"true\"]",
+    "Disabled": ":disabled, [aria-disabled=\"true\"]"
+  },
+  "sizes": {
+    "Medium": { "height": 36, "padding": 8, "gap": "space/8", "radius": "radius/sm", "label": "Button", "icon": "size/icon-md (20)" },
+    "Small":  { "height": 28, "padding": 4, "gap": "space/4", "radius": "radius/sm", "label": "Caption", "icon": "size/icon-sm (16)" }
+  },
+  "types": {
+    "Primary":   { "bg": "action/primary/bg",      "fg": "action/primary/fg",   "hover": "action/primary/bg-hover",    "mantine": "variant='filled' color='brand'" },
+    "Secondary": { "bg": "action/secondary/bg",    "fg": "action/secondary/fg", "border": "action/secondary/border", "hover": "action/secondary/bg-hover", "mantine": "variant='default'" },
+    "Tertiary":  { "bg": "transparent",            "fg": "action/primary/fglink", "hover": "action/secondary/bg-hover", "mantine": "variant='subtle' color='brand'" },
+    "Danger":    { "bg": "action/destructive/bg",  "fg": "action/destructive/fg", "hover": "action/destructive/bg-hover", "mantine": "variant='filled' color='red'" }
+  },
+  "sharedStates": {
+    "Disabled": { "bg": "bg/sunken", "fg": "text/disabled", "border": "none" },
+    "Loading":  { "bg": "type Default fill", "icons": "both slots -> spinner", "label": "retained", "aria": "aria-busy=true" },
+    "Focus":    { "ring": "focus/ring", "status": "NOT a Figma variant yet — implement via :focus-visible" }
+  },
+  "rules": [
+    "Map Type to Mantine exactly: Primary=filled brand, Secondary=default, Tertiary=subtle, Danger=filled red.",
+    "One Primary per view; Danger only for destructive, irreversible actions.",
+    "Medium (36) is default; Small (28) for dense rows/toolbars — no intermediate heights.",
+    "Loading keeps the label and swaps icons for the spinner; never collapse to a bare spinner.",
+    "Instantiate the Button New component; never rebuild from a div or hardcode a fill.",
+    "Icon-only actions use the Icon button set with an aria-label."
+  ],
+  "forbidden": [
+    "Hardcoding a hex (e.g. #045646) instead of an action/* token",
+    "A Focus/hover style bound to the wrong token (see resolved changelog)",
+    "Off-scale padding on Small (must be space/4)",
+    "Two Danger buttons in one view",
+    "Icon-only button without an accessible label"
+  ],
+  "changelog": {
+    "date": "2026-09-08",
+    "target": "Button New variants (bindings only; variable values unchanged)",
+    "fixed": [
+      "Danger/Disabled: raw #CE5C54 -> bg/sunken + text/disabled",
+      "Primary/Loading label: action/destructive/fg -> action/primary/fg",
+      "Danger/Hover (Medium): action/destructive/bg -> action/destructive/bg-hover",
+      "Primary/Hover: action/primary/bg-pressed -> action/primary/bg-hover",
+      "Tertiary/Default: grey bg-pressed -> transparent (ghost); hover keeps bg-hover",
+      "Small/Tertiary: padding+gap 8 -> space/4 (all four variants)",
+      "Medium/Primary Hover: padding 8/9 -> 8/8",
+      "Secondary/Disabled: unified to bg/sunken + text/disabled, no border (both sizes)",
+      "Small/Secondary Hover label: text/primary -> action/secondary/fg"
+    ],
+    "open": ["Add a State=Focus variant bound to focus/ring"]
+  }
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from the source <b>Figma file</b> via the Figma MCP · 14 text styles · 160 color variables · 34 dimension tokens · 114 icons · 141 components incl. <span class="mono">Button New</span> (32 variants). The Button consistency pass (30 variant edits) was written back to Figma on 2026-09-08. Values are live at time of extraction; re-run after any token change. This page dogfoods the system it documents — Geist / Geist Mono, warm-neutral surfaces, brand teal-green accent.
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Button component: playground, anatomy, variant matrix ---------- */
+(function(){
+  const DL='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3v8.5m0 0 3.2-3.2M10 11.5 6.8 8.3M4 15.5h12" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const SPIN='<svg class="pvspin" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke-opacity="0.28"/><path d="M10 3a7 7 0 0 1 7 7" stroke-linecap="round"/></svg>';
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function btn(o){
+    const cls=['pvbtn','sz-'+o.size,'tp-'+o.type];
+    if(o.state==='Hover')cls.push('is-hover');
+    if(o.state==='Disabled')cls.push('is-disabled');
+    if(o.state==='Loading')cls.push('is-loading');
+    const loading=o.state==='Loading';
+    let L=o.leading?(loading?SPIN:DL):'';
+    let T=o.trailing?(loading?SPIN:DL):'';
+    if(loading&&!o.leading&&!o.trailing)L=SPIN;
+    const dis=o.state==='Disabled'?' disabled':'';
+    const busy=loading?' aria-busy="true"':'';
+    return `<button class="${cls.join(' ')}"${dis}${busy}>${L}<span>${e(o.label||'')}</span>${T}</button>`;
+  }
+  const st={size:'Medium',type:'Primary',state:'Default',leading:true,trailing:true,label:'Button'};
+  const mount=document.getElementById('pv-mount');
+  const codeEl=document.getElementById('pv-code');
+  const figmaEl=document.getElementById('pv-figma');
+  function mantine(o){
+    const size=o.size==='Medium'?'md':'sm';
+    let variant,color=null;
+    if(o.type==='Primary'){variant='filled';color='brand';}
+    else if(o.type==='Secondary'){variant='default';}
+    else if(o.type==='Tertiary'){variant='subtle';color='brand';}
+    else{variant='filled';color='red';}
+    const a=[`size="${size}"`,`variant="${variant}"`];
+    if(color)a.push(`color="${color}"`);
+    const is=o.size==='Medium'?18:14;
+    if(o.leading)a.push(`leftSection={<Download size={${is}} />}`);
+    if(o.trailing)a.push(`rightSection={<Download size={${is}} />}`);
+    if(o.state==='Loading')a.push('loading');
+    if(o.state==='Disabled')a.push('disabled');
+    return `<Button ${a.join(' ')}>`;
+  }
+  function render(){
+    if(mount)mount.innerHTML=btn(st);
+    if(codeEl)codeEl.innerHTML=`<span class="tag">${e(mantine(st))}</span>${e(st.label||'Button')}<span class="tag">&lt;/Button&gt;</span>`;
+    if(figmaEl)figmaEl.textContent=`Size=${st.size}, Type=${st.type}, State=${st.state}`;
+  }
+  wireSegs('.seg', st, render);
+  const lab=document.getElementById('pv-label');
+  if(lab)lab.addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  function sw(id,key){const el=document.getElementById(id);if(!el)return;el.addEventListener('click',()=>{const on=!el.classList.contains('on');el.classList.toggle('on',on);el.setAttribute('aria-checked',String(on));st[key]=on;render();});}
+  sw('pv-lead','leading'); sw('pv-trail','trailing');
+  render();
+
+  const anat=document.getElementById('anat-btn');
+  if(anat)anat.innerHTML=btn({size:'Medium',type:'Primary',state:'Default',leading:true,trailing:true,label:'Button'});
+
+  const TYPES=['Primary','Secondary','Tertiary','Danger'];
+  const STATES=['Default','Hover','Loading','Disabled'];
+  ['Medium','Small'].forEach(size=>{
+    const t=document.getElementById('matrix-'+size); if(!t)return;
+    const head='<thead><tr><th>Type \\ State</th>'+STATES.map(s=>`<th>${s}</th>`).join('')+'</tr></thead>';
+    const body='<tbody>'+TYPES.map(tp=>`<tr><td>${tp}</td>`+STATES.map(sc=>`<td>${btn({size,type:tp,state:sc,leading:true,trailing:true,label:'Button'})}</td>`).join('')+'</tr>').join('')+'</tbody>';
+    t.innerHTML=head+body;
+  });
+})();
+</script>
+
+</body></html>

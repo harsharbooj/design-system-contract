@@ -1,0 +1,306 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Icon Button (FAB) — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item active" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="fab">
+      <div class="eyebrow"><span class="n">10</span> Components · Icon Button (FAB)</div>
+      <h2 class="t-title-page">Icon Button <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">"Fab buttons" sheet · 8 instances (4 Variant × 2 Size) · node 768:5503</span></h2>
+      <p class="lead">A square, icon-only action button — the component every other section pointed to for icon-only actions (Button's leading/trailing icons, the Tag close icon, table row actions) but that had never been documented on its own. Rendered here with the same <code>Edit</code> glyph the source file uses throughout the sheet; swap the instance-swapped icon per use, everything else about the container stays fixed.</p>
+
+      <div class="callout" style="border-color:var(--warning-border);background:var(--warning-bg);">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="var(--warning-fg)" stroke-width="1.8"><path d="M10 3 2 17h16L10 3Z" stroke-linejoin="round"/><path d="M10 9v4M10 15.5v.5" stroke-linecap="round"/></svg>
+        <div class="body"><b>The sheet's own column headers don't match the component's variant property.</b> Figma labels the four columns <code>Default</code> / <code>Hover</code> / <code>Error</code> / <code>Disabled</code> — reading like a live interaction-state matrix — but the underlying instances are actually four different <code>Variant</code> values (<code>Primary</code>, <code>Secondary</code>, <code>Destructive</code>, <code>Disabled</code>). There is no real <code>:hover</code> or <code>:focus</code> state defined anywhere on this component; "Hover" here just means "the Secondary color variant, shown as an example of what a hover treatment could look like." Code should not wire a CSS <code>:hover</code> selector expecting it to swap in the Secondary token — it has to be done deliberately in the component layer.</div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">toggle the axes — the preview and Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="fab-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Variant</span><div class="seg" data-axis="variant"><button data-v="Primary" class="on">Primary</button><button data-v="Secondary">Secondary</button><button data-v="Destructive">Destructive</button><button data-v="Disabled">Disabled</button></div></div>
+          <div class="ctl"><span class="lab">Size</span><div class="seg" data-axis="size"><button data-v="md" class="on">Medium (38)</button><button data-v="sm">Small (30)</button></div></div>
+          <div class="ctl"><span class="lab">aria-label</span><input class="tin" id="fab-label" value="Edit" maxlength="24" aria-label="Accessible label text"></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React</span><span class="vn" id="fab-figma">Variant=Primary, Size=md</span></div>
+        <pre id="fab-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">All instances</h3><span class="note">reproduces the "Fab buttons" sheet layout — 2 sizes × 4 variants, node 768:5503</span></div>
+      <div class="fab-wrap">
+        <div class="fab-grid">
+          <div class="fab-head"><span class="rlab"></span><span class="fcell">Default</span><span class="fcell">Hover</span><span class="fcell">Error</span><span class="fcell">Disabled</span></div>
+          <div id="fab-all"></div>
+        </div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-fab"></div></div>
+        <ol>
+          <li><b>Container</b> — a fixed square, <code>38×38</code> (Medium) or <code>30×30</code> (Small), <code>radius/xs</code> (4). Fill and border key off <b>Variant</b>, not off any interaction state.</li>
+          <li><b>Fill + border</b> — <b>Primary</b> and <b>Destructive</b> share <code>bg/canvas</code> fill + <code>border/strong</code> stroke; <b>Secondary</b> swaps the fill to <code>bg/sunken</code>, same border; <b>Disabled</b> also fills <code>bg/sunken</code> but drops the border entirely.</li>
+          <li><b>Icon</b> — instance-swap slot, centered, <code>size/icon-md</code> (20, Medium) or <code>size/icon-sm</code> (16, Small). Color is the one thing that actually changes per Variant: <code>icon/primary</code> for Primary/Secondary, <code>icon/destructive</code> for Destructive, a muted disabled tone for Disabled.</li>
+          <li><b>No label slot.</b> Unlike Button, there is no text — the entire affordance is the icon, which is exactly why every instance needs an external <code>aria-label</code> (see Accessibility).</li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">the API an agent instantiates against</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Variant</td><td class="val">VARIANT</td><td class="val">Primary</td><td class="usage">Primary · Secondary · Destructive · Disabled</td><td class="mant">variant + color (see map)</td></tr>
+            <tr><td class="tok">Size <span class="flag">see finding</span></td><td class="val">VARIANT</td><td class="val">MD</td><td class="usage">MD (38) · reported as "MD" on both sheet rows</td><td class="mant">size="md" | "sm"</td></tr>
+            <tr><td class="tok">Icon</td><td class="val">INSTANCE_SWAP</td><td class="val">Edit</td><td class="usage">Any icon component</td><td class="mant">children / icon prop</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">The "Small / Primary" row in the source sheet instantiates a component whose own variant property still reads <code>Size=MD</code> — the 30px row is a separate, differently-sized component definition wearing the same property name, not a real <code>Size</code> axis on one component. Treat <code>sm</code> as a documented, code-time size until the Figma component set is consolidated (see Findings).</p>
+
+      <div class="subhead"><h3 class="t-title-section">Variant → Mantine map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Variant</th><th>Sheet column</th><th>Fill</th><th>Border</th><th>Icon color</th><th>Mantine</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Primary</td><td class="val">Default</td><td class="val">bg/canvas</td><td class="val">border/strong · 1px</td><td class="val">icon/primary</td><td class="mant">variant="default"</td></tr>
+            <tr><td class="tok">Secondary</td><td class="val">Hover</td><td class="val">bg/sunken</td><td class="val">border/strong · 1px</td><td class="val">icon/primary</td><td class="mant">variant="light" color="gray"</td></tr>
+            <tr><td class="tok">Destructive</td><td class="val">Error</td><td class="val">bg/canvas</td><td class="val">border/strong · 1px</td><td class="val">icon/destructive</td><td class="mant">variant="default" color="red"</td></tr>
+            <tr><td class="tok">Disabled</td><td class="val">Disabled</td><td class="val">bg/sunken</td><td class="val">none</td><td class="val">text/disabled (muted)</td><td class="mant">disabled</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Only <b>Secondary</b> changes the fill relative to Primary; <b>Destructive</b> keeps Primary's exact fill/border and re-colors only the icon. This means the sheet's "Hover" and "Error" columns are visually just recolors of the same container — worth knowing before an agent assumes each column implies its own layout or spacing change.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Dimensions</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Value</th><th>Where</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Container (Medium)</td><td class="val">38×38px</td><td class="usage">no <code>size/*</code> token</td><td class="usage">Off-scale — nearest is <code>size/control-lg</code> (44). Component-intrinsic constant.</td></tr>
+            <tr><td class="tok">Container (Small)</td><td class="val">30×30px</td><td class="usage">no <code>size/*</code> token</td><td class="usage">Off-scale — between <code>size/control-sm</code> (28) and none above. Component-intrinsic constant.</td></tr>
+            <tr><td class="tok">Icon (Medium)</td><td class="val">20px</td><td class="usage"><code>size/icon-md</code></td><td class="usage">On-scale.</td></tr>
+            <tr><td class="tok">Icon (Small)</td><td class="val">16px</td><td class="usage"><code>size/icon-sm</code></td><td class="usage">On-scale.</td></tr>
+            <tr><td class="tok">Radius</td><td class="val">4px</td><td class="usage"><code>radius/xs</code></td><td class="usage">One step tighter than Button/Input's <code>radius/sm</code> (6) — intentional; a small square control reads better slightly less rounded.</td></tr>
+            <tr><td class="tok">Border</td><td class="val">1px</td><td class="usage"><code>stroke/thin</code></td><td class="usage">Present on Primary/Secondary/Destructive; absent on Disabled.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Render a native <code>&lt;button&gt;</code> with a mandatory <code>aria-label</code> describing the action ("Edit row", "Delete project") — the icon alone conveys nothing to assistive tech. This is the one rule every other section already deferred to this component for.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Pair with a visible tooltip on hover/focus for sighted mouse users, since there is no text label in the layout to fall back on.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Disabled uses <code>:disabled</code> / <code>aria-disabled="true"</code> and removes the border — never rely on the muted icon color alone to signal non-interactivity.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Focus is keyboard-visible via <code>focus/ring</code>. <span style="color:var(--warning-fg);">Gap: no Focus variant exists in Figma (same gap already flagged on Button and Input)</span> — wire <code>:focus-visible</code> in code until one is added.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Use <b>Primary</b> for the default/standalone icon action in a toolbar or row. Reach for <b>Destructive</b> only when the action is irreversible (delete, remove) — same rule Button already sets for its own Danger type.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Don't read <b>Secondary</b> as an actual <code>:hover</code> state to wire in CSS — it's a distinct Variant an agent chooses at author time (e.g. a "currently selected" row's action), not something the browser toggles automatically.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Default to <b>Medium (38)</b> in toolbars and page headers; drop to <b>Small (30)</b> only inside dense table rows, matching Button's own Medium/Small guidance.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Compose from this component and swap only the inner icon — never rebuild the square from a styled <code>div</code>, and never hardcode <code>border-strong</code>'s hex.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Give every instance an <code>aria-label</code> naming the action</li>
+          <li>Use Destructive only for irreversible actions, same as Button's Danger</li>
+          <li>Keep the icon swap to the library's icon set (§04)</li>
+          <li>Pair with a tooltip when the action isn't obvious from context</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Ship an icon button with no accessible name</li>
+          <li>Wire the "Hover" variant to an actual <code>:hover</code> pseudo-class</li>
+          <li>Rebuild the square from a styled <code>div</code> with a hardcoded border color</li>
+          <li>Use a size other than 38 or 30 without adding a real Figma variant first</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Findings from this pass</h3><span class="note">no Figma edits made — surface for review before a consistency pass</span></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>Column headers imply states that don't exist.</b> <code>Default / Hover / Error / Disabled</code> read as a live interaction-state matrix, but the actual property is <code>Variant = Primary / Secondary / Destructive / Disabled</code>. Recommend renaming the sheet's column headers to the real variant names, or — better — adding true <code>Hover</code>/<code>Focus</code> state variants so the labels stop overpromising.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>No real Size axis.</b> The 38px and 30px rows are two separately-authored components that each report <code>Size=MD</code> in their own variant name. Consolidate into one component set with a genuine <code>Size = MD | SM</code> property, the way Button already does.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>38×38 and 30×30 have no <code>size/*</code> token.</b> Both are off the <code>size/control-*</code> scale (28/36/44) — same category of gap as the Switch track's 36×20. Either add dedicated tokens or document them as intentional component-intrinsic constants (done here).</div></div>
+        <div class="cl"><span class="st">Clean</span><div class="ct"><b>Fill/border bindings are consistent.</b> Primary and Destructive share one fill+border recipe; Secondary and Disabled share a fill; nothing hand-hexed. Radius (<code>radius/xs</code>) and icon sizes (<code>size/icon-md</code>/<code>-sm</code>) are both real tokens.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>No Focus state on this component</b> (same gap already open on Button and Input). Wire <code>:focus-visible</code> to <code>focus/ring</code> in code until a Figma variant exists.</div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-fab"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-fab</span></div>
+<script type="application/json" id="ds-contract-fab">
+{
+  "section": "fab",
+  "component": "Icon button",
+  "nodeId": "768:5503",
+  "sheetName": "Fab buttons",
+  "instanceCount": 8,
+  "axes": {
+    "Variant": ["Primary", "Secondary", "Destructive", "Disabled"],
+    "Size": ["MD (38px)", "SM (30px)"]
+  },
+  "properties": [
+    { "name": "Variant", "type": "VARIANT", "default": "Primary", "mantine": "variant + color" },
+    { "name": "Size", "type": "VARIANT", "default": "MD", "mantine": "size='md' | 'sm'", "issue": "SM (30px) instances still self-report Size=MD — not a real axis on one component; two components exist" },
+    { "name": "Icon", "type": "INSTANCE_SWAP", "default": "Edit", "mantine": "children / icon prop" }
+  ],
+  "sheetColumnMap": {
+    "Default": "Primary", "Hover": "Secondary", "Error": "Destructive", "Disabled": "Disabled",
+    "_note": "Sheet column headers name interaction states that don't exist as real Figma variants — they are aliases for the four Variant values."
+  },
+  "variants": {
+    "Primary":     { "fill": "bg/canvas", "border": "border/strong (1px)", "iconColor": "icon/primary",     "mantine": "variant='default'" },
+    "Secondary":   { "fill": "bg/sunken", "border": "border/strong (1px)", "iconColor": "icon/primary",     "mantine": "variant='light' color='gray'" },
+    "Destructive": { "fill": "bg/canvas", "border": "border/strong (1px)", "iconColor": "icon/destructive", "mantine": "variant='default' color='red'" },
+    "Disabled":    { "fill": "bg/sunken", "border": "none",                "iconColor": "text/disabled (muted)", "mantine": "disabled" }
+  },
+  "dimensions": {
+    "containerMd": { "px": 38, "token": null, "note": "off size/control-* scale; nearest is control-lg (44)" },
+    "containerSm": { "px": 30, "token": null, "note": "off size/control-* scale; between control-sm (28) and control-md (36)" },
+    "iconMd": { "px": 20, "token": "size/icon-md" },
+    "iconSm": { "px": 16, "token": "size/icon-sm" },
+    "radius": { "px": 4, "token": "radius/xs" },
+    "border": { "px": 1, "token": "stroke/thin" }
+  },
+  "rules": [
+    "Every instance requires an aria-label — the icon alone carries no accessible name.",
+    "Use Destructive only for irreversible actions, same rule as Button's Danger type.",
+    "Secondary is an author-chosen Variant, not a live :hover state — do not wire it to a CSS :hover selector.",
+    "Default to Medium (38) in toolbars/headers; Small (30) only in dense table rows.",
+    "Compose from this component and swap only the inner icon; never rebuild from a styled div."
+  ],
+  "forbidden": [
+    "Icon button instance with no accessible name",
+    "Wiring the Secondary variant to an actual :hover pseudo-class",
+    "Hardcoding border/strong's hex instead of the token",
+    "A container size other than 38 or 30 without a real Figma variant",
+    "Using Destructive for a reversible, low-stakes action"
+  ],
+  "iconSource": { "name": "Edit", "catalog": "section 04 (Icons)", "codeMapping": "swap per instance — Edit shown here as the sheet's example icon" },
+  "knownIssues": [
+    "Column headers (Default/Hover/Error/Disabled) name states that don't exist as real Figma variants — they alias the Variant property",
+    "Size is not a real single-component axis: MD and SM are two separately-built components that both self-report Size=MD",
+    "38×38 and 30×30 have no size/* token — documented here as component-intrinsic constants",
+    "No Focus/Hover interaction state defined on the component itself (same open gap as Button and Input)"
+  ],
+  "positives": [
+    "Fill/border recipes are consistent and fully tokened (bg/canvas, bg/sunken, border/strong, radius/xs, size/icon-md, size/icon-sm) — only the icon color and fill genuinely vary per Variant"
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from <b>the design system Figma file</b> (node <span class="mono">768:5503</span>, "Fab buttons") via the Figma MCP · 8 instances across 4 variants × 2 sizes. This is a first-pass documentation of the component — no Figma edits were made; findings are listed above for review before a consistency pass (as was done for Button on 2026-09-08 and Input on 2026-09-09).
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Icon button / FAB component: playground, anatomy, all-instances grid ---------- */
+(function(){
+  const EDIT='<svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 3.3a1.6 1.6 0 0 1 2.3 0l1 1a1.6 1.6 0 0 1 0 2.3L7.4 15 3.5 16l1-3.9 8.9-8.8Z"/><path d="M11.6 5.1l3.3 3.3"/></svg>';
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const VARIANTS=[{v:'Primary',col:'Default'},{v:'Secondary',col:'Hover'},{v:'Destructive',col:'Error'},{v:'Disabled',col:'Disabled'}];
+  const SIZES=[{k:'md',label:'Medium (38)'},{k:'sm',label:'Small (30)'}];
+  function fab(o){
+    const cls=['pvfab','sz-'+o.size,'tp-'+o.variant];
+    const dis=o.variant==='Disabled'?' disabled aria-disabled="true"':'';
+    return `<button class="${cls.join(' ')}" type="button" aria-label="${e(o.label||'Edit')}"${dis}>${EDIT}</button>`;
+  }
+  const st={variant:'Primary',size:'md',label:'Edit'};
+  const mount=document.getElementById('fab-mount');
+  const codeEl=document.getElementById('fab-code');
+  const figmaEl=document.getElementById('fab-figma');
+  const MANT={Primary:{variant:'default'},Secondary:{variant:'light',color:'gray'},Destructive:{variant:'default',color:'red'},Disabled:{variant:'default'}};
+  function mantine(o){
+    const m=MANT[o.variant];
+    const a=[`variant="${m.variant}"`];
+    if(m.color)a.push(`color="${m.color}"`);
+    a.push(`size="${o.size}"`);
+    a.push(`aria-label="${e(o.label)}"`);
+    if(o.variant==='Disabled')a.push('disabled');
+    return `<ActionIcon ${a.join(' ')}>\n  <IconEdit size={${o.size==='md'?20:16}} />\n</ActionIcon>`;
+  }
+  function render(){
+    if(mount)mount.innerHTML=fab(st);
+    if(codeEl)codeEl.innerHTML=e(mantine(st));
+    if(figmaEl)figmaEl.textContent=`Variant=${st.variant}, Size=${st.size}`;
+  }
+  wireSegs('#fab .seg', st, render);
+  const lab=document.getElementById('fab-label');
+  if(lab)lab.addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  render();
+
+  const anat=document.getElementById('anat-fab');
+  if(anat)anat.innerHTML=fab({variant:'Primary',size:'md',label:'Edit'});
+
+  const all=document.getElementById('fab-all');
+  if(all){
+    all.innerHTML=SIZES.map(s=>
+      `<div class="frow"><span class="rlab">${e(s.label)}</span>`+
+      VARIANTS.map(v=>`<span class="fcell">${fab({variant:v.v,size:s.k,label:v.v==='Destructive'?'Delete':'Edit'})}</span>`).join('')+
+      `</div>`
+    ).join('');
+  }
+})();
+</script>
+
+</body></html>

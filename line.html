@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Divider — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item active" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="line">
+      <div class="eyebrow"><span class="n">12</span> Components · Divider · <span style="color:var(--text-3);">atom</span></div>
+      <h2 class="t-title-page">Divider <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">"Line" in Figma · single component · node 40:626</span></h2>
+      <p class="lead">A 1px horizontal rule — the simplest visual primitive in the library and the canonical example of an <b>atom</b>: no children, no state, one dimension token, one color token. Used to separate list rows, form sections, and panel groups. <ph-minus weight="bold" size="16" style="vertical-align:-3px;"></ph-minus></p>
+
+      <div class="subhead"><h3 class="t-title-section">Preview</h3></div>
+      <div class="panel">
+        <hr style="height:1px;border:none;background:var(--border);margin:0;width:100%;">
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <p class="usage">A single <code>240×1</code> rectangle (default size — stretches to parent width in Auto Layout) filled with <code>border/default</code> (<code>#D8D6D0</code>), bound to the variable. No stroke, no padding, no children.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Dimensions</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Value</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Height</td><td class="val">1px</td><td class="usage">Fixed; use <code>space/24</code>–<code>space/32</code> as margins before/after.</td></tr>
+            <tr><td class="tok">Fill</td><td class="val">border/default</td><td class="usage"><code>#D8D6D0</code> · variable-bound.</td></tr>
+            <tr><td class="tok">Default width</td><td class="val">240px</td><td class="usage">Stretches to parent in Auto Layout.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Use Line only between grouped items — a form-section boundary, a menu-item separator, a list-row divider. Never as decoration.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Prefer <code>space/24</code> or <code>space/32</code> before/after the rule. Don't chain multiple lines back-to-back — that's a spacing problem, not a divider problem.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use one Divider between two related-but-separable groups</li>
+          <li>Bind the fill to <code>border/default</code></li>
+          <li>Give the rule <code>24–32px</code> breathing space on both sides</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Use two dividers in a row</li>
+          <li>Hardcode <code>#D8D6D0</code></li>
+          <li>Use Line as a decorative graphic element</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-line"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-line</span></div>
+<script type="application/json" id="ds-contract-line">
+{
+  "section": "line",
+  "component": "Divider",
+  "nodeId": "40:626",
+  "variantCount": 1,
+  "properties": [],
+  "fill": "border/default",
+  "height": 1,
+  "defaultWidth": 240,
+  "codeSyntax": "var(--mantine-color-border-default)",
+  "rules": [
+    "Use only between grouped items; never decorative.",
+    "Prefer space/24 or space/32 as margin before/after.",
+    "Never chain multiple lines back-to-back."
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">Extracted from <b>the design system Figma file</b> · node <span class="mono">40:626</span>. Documented 2026-09-10.</div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,212 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Action Modal — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item active" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="action-modal">
+      <div class="eyebrow"><span class="n">17</span> Components · Action Modal</div>
+      <h2 class="t-title-page">Action Modal <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">"Fab Modal" in Figma · node 842:5021</span></h2>
+      <p class="lead">A contextual dropdown menu triggered by a three-dot icon button. Shows three actions: <b>Rename Version</b>, <b>Duplicate Version</b>, and <b>Delete Version</b> (destructive). The Delete row escalates to a confirmation dialog that follows the same responsive contract.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">click the three-dot button to open the menu · click Delete to open the confirmation dialog · Escape or click outside to dismiss</span></div>
+      <div class="panel" style="display:flex;justify-content:flex-end;align-items:flex-start;min-height:200px;padding:32px 24px;background:var(--sunken);border-radius:12px;">
+        <div class="am-wrap">
+          <button class="am-trigger" id="am-trigger" aria-haspopup="menu" aria-expanded="false" aria-label="More actions">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <circle cx="10" cy="4" r="1.5"/><circle cx="10" cy="10" r="1.5"/><circle cx="10" cy="16" r="1.5"/>
+            </svg>
+          </button>
+          <div class="am-menu" id="am-menu" role="menu" hidden>
+            <button class="am-item" role="menuitem" data-action="rename"><ph-pencil weight="regular" size="16"></ph-pencil><span>Rename Version</span></button>
+            <div class="am-divider"></div>
+            <button class="am-item" role="menuitem" data-action="duplicate"><ph-copy weight="regular" size="16"></ph-copy><span>Duplicate Version</span></button>
+            <div class="am-divider"></div>
+            <button class="am-item destructive" role="menuitem" data-action="delete"><ph-trash weight="regular" size="16"></ph-trash><span>Delete Version</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="am-overlay" id="am-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="am-title">
+        <div class="am-dialog">
+          <h4 id="am-title">Delete this version?</h4>
+          <p>This will permanently remove the selected capture version. This action cannot be undone.</p>
+          <div class="am-actions">
+            <button type="button" class="am-btn" id="am-cancel">Cancel</button>
+            <button type="button" class="am-btn primary" id="am-confirm">Delete Version</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <p class="usage">Trigger: 38×38 Icon Button with the three-dot glyph. Menu: 197px wide, padding 12/16, 12px item gap, radius 4, 1px <code>border/default</code>, box-shadow. Each item is a horizontal row: icon (16) + label (14 medium). Divider (<code>border/subtle</code>, 1px) between rows. Confirmation dialog: max-width <code>min(560px, calc(100vw - 32px))</code>, padding <code>24</code>, header + body + footer stacked, overlay <code>z-index: 100</code> covering the viewport.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Token reference</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Role</th><th>Value (Light)</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">bg/surface</td><td class="val">Menu + dialog fill</td><td class="val">#FFFFFF</td></tr>
+            <tr><td class="tok">border/default</td><td class="val">Menu + dialog stroke</td><td class="val">#D8D6D0</td></tr>
+            <tr><td class="tok">border/subtle</td><td class="val">Row divider</td><td class="val">#E4E2DD</td></tr>
+            <tr><td class="tok">text/secondary</td><td class="val">Rename + Duplicate</td><td class="val">#6B6862</td></tr>
+            <tr><td class="tok">text/destructive</td><td class="val">Delete label + confirm btn</td><td class="val">#C22E22</td></tr>
+            <tr><td class="tok">icon/destructive</td><td class="val">Trash icon</td><td class="val">#C22E22</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Trigger has <code>aria-haspopup="menu"</code>; <code>aria-expanded</code> toggles on open/close. Menu is <code>role="menu"</code>, rows are <code>role="menuitem"</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Confirmation dialog uses <code>role="dialog"</code> + <code>aria-modal="true"</code> + <code>aria-labelledby</code> pointing at the title.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Dismiss on: click-outside, Escape, item selection. On Escape, return focus to the trigger.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Only Delete Version uses destructive tokens.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Menu width is fixed at 197px. The confirmation dialog is fluid to <code>min(560px, 100vw - 32px)</code>.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Trigger is the Icon Button (§10) Primary variant</li>
+          <li>Escalate destructive actions to a confirmation dialog</li>
+          <li>Dismiss on click-outside and Escape</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Color Rename/Duplicate red</li>
+          <li>Let the menu width grow past 197px</li>
+          <li>Skip the confirmation on Delete</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Findings from this pass</h3></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Trigger click now wires via <code>addEventListener</code></b> — no inline <code>onclick</code>, no ordering issue with the script tag. The overlay uses <code>z-index: 100</code> and <code>position: fixed; inset: 0</code>, so nothing on the page can occlude it.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Layout is responsive.</b> Dialog max-width is <code>min(560px, calc(100vw - 32px))</code>, padding <code>24px</code>, header/body/footer stack vertically. Verified at 360px, 768px, 1200px viewports.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Section now lives inside the <code>.main</code> container.</b> Previously it rendered outside the layout wrapper, which broke the sidebar/content grid and produced the distorted appearance.</div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-action-modal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-action-modal</span></div>
+<script type="application/json" id="ds-contract-action-modal">
+{
+  "section": "action-modal",
+  "component": "Action Modal",
+  "figmaName": "Fab Modal",
+  "nodeId": "842:5021",
+  "trigger": { "component": "Icon Button §10", "variant": "Primary", "size": "MD (38×38)", "icon": "DotsVertical", "aria": { "haspopup": "menu", "expanded": "toggle", "label": "More actions" } },
+  "menu": { "width": 197, "paddingH": 16, "paddingV": 12, "itemGap": 12, "fill": "bg/surface", "border": "border/default 1px", "radius": 4, "role": "menu" },
+  "items": [
+    { "label": "Rename Version",    "icon": "Pencil", "textToken": "text/secondary" },
+    { "label": "Duplicate Version", "icon": "Copy",   "textToken": "text/secondary" },
+    { "label": "Delete Version",    "icon": "Trash",  "textToken": "text/destructive", "destructive": true, "confirmsWith": "dialog" }
+  ],
+  "confirmDialog": { "role": "dialog", "ariaModal": true, "maxWidth": "min(560px, calc(100vw - 32px))", "padding": 24, "overlay": { "position": "fixed", "inset": 0, "zIndex": 100 } },
+  "dividers": { "token": "border/subtle", "height": 1 },
+  "dismissal": ["click-outside", "Escape", "item selection"],
+  "responsive": { "verifiedAt": ["360px", "768px", "1200px"], "stacks": "header/body/footer on narrow widths" },
+  "rules": [
+    "Trigger is Icon Button §10 Primary with DotsVertical.",
+    "Only Delete Version uses destructive tokens; Delete escalates to a confirmation dialog.",
+    "Menu width fixed at 197px; dialog fluid to min(560px, 100vw - 32px)."
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">Extracted from <b>the design system Figma file</b> · node <span class="mono">842:5021</span>. Rebuilt 2026-09-10 for responsiveness and interactivity.</div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+    <script>
+    (function(){
+      const trigger=document.getElementById('am-trigger');
+      const menu=document.getElementById('am-menu');
+      const overlay=document.getElementById('am-overlay');
+      const cancel=document.getElementById('am-cancel');
+      const confirm=document.getElementById('am-confirm');
+      if(!trigger||!menu||!overlay)return;
+      function closeMenu(){menu.hidden=true;trigger.setAttribute('aria-expanded','false');}
+      function openMenu(){menu.hidden=false;trigger.setAttribute('aria-expanded','true');}
+      function openDialog(){overlay.hidden=false;setTimeout(function(){if(cancel)cancel.focus();},0);}
+      function closeDialog(){overlay.hidden=true;trigger.focus();}
+      trigger.addEventListener('click',function(ev){ev.stopPropagation();if(menu.hidden)openMenu();else closeMenu();});
+      document.addEventListener('click',function(ev){
+        if(!menu.hidden&&!trigger.contains(ev.target)&&!menu.contains(ev.target))closeMenu();
+      });
+      menu.querySelectorAll('.am-item').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          const action=btn.dataset.action;
+          closeMenu();
+          if(action==='delete')openDialog();
+        });
+      });
+      if(cancel)cancel.addEventListener('click',closeDialog);
+      if(confirm)confirm.addEventListener('click',closeDialog);
+      overlay.addEventListener('click',function(ev){if(ev.target===overlay)closeDialog();});
+      document.addEventListener('keydown',function(ev){
+        if(ev.key!=='Escape')return;
+        if(!overlay.hidden){closeDialog();return;}
+        if(!menu.hidden){closeMenu();trigger.focus();}
+      });
+    })();
+    </script>
+
+</body></html>

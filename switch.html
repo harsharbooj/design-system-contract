@@ -1,0 +1,295 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Switch — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item active" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="switch">
+      <div class="eyebrow"><span class="n">09</span> Components · Switch</div>
+      <h2 class="t-title-page">Switch <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Switch · 4 variants · node 40:614</span></h2>
+      <p class="lead">A binary on/off toggle for a setting that takes effect immediately — dark mode, notifications, feature flags. A single variant axis, <b>State</b>, resolves to 4 published variants (<code>Off</code>, <code>On</code>, <code>Disabled off</code>, <code>Disabled on</code>). The track is <code>36×20</code>, the thumb sits at one end via padding (2/20/2/2 for Off, 2/2/2/20 for On — no translate). The whole component is pill-shaped (<code>radius/full</code>). Off uses a flat <code>text/tertiary</code> gray track (<code>#928E87</code>); On uses <code>accent/solid</code> (<code>#045646</code>). Both Disabled variants share the same flat <code>#BCB8B1</code> track — the two disabled states are distinguished by thumb position only, not track colour.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">toggle the axes — the preview and Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="sw-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">State</span><div class="seg" data-axis="state"><button data-v="Off" class="on">Off</button><button data-v="On">On</button><button data-v="Disabled off">Disabled off</button><button data-v="Disabled on">Disabled on</button></div></div>
+          <div class="ctl"><span class="lab">Label (paired)</span><input class="tin" id="sw-label" value="Enable notifications" maxlength="32" aria-label="Switch label"></div>
+          <div class="rowsw"><span>Show paired label</span><button class="swt on" id="sw-pair" role="switch" aria-checked="true" aria-label="Show paired label"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React</span><span class="vn" id="sw-figma">State=Off</span></div>
+        <pre id="sw-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">All states</h3><span class="note">every variant, default props · matches the Figma component set at node 40:614</span></div>
+      <div class="panel"><div class="pvsw-row" id="sw-all"></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-sw"></div></div>
+        <ol>
+          <li><b>Track</b> — pill container, <code>36×20</code>, <code>radius/full</code>. <b>Off</b> is a flat <code>text/tertiary</code> gray (<code>#928E87</code>) — NOT <code>border/strong</code>. <b>On</b> fills with <code>accent/solid</code> (<code>#045646</code>). <b>Disabled off</b> and <b>Disabled on</b> BOTH fill with a flat <code>#BCB8B1</code> (<code>border/strong</code>) — the two disabled variants share the same track colour; only the thumb position differs.</li>
+          <li><b>Thumb</b> — <code>16×16</code> circle. Positioned via track padding: <code>2/20/2/2</code> (Off) or <code>2/2/2/20</code> (On) — no translate. Enabled thumb is pure <code>#FFFFFF</code>. On both Disabled variants the thumb is a light gray <code>#ECEBE7</code> (<code>--sunken</code>) — not the same as the enabled white — and it drops its shadow. Elevation is <code>elevation/1</code> (drop shadow <code>0 1 2 #0E0D0B0D</code>) on the enabled thumb only.</li>
+          <li><b>Motion</b> — Off → On translates the thumb by exactly <code>16px</code> (track width 36 − thumb 16 − insets 2×2 = 16), <code>150ms</code>, <code>cubic-bezier(.2,.7,.3,1)</code>. Reduced-motion users get the same end state with no transition.</li>
+          <li><b>Focus</b> — <code>2px</code> <code>focus/ring</code> halo, offset <code>2px</code> from the track edge. Wired in code via <code>:focus-visible</code> — <span style="color:var(--warning-fg);">Focus is not modelled as a Figma variant on this component.</span></li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">the API an agent instantiates against</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">State</td><td class="val">VARIANT</td><td class="val">Off</td><td class="usage">Off · On · Disabled off · Disabled on</td><td class="mant">checked + disabled (see map)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Unlike Button (5 properties) or Tag (4 properties), Switch exposes <b>only one axis</b> — the toggled/disabled state — with no text label, no icon slots, no size variant. A field-row label is composed alongside the switch by the screen, not carried inside the component.</p>
+
+      <div class="subhead"><h3 class="t-title-section">State → Mantine map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Track fill</th><th>Thumb</th><th>Mantine props</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Off</td><td class="val">text/tertiary #928E87 (flat fill)</td><td class="val">#FFFFFF · thumb at x=2</td><td class="mant">checked={false}</td></tr>
+            <tr><td class="tok">On</td><td class="val">accent/solid #045646</td><td class="val">#FFFFFF · thumb at x=18</td><td class="mant">checked={true} color="brand"</td></tr>
+            <tr><td class="tok">Disabled off</td><td class="val">border/strong #BCB8B1 (flat fill)</td><td class="val">#ECEBE7 (--sunken) · thumb at x=2, no shadow</td><td class="mant">checked={false} disabled</td></tr>
+            <tr><td class="tok">Disabled on</td><td class="val">border/strong #BCB8B1 (flat fill — same as Disabled off)</td><td class="val">#ECEBE7 (--sunken) · thumb at x=18, no shadow</td><td class="mant">checked={true} disabled color="brand"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Both disabled variants share the exact same <code>#BCB8B1</code> track — the difference between <b>Disabled off</b> and <b>Disabled on</b> is thumb position, nothing else. Both disabled thumbs are a light gray <code>#ECEBE7</code> (not the pure white used on the enabled variants) and drop their shadow. Disabled is a grayscale treatment of the whole control.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Dimensions</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Value</th><th>Where</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Track width</td><td class="val">36px</td><td class="usage">Container width — no <code>size/*</code> token</td><td class="usage">Off-scale (not in <code>size/control-*</code>). Fine as a fixed control size, but worth naming.</td></tr>
+            <tr><td class="tok">Track height</td><td class="val">20px</td><td class="usage">Container height — no <code>size/*</code> token</td><td class="usage">Matches the <code>size/icon-md</code> visual weight (20).</td></tr>
+            <tr><td class="tok">Thumb</td><td class="val">16px</td><td class="usage"><code>size/icon-sm</code></td><td class="usage">On-scale; reuses the icon-sm size token.</td></tr>
+            <tr><td class="tok">Inset (all sides)</td><td class="val">2px</td><td class="usage"><code>space/2</code></td><td class="usage">Bound to the smallest space token.</td></tr>
+            <tr><td class="tok">Translate distance</td><td class="val">16px</td><td class="usage">Computed: <code>36 − 16 − (2×2)</code></td><td class="usage">Derived from the four values above; never typed directly.</td></tr>
+            <tr><td class="tok">Radius</td><td class="val">9999px</td><td class="usage"><code>radius/full</code></td><td class="usage">Applies to the track; the thumb uses <code>border-radius: 50%</code>.</td></tr>
+            <tr><td class="tok">Elevation</td><td class="val">0 1 2 #0E0D0B0D</td><td class="usage"><code>elevation/1</code></td><td class="usage">On the thumb only. Surfaced in the design context.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Render a native <code>&lt;input type="checkbox" role="switch"&gt;</code> (Mantine's <code>Switch</code> already does). The visible track/thumb is a styled sibling; never a bare <code>&lt;div onClick&gt;</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Pair every switch with a visible label via <code>&lt;label for=""&gt;</code> — or the <code>label</code> prop on Mantine's <code>Switch</code>. A switch without a label is a defect: state without a name is meaningless.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The switch's state is <code>aria-checked</code> (handled by the native input). Do <b>not</b> add a redundant "On" / "Off" text label beside a colored track — the position and colour already convey it; a text state duplicates without adding meaning.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Focus binds to <code>focus/ring</code> at 2px, offset 2px. <span style="color:var(--warning-fg);">Gap: no Focus variant in Figma</span> — wire via <code>:focus-visible</code> in code until it lands.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The action a switch triggers must be <b>immediate and reversible</b>. A switch is not a Save button — if the setting needs confirmation, use a checkbox with an explicit submit, not a switch.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Use Switch for <b>settings that take effect immediately</b> (dark mode, notifications, feature flags). Use Checkbox for <b>form choices that submit later</b>. This is the whole reason both components exist — never substitute one for the other.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Compose from the <code>Switch</code> component, one instance per setting, aligned to the right of its label row. Never rebuild the pill from a styled div or hardcode the accent hex.</p></div>
+        <div class="rule"><span class="num mono"></span><p>State always maps 1-to-1 to Mantine's <code>checked</code> and <code>disabled</code>. Never encode "on" via a class name or a colour override — the check state is the source of truth.</p></div>
+        <div class="rule"><span class="num mono"></span><p>A disabled switch keeps whatever value it had — <code>Disabled on</code> for a locked-on setting, <code>Disabled off</code> for a locked-off one. Never render a disabled switch in a state that misrepresents the underlying value.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Only one size ships — <code>36×20</code>. Do not stretch, shrink, or introduce a "small switch" without adding a proper variant to the Figma component set first.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>&lt;Switch label="Enable notifications" checked={on} onChange={…} /&gt;</code></li>
+          <li>Bind the track On fill to <code>accent/solid</code>; Off to a flat <code>text/tertiary</code> (<code>#928E87</code>) gray fill</li>
+          <li>Keep the paired label to the left, switch to the right — one setting per row</li>
+          <li>Trigger the setting on toggle, not on a separate Save</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Rebuild the pill from a styled <code>div</code> with a hardcoded <code>#045646</code></li>
+          <li>Add an "ON" / "OFF" text label alongside a colored track</li>
+          <li>Use a Switch as a Save/Submit trigger — that's a Button</li>
+          <li>Ship a disabled switch whose position doesn't match the real value</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Findings from this pass</h3><span class="note">no Figma edits made — surface for review before a consistency pass</span></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Clean</span><div class="ct"><b>Component set is complete for the axis it commits to.</b> Off / On / Disabled off / Disabled on cover every meaningful combination of <code>checked</code> × <code>disabled</code>. No missing entries in the matrix.</div></div>
+        <div class="cl"><span class="st">Clean</span><div class="ct"><b>Spacing and radius are on-scale.</b> Thumb inset binds to <code>space/2</code>, thumb size to <code>size/icon-sm</code> (16), track corner to <code>radius/full</code>, elevation to <code>elevation/1</code>. Only the track's own <code>36×20</code> dimensions are un-tokened — see next.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>Track dimensions have no named token.</b> <code>36×20</code> is off the <code>size/control-*</code> scale (28/36/44). Options: add <code>size/switch</code> (36) + <code>size/switch-h</code> (20), or accept them as component-intrinsic constants and document them here (this file does the latter for now).</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>No Focus, Hover, or Loading state.</b> Switch has fewer live states than Button — Focus is the important one; wire it via <code>:focus-visible</code> until an explicit variant is added.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>Thumb fill is a raw <code>#FFFFFF</code> in both modes on Off/On.</b> Intentional — the thumb has to read on both track colours — but worth capturing as a named token (<code>switch/thumb</code>) so future edits are one place, not four. On the two Disabled variants the thumb itself desaturates and drops its shadow — this pass's first draft mistakenly left the thumb pure white on Disabled on, which is why it read as "still On" rather than clearly inert; corrected here.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>State names use two conventions.</b> <code>Off</code> / <code>On</code> are title-cased words; <code>Disabled off</code> / <code>Disabled on</code> use a space and lower-case second word. Consider unifying (e.g. <code>Off</code>, <code>On</code>, <code>Disabled/Off</code>, <code>Disabled/On</code>) so an agent can parse the axis as <code>Disabled × Checked</code> instead of a flat 4-way enum.</div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-switch"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-switch</span></div>
+<script type="application/json" id="ds-contract-switch">
+{
+  "section": "switch",
+  "component": "Switch",
+  "nodeId": "40:614",
+  "variantCount": 4,
+  "axes": { "State": ["Off", "On", "Disabled off", "Disabled on"] },
+  "properties": [
+    { "name": "State", "type": "VARIANT", "default": "Off", "mantine": "checked + disabled" }
+  ],
+  "stateMap": {
+    "Off":          { "trackFill": "text/tertiary #928E87 (flat fill)",         "thumb": "#FFFFFF at x=2 (padding 2/20/2/2)",  "mantine": "checked={false}" },
+    "On":           { "trackFill": "accent/solid #045646",                       "thumb": "#FFFFFF at x=18 (padding 2/2/2/20)", "mantine": "checked={true} color='brand'" },
+    "Disabled off": { "trackFill": "border/strong #BCB8B1 (flat fill)",          "thumb": "#ECEBE7 (--sunken) at x=2, no shadow",  "mantine": "checked={false} disabled" },
+    "Disabled on":  { "trackFill": "border/strong #BCB8B1 (flat fill — SAME as Disabled off)", "thumb": "#ECEBE7 (--sunken) at x=18, no shadow", "mantine": "checked={true} disabled color='brand'" }
+  },
+  "dimensions": {
+    "trackWidth":  { "px": 36, "token": null,             "note": "off the size/control-* scale; component-intrinsic constant" },
+    "trackHeight": { "px": 20, "token": null,             "note": "matches size/icon-md visual weight (20)" },
+    "thumb":       { "px": 16, "token": "size/icon-sm" },
+    "inset":       { "px": 2,  "token": "space/2" },
+    "translate":   { "px": 16, "token": null,             "note": "computed: trackWidth − thumb − (2 × inset); never typed directly" },
+    "radius":      { "px": 9999, "token": "radius/full" },
+    "elevation":   { "value": "0 1 2 #0E0D0B0D",         "token": "elevation/1", "surface": "thumb only" }
+  },
+  "motion":  { "duration": "150ms", "easing": "cubic-bezier(.2,.7,.3,1)", "property": "transform (thumb translateX)" },
+  "focus":   { "ring": "focus/ring", "width": "2px", "offset": "2px", "figmaVariant": "MISSING — implement via :focus-visible" },
+  "rules": [
+    "Use Switch for settings that take effect immediately; use Checkbox for form choices that submit later.",
+    "Compose from the Switch component; never rebuild the pill from a div or hardcode the accent hex.",
+    "State always maps to Mantine's checked + disabled; never encode 'on' via a class or a colour override.",
+    "A disabled switch keeps its underlying value — Disabled on for locked-on, Disabled off for locked-off.",
+    "One size ships (36×20). No stretched or shrunken variants without a proper Figma variant first.",
+    "Every switch has a visible paired label. The switch itself has no built-in text state ('ON'/'OFF')."
+  ],
+  "forbidden": [
+    "Rebuilding the pill from a styled div",
+    "Hardcoding the accent hex (#045646) instead of accent/solid",
+    "Using Switch as a Save/Submit trigger",
+    "Rendering a disabled switch in the wrong position for its real value",
+    "Adding a redundant 'ON'/'OFF' text label alongside a coloured track"
+  ],
+  "iconSource": null,
+  "knownIssues": [
+    "Track's 36×20 dimensions have no named size/* token — accepted here as a component-intrinsic constant",
+    "No Focus/Hover state in the Figma component set — wire :focus-visible to focus/ring in code",
+    "Thumb fill is a raw #FFFFFF in both modes — worth promoting to a switch/thumb token",
+    "State axis mixes casing ('Off'/'On' vs 'Disabled off'/'Disabled on') — consider splitting into Disabled × Checked so the axis parses cleanly"
+  ],
+  "positives": [
+    "Complete 2×2 coverage of checked × disabled — no missing variants",
+    "Every spacing/radius/elevation value that has a token is bound to one (space/2, size/icon-sm, radius/full, elevation/1)"
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from <b>the design system Figma file</b> (node <span class="mono">40:614</span>) via the Figma MCP · 4 state variants, 1 component property. This is a first-pass documentation of the component — no Figma edits were made; findings are listed above for review before a consistency pass (as was done for Button on 2026-09-08 and Input on 2026-09-09).
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Switch component: playground, anatomy, all-states ---------- */
+(function(){
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const STATES=['Off','On','Disabled off','Disabled on'];
+  function sw(state){
+    const on=state==='On'||state==='Disabled on';
+    const dis=state==='Disabled off'||state==='Disabled on';
+    const cls=['pvsw'];
+    if(on)cls.push('on');
+    if(dis)cls.push('dis');
+    const attrs=`role="switch" aria-checked="${on}"${dis?' aria-disabled="true"':''}`;
+    return `<button class="${cls.join(' ')}" ${attrs} type="button"></button>`;
+  }
+  function pair(state,label,paired){
+    if(!paired)return sw(state);
+    const dis=state==='Disabled off'||state==='Disabled on';
+    return `<span class="pvsw-pair${dis?' dis':''}"><span class="pl">${e(label)}</span>${sw(state)}</span>`;
+  }
+  const st={state:'Off',label:'Enable notifications',paired:true};
+  const mount=document.getElementById('sw-mount');
+  const codeEl=document.getElementById('sw-code');
+  const figmaEl=document.getElementById('sw-figma');
+  function mantine(o){
+    const on=o.state==='On'||o.state==='Disabled on';
+    const dis=o.state==='Disabled off'||o.state==='Disabled on';
+    const a=[`label="${e(o.label)}"`,`checked={${on}}`];
+    if(dis)a.push('disabled');
+    a.push('color="brand"');
+    a.push('onChange={(e) => setValue(e.currentTarget.checked)}');
+    return `<Switch ${a.join(' ')} />`;
+  }
+  function render(){
+    if(mount)mount.innerHTML=pair(st.state,st.label,st.paired);
+    if(codeEl)codeEl.innerHTML=`<span class="tag">${e(mantine(st))}</span>`;
+    if(figmaEl)figmaEl.textContent=`State=${st.state}`;
+  }
+  wireSegs('#switch .seg', st, render);
+  const lab=document.getElementById('sw-label');
+  if(lab)lab.addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  function swt(id,key){const el=document.getElementById(id);if(!el)return;el.addEventListener('click',()=>{const on=!el.classList.contains('on');el.classList.toggle('on',on);el.setAttribute('aria-checked',String(on));st[key]=on;render();});}
+  swt('sw-pair','paired');
+  render();
+
+  const anat=document.getElementById('anat-sw');
+  if(anat)anat.innerHTML=sw('On');
+
+  const all=document.getElementById('sw-all');
+  if(all)all.innerHTML=STATES.map(s=>`<div class="pvsw-cell">${sw(s)}<span class="cap">${e(s)}</span></div>`).join('');
+})();
+</script>
+
+</body></html>

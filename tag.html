@@ -1,0 +1,273 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Tag — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item active" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="tag">
+      <div class="eyebrow"><span class="n">08</span> Components · Tag</div>
+      <h2 class="t-title-page">Tag <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Tags · 6 variants</span></h2>
+      <p class="lead">A pill-shaped status label — a status dot, a text label and a removable close icon — used to mark a record's state (verdict, capture status, project health). One variant axis, <b>Status</b>, resolves to 6 published variants, plus three component properties (label text, dot visibility, icon visibility). Unlike Button and Input, every fill/foreground pair here already binds correctly to its status token — the one thing this pass found is a size mismatch on the close icon (below).</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">toggle the axes — the preview and Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="tg-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Status</span><div class="seg" data-axis="status"><button data-v="Success" class="on">Success</button><button data-v="Danger">Danger</button><button data-v="Warning">Warning</button><button data-v="Info">Info</button><button data-v="Neutral">Neutral</button><button data-v="Accent">Accent</button></div></div>
+          <div class="ctl"><span class="lab">Label</span><input class="tin" id="tg-label" value="Label" maxlength="24" aria-label="Tag label"></div>
+          <div class="rowsw"><span>Show dot</span><button class="swt on" id="tg-dot" role="switch" aria-checked="true" aria-label="Show dot"></button></div>
+          <div class="rowsw"><span>Show close icon</span><button class="swt on" id="tg-icon" role="switch" aria-checked="true" aria-label="Show close icon"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React</span><span class="vn" id="tg-figma">Status=Success</span></div>
+        <pre id="tg-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">All statuses</h3><span class="note">every variant, default props</span></div>
+      <div class="panel tagrow" id="tg-all"></div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-tg"></div></div>
+        <ol>
+          <li><b>Container</b> — auto-layout row, fill by Status, <code>radius/full</code> (9999), padding <code>space/8</code> horizontal / <code>space/2</code> vertical, gap <code>space/4</code>. The only component in this file where every dimension already binds to a real token.</li>
+          <li><b>Status dot</b> — 6px filled circle in the status's solid color. Toggle with <code>showDot</code>.</li>
+          <li><b>Label</b> — <code>Caption</code> text style (12/16, Medium), colored with the status's <code>fg</code> token.</li>
+          <li><b>Close icon</b> — the <span class="mono">Cancel</span> glyph from the Icons library (§04 · now added to the catalog there), toggled with <code>showIcon</code>. <b>14×14 on five statuses, 16×16 on Accent</b> — see the flag below; 16 (<code>size/icon-sm</code>) is the only one of the two that is actually a token. Maps to Tabler/Lucide's <code>X</code> in code, matching the bare icon-name convention already used by Button's <code>Download</code>.</li>
+        </ol>
+      </div>
+
+      <div class="callout" style="border-color:var(--warning-border);background:var(--warning-bg);">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="var(--warning-fg)" stroke-width="1.8"><path d="M10 3 2 17h16L10 3Z" stroke-linejoin="round"/><path d="M10 9v4M10 15.5v.5" stroke-linecap="round"/></svg>
+        <div class="body"><b>Close-icon size is inconsistent across variants.</b> Success / Danger / Warning / Info / Neutral render the close icon at <code>14×14</code> — an off-scale size, since <code>size/icon-*</code> only defines 16 / 20 / 24. Accent alone renders it at <code>16×16</code> (<code>size/icon-sm</code>), which is the correct token. Pick one: rebind the other five to 16×16, or add a documented <code>size/icon-xs (14)</code> token if 14 is intentionally the dense-tag size — right now the five and the one disagree with no token backing either.</div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">the API an agent instantiates against</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">status</td><td class="val">VARIANT</td><td class="val">Success</td><td class="usage">Success · Danger · Warning · Info · Neutral · Accent</td><td class="mant">color + variant="light" (see map)</td></tr>
+            <tr><td class="tok">label</td><td class="val">TEXT</td><td class="val">"Label"</td><td class="usage">Any string</td><td class="mant">children</td></tr>
+            <tr><td class="tok">showDot</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">leftSection present</td></tr>
+            <tr><td class="tok">showIcon</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">rightSection={&lt;X onClick={{onRemove}}/&gt;}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Status → Mantine map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Status</th><th>Background</th><th>Foreground / dot</th><th>Mantine</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Success</td><td class="val">status/success/bg</td><td class="val">status/success/fg</td><td class="mant">color="green" variant="light"</td></tr>
+            <tr><td class="tok">Danger</td><td class="val">status/danger/bg</td><td class="val">status/danger/fg</td><td class="mant">color="red" variant="light"</td></tr>
+            <tr><td class="tok">Warning</td><td class="val">status/warning/bg</td><td class="val">status/warning/fg</td><td class="mant">color="yellow" variant="light"</td></tr>
+            <tr><td class="tok">Info</td><td class="val">status/info/bg</td><td class="val">status/info/fg</td><td class="mant">color="blue" variant="light"</td></tr>
+            <tr><td class="tok">Neutral</td><td class="val">bg/sunken</td><td class="val">text/secondary</td><td class="mant">color="gray" variant="light"</td></tr>
+            <tr><td class="tok">Accent</td><td class="val">accent/bg</td><td class="val">accent/fg</td><td class="mant">color="brand" variant="light"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;"><b>Neutral</b> and <b>Accent</b> are the two statuses that don't draw from a <code>status/*</code> family — Neutral borrows the generic surface pair (<code>bg/sunken</code> + <code>text/secondary</code>), Accent borrows the brand pair (<code>accent/bg</code> + <code>accent/fg</code>). Both are legitimate semantic tokens, so this isn't a binding defect — just worth knowing there are really two token families feeding one component.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>The tag itself is not interactive — render it as a <code>&lt;span&gt;</code> (or <code>Badge</code>'s default element), not a button, unless the whole tag is clickable.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The close icon <b>is</b> interactive when <code>showIcon</code> is true — render it as a real <code>&lt;button aria-label="Remove {label}"&gt;</code>, never a bare <code>&lt;img&gt;</code> or <code>&lt;svg&gt;</code> with a click handler.</p></div>
+        <div class="rule"><span class="num mono"></span><p><span style="color:var(--warning-fg);">Gap: no focus-visible style is defined for the close icon in Figma.</span> Wire <code>:focus-visible</code> to <code>focus/ring</code> in code until a state is added.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The status dot is decorative — mark it <code>aria-hidden="true"</code>; the status must also be conveyed by the label text, never by color/dot alone.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Map <b>status</b> to Mantine exactly: Success=green, Danger=red, Warning=yellow, Info=blue, Neutral=gray, Accent=brand — always with <code>variant="light"</code>. Never hand-pick a pastel color to fake a status.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Use <b>Neutral</b> for states with no positive/negative meaning (e.g. "Draft", "Unlabeled") and <b>Accent</b> for categorical / brand-owned tags — not as a stand-in for Info.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Show the close icon only on tags the user can remove (e.g. an active filter chip). A read-only status tag on a table row should set <code>showIcon=false</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Keep the dot on by default — it's what makes status scannable in a dense list at a glance. Turn it off only in already-color-coded contexts (e.g. inside a colored banner).</p></div>
+        <div class="rule"><span class="num mono"></span><p>Compose from the <code>Tags</code> component and its props; never rebuild a tag from a styled <code>div</code> or hardcode a status hex.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>&lt;Badge color="green" variant="light" leftSection={dot} /&gt;</code> for Success</li>
+          <li>Give the close button an <code>aria-label</code> that names the tag</li>
+          <li>Reserve Danger for failed / rejected states, not warnings</li>
+          <li>Let the label text carry the meaning, not just the color</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Rebuild the pill from a styled <code>div</code> with a hardcoded hex</li>
+          <li>Ship a close icon with no accessible name</li>
+          <li>Use Accent as a generic "Info" substitute</li>
+          <li>Leave the 14px / 16px close-icon mismatch unresolved in new work — pick one size and bind it</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Changelog</h3><span class="note">findings from this pass · Figma not yet edited</span></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Close icon wasn't sourced from the actual Icons library.</b> The first draft of this page hand-drew its own X glyph and referenced a non-existent <code>&lt;Dot/&gt;</code> icon component in the code sample <span class="arrow">→</span> <code>Cancel</code> is now added to the §04 Icons catalog (it was a real, used-but-uncatalogued icon), and the code sample maps it to <code>X</code> — the same bare, Lucide/Tabler-style icon-name convention Button already uses for <code>Download</code>. The status dot is now modeled as a plain <code>span</code>, not a fabricated icon component.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>Close-icon size disagrees across variants.</b> Success/Danger/Warning/Info/Neutral render <code>Cancel</code> at 14×14 (off-scale); Accent renders it at 16×16 (<code>size/icon-sm</code>, on-scale). Recommend rebinding the five to 16×16 unless a 14px token is deliberately added.</div></div>
+        <div class="cl"><span class="st">Found</span><div class="ct"><b>No Focus state on the close icon.</b> The component has no interaction states at all (Default only) — add one, or wire <code>:focus-visible</code> to <code>focus/ring</code> in code.</div></div>
+        <div class="cl"><span class="st">Clean</span><div class="ct"><b>Spacing is fully bound.</b> Padding (<code>space/8</code>/<code>space/2</code>), gap (<code>space/4</code>) and radius (<code>radius/full</code>) all resolve to real tokens — no raw pixels, unlike the metric-card and input-height issues found elsewhere in this file.</div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-tag"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-tag</span></div>
+<script type="application/json" id="ds-contract-tag">
+{
+  "section": "tag",
+  "component": "Tags",
+  "nodeId": "792:5677",
+  "variantCount": 6,
+  "axes": { "status": ["Success", "Danger", "Warning", "Info", "Neutral", "Accent"] },
+  "properties": [
+    { "name": "status",   "type": "VARIANT", "default": "Success", "mantine": "color + variant='light'" },
+    { "name": "label",    "type": "TEXT",    "default": "Label",   "mantine": "children" },
+    { "name": "showDot",  "type": "BOOLEAN", "default": true,      "mantine": "leftSection present" },
+    { "name": "showIcon", "type": "BOOLEAN", "default": true,      "mantine": "rightSection / onRemove present" }
+  ],
+  "statusMap": {
+    "Success": { "bg": "status/success/bg", "fg": "status/success/fg", "mantine": "color='green' variant='light'" },
+    "Danger":  { "bg": "status/danger/bg",  "fg": "status/danger/fg",  "mantine": "color='red' variant='light'" },
+    "Warning": { "bg": "status/warning/bg", "fg": "status/warning/fg", "mantine": "color='yellow' variant='light'" },
+    "Info":    { "bg": "status/info/bg",    "fg": "status/info/fg",    "mantine": "color='blue' variant='light'" },
+    "Neutral": { "bg": "bg/sunken",         "fg": "text/secondary",    "mantine": "color='gray' variant='light'" },
+    "Accent":  { "bg": "accent/bg",         "fg": "accent/fg",         "mantine": "color='brand' variant='light'" }
+  },
+  "dimensions": {
+    "paddingX": "space/8", "paddingY": "space/2", "gap": "space/4", "radius": "radius/full",
+    "dot": "6px (not a size/* token — categorical, not an icon)",
+    "closeIcon": { "fiveVariants": "14px (off-scale)", "accent": "16px (size/icon-sm)" }
+  },
+  "typography": { "label": "Caption 12/16 Medium, colored by status fg" },
+  "rules": [
+    "Map status to Mantine exactly: Success=green, Danger=red, Warning=yellow, Info=blue, Neutral=gray, Accent=brand, always variant='light'.",
+    "Neutral is for states with no positive/negative valence; Accent is for categorical/brand tags — neither substitutes for Info.",
+    "Show the close icon only on removable tags; read-only status tags set showIcon=false.",
+    "The dot is decorative (aria-hidden); status must also be conveyed by the label text.",
+    "The close icon must be a real <button aria-label='Remove {label}'>, not a bare clickable svg/img."
+  ],
+  "forbidden": [
+    "Hardcoding a status hex instead of the status/* (or bg/sunken, accent/*) token pair",
+    "A close icon with no accessible name",
+    "Using Accent as a generic substitute for Info",
+    "Rebuilding the tag from a styled div"
+  ],
+  "iconSource": { "name": "Cancel", "catalog": "section 04 (Icons)", "codeMapping": "X (Lucide/Tabler, bare-name convention — matches Button's Download)" },
+  "knownIssues": [
+    "Close icon is 14px (off-scale) on 5 of 6 variants and 16px (size/icon-sm, on-scale) on Accent only — pick one and rebind",
+    "No Focus/Hover state defined on the close icon — wire :focus-visible to focus/ring in code",
+    "Component is named 'Tags' (plural) though it represents a single tag instance"
+  ],
+  "positives": [
+    "Every spacing/radius value (space/8, space/2, space/4, radius/full) is already bound to a real token — no raw-pixel defects, unlike Button/Input/metric-card findings elsewhere in this file"
+  ]
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from <b>the design system Figma file</b> (node <span class="mono">792:5677</span>) via the Figma MCP · 6 status variants, 3 component properties. No Figma edits were made in this pass — findings are listed above for review before a consistency pass (as was done for Button on 2026-09-08 and Input on 2026-09-09).
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Tag component: playground, anatomy, all-statuses ---------- */
+(function(){
+  const X='<svg class="x" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 3.5 10.5 10.5M10.5 3.5 3.5 10.5" stroke-linecap="round"/></svg>';
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function tag(o){
+    const cls=['pvtag','tp-'+o.status];
+    const dot=o.dot?'<span class="dot" aria-hidden="true"></span>':'';
+    const x=o.icon?X:'';
+    return `<span class="${cls.join(' ')}">${dot}<span>${e(o.label||'')}</span>${x}</span>`;
+  }
+  const STATUSES=['Success','Danger','Warning','Info','Neutral','Accent'];
+  const st={status:'Success',dot:true,icon:true,label:'Label'};
+  const mount=document.getElementById('tg-mount');
+  const codeEl=document.getElementById('tg-code');
+  const figmaEl=document.getElementById('tg-figma');
+  const COLOR={Success:'green',Danger:'red',Warning:'yellow',Info:'blue',Neutral:'gray',Accent:'brand'};
+  function mantine(o){
+    const a=[`color="${COLOR[o.status]}"`,`variant="light"`];
+    if(o.dot)a.push('leftSection={<span className={classes.dot} />}');
+    if(o.icon)a.push(`rightSection={<X size={${o.status==='Accent'?16:14}} onClick={onRemove} />}`);
+    return `<Badge ${a.join(' ')}>`;
+  }
+  function render(){
+    if(mount)mount.innerHTML=tag(st);
+    if(codeEl)codeEl.innerHTML=`<span class="tag">${e(mantine(st))}</span>${e(st.label||'Label')}<span class="tag">&lt;/Badge&gt;</span>`;
+    if(figmaEl)figmaEl.textContent=`Status=${st.status}, showDot=${st.dot}, showIcon=${st.icon}`;
+  }
+  wireSegs('#tag .seg', st, render);
+  const lab=document.getElementById('tg-label');
+  if(lab)lab.addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  function sw(id,key){const el=document.getElementById(id);if(!el)return;el.addEventListener('click',()=>{const on=!el.classList.contains('on');el.classList.toggle('on',on);el.setAttribute('aria-checked',String(on));st[key]=on;render();});}
+  sw('tg-dot','dot'); sw('tg-icon','icon');
+  render();
+
+  const anat=document.getElementById('anat-tg');
+  if(anat)anat.innerHTML=tag({status:'Success',dot:true,icon:true,label:'Label'});
+
+  const all=document.getElementById('tg-all');
+  if(all)all.innerHTML=STATUSES.map(s=>tag({status:s,dot:true,icon:true,label:s})).join('');
+})();
+</script>
+
+</body></html>

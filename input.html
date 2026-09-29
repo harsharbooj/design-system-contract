@@ -1,0 +1,425 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Input — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item active" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="input">
+      <div class="eyebrow"><span class="n">07</span> Components · Input</div>
+      <h2 class="t-title-page">Input <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Input · 16 variants (was 5) · consolidated 2026-09-09</span></h2>
+      <p class="lead">The form primitive — a bordered control (label · optional leading icon · value / placeholder · optional trailing affordance) sitting under a label row and above a helper or error line. Two variant axes — <b>State</b> × <b>Type</b> — resolve to 16 published variants, plus four component properties (placeholder text, caption toggle, mandatory toggle, leading-icon toggle). All fills, strokes, labels and icons bind to semantic tokens; this page reflects the component <b>after the consistency pass</b> below (label typography, mandatory-asterisk font, helper color, border bindings and icon fills all fixed in Figma on 2026-09-09).</p>
+
+      <div class="callout" style="border-color:var(--warning-border);background:var(--warning-bg);">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="var(--warning-fg)" stroke-width="1.8"><path d="M10 3 2 17h16L10 3Z" stroke-linejoin="round"/><path d="M10 9v4M10 15.5v.5" stroke-linecap="round"/></svg>
+        <div class="body"><b>Duplicate component still present.</b> An older 5-variant <code>Input</code> (nodeId <code>39:576</code>) carries the correct State axis (Default · Hover · Focus · Error · Disabled) but no Type. The current one (<code>768:5264</code>) added Type but replaced the interaction states with <code>Completed</code>/<code>Active</code>. <b>Next pass:</b> merge — keep the Type axis, restore the full State machine, delete the legacy set, then re-instance across every screen. Do not compose from either variant until the merge lands.</div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">toggle the axes — the preview and Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="ip-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Type</span><div class="seg" data-axis="type"><button data-v="Text" class="on">Text</button><button data-v="Select">Select</button><button data-v="Multiselect">Multiselect</button><button data-v="Textarea">Textarea</button></div></div>
+          <div class="ctl"><span class="lab">State</span><div class="seg" data-axis="state"><button data-v="Default" class="on">Default</button><button data-v="Hover">Hover</button><button data-v="Focus">Focus</button><button data-v="Error">Error</button><button data-v="Disabled">Disabled</button></div></div>
+          <div class="ctl"><span class="lab">Label</span><input class="tin" id="ip-label" value="Username" maxlength="32" aria-label="Field label"></div>
+          <div class="ctl"><span class="lab">Placeholder</span><input class="tin" id="ip-ph" value="Enter your username" maxlength="48" aria-label="Placeholder"></div>
+          <div class="rowsw"><span>Show label</span><button class="swt on" id="ip-lbl" role="switch" aria-checked="true" aria-label="Show label"></button></div>
+          <div class="rowsw"><span>Show leading icon</span><button class="swt" id="ip-lead" role="switch" aria-checked="false" aria-label="Leading icon"></button></div>
+          <div class="rowsw"><span>Mandatory (*)</span><button class="swt on" id="ip-req" role="switch" aria-checked="true" aria-label="Mandatory"></button></div>
+          <div class="rowsw"><span>Caption / helper</span><button class="swt on" id="ip-cap" role="switch" aria-checked="true" aria-label="Caption"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React</span><span class="vn" id="ip-figma">Type=Text, State=Default</span></div>
+        <pre id="ip-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-ip"></div></div>
+        <ol>
+          <li><b>Label row</b> — <code>Label</code> text style (13/18, 500) in <code>text/primary</code>, optional red asterisk in <code>text/destructive</code>. Vertical gap to the caption is <code>space/2</code>.</li>
+          <li><b>Helper caption</b> — <code>Caption</code> text style (12/16, 500) in <code>text/secondary</code>. Hidden when <code>Caption text</code> is off.</li>
+          <li><b>Control container</b> — <code>bg/surface</code> fill, <code>border/default</code> stroke (1px), <code>radius/sm</code> (6). Single height that matches the Figma component; horizontal padding <code>space/12</code>. (No Size axis — Figma ships one height, and this doc mirrors that.)</li>
+          <li><b>Leading icon</b> — <code>size/icon-md</code> (20) in <code>icon/secondary</code>. Toggle with <code>Show leading icon</code>; gap to the value is <code>space/8</code>.</li>
+          <li><b>Value / placeholder</b> — <code>Body</code> style (14/22, 400). Value in <code>text/primary</code>, placeholder in <code>text/placeholder</code>; caret is <code>focus/ring</code>.</li>
+          <li><b>Trailing affordance</b> — Select uses a <code>Caret</code> (16, <code>icon/secondary</code>); Multiselect renders selection chips as the <b>Tag component (§08)</b> in the <code>Neutral</code> status, with the status <b>dot switched off</b> and the <b>close icon shown</b> alongside the label copy — no fabricated per-hue chip style; Textarea grows vertically.</li>
+          <li><b>Options popover</b> — Select and Multiselect open an option list on Focus/Active: <code>bg/surface</code>, <code>border/default</code>, <code>radius/md</code> (8), <code>shadow-pop</code>, 4px padding; each row is <code>Body</code> (14/22), <code>space/8</code> gap, checkmark in <code>accent/fg</code> for selected options. <span style="color:var(--warning-fg);">Missing as a Figma component — see changelog.</span></li>
+          <li><b>Error line</b> — <code>Caption</code> in <code>text/destructive</code>, added <b>below</b> the helper caption in Error state (the helper stays visible so the field never jumps); gap <code>space/2</code>.</li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">the API an agent instantiates against</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">State</td><td class="val">VARIANT</td><td class="val">Default</td><td class="usage">Default · Active · Completed · Error <span class="flag">gap: no Hover/Focus/Disabled</span></td><td class="mant">:hover · :focus-visible · [aria-invalid] · :disabled</td></tr>
+            <tr><td class="tok">Type</td><td class="val">VARIANT</td><td class="val">Text Input</td><td class="usage">Text Input · Select · Input box · Multiselect</td><td class="mant">TextInput · Select · Multiselect · Textarea</td></tr>
+            <tr><td class="tok">Label#841:0</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">label prop present</td></tr>
+            <tr><td class="tok">Place holder text#352:7</td><td class="val">TEXT</td><td class="val">"Placeholder text"</td><td class="usage">Any string</td><td class="mant">placeholder</td></tr>
+            <tr><td class="tok">Caption text#352:9</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">description present</td></tr>
+            <tr><td class="tok">Mandatory#352:11</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="mant">withAsterisk (required)</td></tr>
+            <tr><td class="tok">Left icon#597:17</td><td class="val">BOOLEAN</td><td class="val">false</td><td class="usage">true · false</td><td class="mant">leftSection present</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Two properties carry naming defects an agent should alias on the way into code: <code class="mono">Place holder text</code> should be <code class="mono">Placeholder text</code>, and the <code class="mono">Text Input</code> / <code class="mono">Input box</code> pair reads as duplicates — <code>Input box</code> is authored as a Textarea and should be renamed <code class="mono">Textarea</code>.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Type → Mantine map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Type</th><th>Container</th><th>Trailing</th><th>Mantine</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Text Input</td><td class="val">bg/surface + border/default</td><td class="val">—</td><td class="mant">&lt;TextInput/&gt;</td></tr>
+            <tr><td class="tok">Select</td><td class="val">bg/surface + border/default</td><td class="val">Caret + option list on open</td><td class="mant">&lt;Select/&gt;</td></tr>
+            <tr><td class="tok">Multiselect</td><td class="val">bg/surface + border/default (wraps)</td><td class="val">Tag §08 chips (Neutral, no dot, close icon) + option list on open</td><td class="mant">&lt;MultiSelect/&gt;</td></tr>
+            <tr><td class="tok">Input box (Textarea)</td><td class="val">bg/surface + border/default (aligns top)</td><td class="val">—</td><td class="mant">&lt;Textarea/&gt;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Every Type shares the same container recipe — only the trailing affordance and content-flow differ. Radius is <code class="mono">radius/sm</code> (6) across all four, though the current Figma component set binds <code class="mono">radius/xs</code> (4) — flagged in the changelog. Disabled + Loading tokens exist in the color system (<code>bg/sunken</code>, <code>text/disabled</code>) but have no matching Figma variant yet.</p>
+
+      <div class="subhead"><h3 class="t-title-section">State → CSS map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Code selector</th><th>Container</th><th>Border</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="mant">—</td><td class="val">bg/surface</td><td class="val">border/default · 1px</td></tr>
+            <tr><td class="tok">Hover <span class="flag">missing</span></td><td class="mant">:hover</td><td class="val">bg/surface</td><td class="val">border/strong · 1px</td></tr>
+            <tr><td class="tok">Focus <span class="flag">missing</span></td><td class="mant">:focus-visible</td><td class="val">bg/surface</td><td class="val">accent/border · 1.5px + focus/ring 2px halo</td></tr>
+            <tr><td class="tok">Active</td><td class="mant">:active + [data-active]</td><td class="val">bg/surface</td><td class="val">accent/border · 1.5px</td></tr>
+            <tr><td class="tok">Completed</td><td class="mant">[data-filled]</td><td class="val">bg/surface</td><td class="val">border/default · 1px + value in text/primary</td></tr>
+            <tr><td class="tok">Error</td><td class="mant">[aria-invalid="true"]</td><td class="val">bg/surface</td><td class="val">border/destructive · 1.5px; helper caption stays, error line adds below</td></tr>
+            <tr><td class="tok">Disabled <span class="flag">missing</span></td><td class="mant">:disabled, [aria-disabled="true"]</td><td class="val">bg/sunken</td><td class="val">border/default · 1px + text/disabled</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Render a native <code>&lt;input&gt;</code> / <code>&lt;textarea&gt;</code> / <code>&lt;select&gt;</code>. The label uses <code>&lt;label for="…"&gt;</code>; the helper caption is connected with <code>aria-describedby</code>; the error line uses the same attribute and adds <code>role="alert"</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Mandatory is signalled by the visible asterisk <b>and</b> a machine-readable <code>required</code> / <code>aria-required="true"</code>. Never rely on the asterisk alone.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Error binds <code>aria-invalid="true"</code>, swaps the border to <code>border/destructive</code> (1.5px) and replaces the helper caption with the error text — never remove the caption region silently, or the field jumps.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Focus is keyboard-visible via <code>focus/ring</code> as a 2px halo on top of the <code>accent/border</code> stroke. <span style="color:var(--warning-fg);">Gap: no <code>State=Focus</code> variant in Figma — wire <code>:focus-visible</code> in code until it is added.</span></p></div>
+        <div class="rule"><span class="num mono"></span><p>Leading icons are decorative (<code>aria-hidden="true"</code>). The Select caret is decorative too; the button that opens the menu owns the <code>aria-expanded</code>.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Map Type to Mantine exactly: <b>Text Input</b>→<code>&lt;TextInput&gt;</code>, <b>Select</b>→<code>&lt;Select&gt;</code>, <b>Multiselect</b>→<code>&lt;MultiSelect&gt;</code>, <b>Input box</b>→<code>&lt;Textarea&gt;</code>. Never build an input from a styled <code>div</code>.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Only one height ships in Figma today, and this component doc mirrors that — no Size axis. If a truly denser or larger input is needed, add it in Figma as a variant first, then document it here.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Label uses the <code>Label</code> text style (13/18, 500), helper uses <code>Caption</code> (12/16, 500) in <code>text/secondary</code>. Value is <code>Body</code> (14/22). Never restyle a Body to fake a label.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Error state carries a caption line — never rely on the red border alone. Clear the error on the next successful change; don't leave a stale message.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Reserve <b>Mandatory</b> for fields the submit will actually reject. A red asterisk on optional fields trains people to ignore it.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Use <code>&lt;TextInput label description withAsterisk error /&gt;</code> and its siblings</li>
+          <li>Set <code>leftSection</code> for a leading icon; keep <code>aria-hidden</code></li>
+          <li>Drive Error with <code>error</code> (sets <code>aria-invalid</code>) — never the border alone</li>
+          <li>Pair a <code>description</code> with every non-obvious field</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Rebuild an input from a styled <code>div</code> or hardcode <code>#D8D6D0</code></li>
+          <li>Use <code>Outfit</code> or another family for the mandatory asterisk</li>
+          <li>Use the 40px in-file height — round to 36 (<code>size/control-md</code>)</li>
+          <li>Ship a red border with no error text below it</li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Changelog — consistency pass</h3><span class="note">applied to Input in Figma on 2026-09-09 · fixes across all 16 variants</span></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Label off-scale font.</b> Every variant's label was set at <code>16/24</code> in Geist Medium (matches <code>Title/Sub</code>, not the <code>Label</code> style) <span class="arrow">→</span> rebound to <code>13/18</code> Geist Medium across all 16 variants.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Mandatory asterisk in a non-system font.</b> Rendered in <code>Outfit Medium</code>, violating the "only Geist and Geist Mono" rule <span class="arrow">→</span> rebound to <code>Geist Medium 13</code>, colour stays <code>text/destructive</code>.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Helper caption bound to text/primary.</b> The caption row read at the same emphasis as headings <span class="arrow">→</span> rebound to <code>text/secondary</code> across all 16 variants.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Container border defaulted to border/strong.</b> Inputs read one step too heavy against every card <span class="arrow">→</span> rebound to <code>border/default</code> (Default / Completed states, 1px).</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Active-state border unbound.</b> Active reused the default grey stroke, indistinguishable from resting <span class="arrow">→</span> rebound to <code>accent/border</code> at <code>stroke/medium</code> (1.5px).</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Error-state border unbound.</b> Only the value text turned red; the stroke stayed grey <span class="arrow">→</span> rebound to <code>border/destructive</code> at <code>stroke/medium</code> (1.5px).</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Leading-icon glyph raw #7A7A7A.</b> Not bound to any icon token, so it didn't flip in dark mode <span class="arrow">→</span> rebound to <code>icon/secondary</code>. Trailing chevron glyph got the same treatment.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>State axis is incomplete.</b> Only Default · Active · Completed · Error exist; the older 5-variant set (<code>39:576</code>) had Hover · Focus · Disabled. Merge into one component set that keeps every state <b>and</b> the Type axis, then delete the legacy component.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>Sizes are missing.</b> The component ships only at height 40 — off-scale (nearest tokens are 36 / 44). Add <code>Size=sm/md/lg</code> bound to <code>size/control-sm/-md/-lg</code>.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>Radius binds to radius/xs (4).</b> Should be <code>radius/sm</code> (6) to match every other control — rebind after the state/size expansion so it isn't repeated 16× and then again per size.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>External library variables in the Input Wrapper.</b> Padding and radius on the inner wrapper bind to a foreign library (variables prefixed <code>8756…</code>) — swap for the local <code>space/8</code>, <code>radius/xs</code> when the sizes land.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>Property name typo.</b> <code>Place holder text</code> should be <code>Placeholder text</code>. Rename after downstream code aliases have been updated so the swap doesn't silently break instances.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Error hid the helper caption.</b> The helper vanished on <code>State=Error</code>, so the field jumped and the description was lost <span class="arrow">→</span> helper now persists; the error line is added <b>below</b> it.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Missing Label toggle in docs.</b> Figma exposes <code>Label#841:0</code> (BOOLEAN, default true) but the earlier playground didn't; added a "Show label" switch, added the property row to the table and to the contract's <code>properties</code> array. The Mantine snippet drops the <code>label</code> prop and falls back to <code>aria-label</code> when the switch is off.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Select / Multiselect never opened.</b> Both types went straight from resting to filled without showing the option list. Focus and Active now render the bottom-sheet popover (<code>bg/surface</code>, <code>border/default</code>, <code>radius/md</code>, <code>shadow-pop</code>) with real options, matching the intent of the Figma variants.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Multiselect chips now use the Tag component (§08).</b> Earlier drafts painted a fabricated per-hue chip class; chips now instantiate the real <b>Tag</b> component with <code>status=Neutral</code>, <code>showDot=false</code>, <code>showIcon=true</code> — one component, one contract, and dismissible per selection.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Removed the Size axis from the Input playground and contract.</b> Figma only ships one height for Input, so the sm/md/lg toggle was a documentation invention — dropped alongside the sm/md/lg entries in the contract's <code>sizes</code> map. Adding a real Size axis is now an Open item, not a documented API.</div></div>
+        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Removed the variant matrix.</b> The playground + State→CSS map already carry every combination in a smaller footprint; the 4×7 grid was noise.</div></div>
+        <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>No dedicated popover / options-list component in Figma.</b> The dropdown shown here is composed from the design-system tokens; promote to a <code>Select · Options</code> component (or a shared <code>Menu</code>) and instance-swap it into the Select and Multiselect variants so the popover is not redrawn per screen.</div></div>
+      </div>
+      <p class="usage" style="margin-top:10px;">These edits change the <b>Input</b> component's variant <i>bindings</i> in Figma (label typography, mandatory-asterisk font, helper colour, border and icon tokens) — no primitive or semantic <i>values</i> changed. The Open items each add or restructure variants, so they need a design review before landing.</p>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-input"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-input</span></div>
+<script type="application/json" id="ds-contract-input">
+{
+  "section": "input",
+  "component": "Input",
+  "nodeId": "768:5264",
+  "variantCount": 16,
+  "legacyDuplicate": { "nodeId": "39:576", "variants": 5, "note": "Correct State axis (Default/Hover/Focus/Error/Disabled) but no Type axis — merge, then delete." },
+  "axes": {
+    "State": ["Default", "Active", "Completed", "Error"],
+    "Type":  ["Text Input", "Select", "Input box", "Multiselect"]
+  },
+  "properties": [
+    { "name": "Label",              "key": "841:0",  "type": "BOOLEAN", "default": true,               "mantine": "label prop present (falls back to aria-label when false)" },
+    { "name": "Place holder text", "key": "352:7",  "type": "TEXT",    "default": "Placeholder text", "mantine": "placeholder", "issue": "typo: 'Place holder' -> 'Placeholder'" },
+    { "name": "Caption text",       "key": "352:9",  "type": "BOOLEAN", "default": true,               "mantine": "description present" },
+    { "name": "Mandatory",          "key": "352:11", "type": "BOOLEAN", "default": true,               "mantine": "withAsterisk / required" },
+    { "name": "Left icon",          "key": "597:17", "type": "BOOLEAN", "default": false,              "mantine": "leftSection present" }
+  ],
+  "stateMachine": {
+    "Default":   { "css": null,                       "container": "bg/surface", "border": "border/default (1px)" },
+    "Hover":     { "css": ":hover",                   "container": "bg/surface", "border": "border/strong (1px)", "figmaVariant": "MISSING" },
+    "Focus":     { "css": ":focus-visible",           "container": "bg/surface", "border": "accent/border (1.5px) + focus/ring 2px halo", "figmaVariant": "MISSING" },
+    "Active":    { "css": ":active, [data-active]",   "container": "bg/surface", "border": "accent/border (1.5px)" },
+    "Completed": { "css": "[data-filled]",            "container": "bg/surface", "border": "border/default (1px)", "value": "text/primary" },
+    "Error":     { "css": "[aria-invalid=\"true\"]",  "container": "bg/surface", "border": "border/destructive (1.5px)", "note": "helper caption stays; error line in text/destructive is added below it (never replaces the helper)" },
+    "Disabled":  { "css": ":disabled, [aria-disabled=\"true\"]", "container": "bg/sunken", "border": "border/default (1px)", "text": "text/disabled", "figmaVariant": "MISSING" }
+  },
+  "sizes": {
+    "_note": "No Size axis. Figma ships one height for Input; the component doc mirrors that. Any Size axis is an Open changelog item, not a documented API."
+  },
+  "types": {
+    "Text Input":  { "trailing": "none",              "mantine": "TextInput" },
+    "Select":      { "trailing": "Caret (icon/secondary, 16) + options popover on Focus/Active", "mantine": "Select"   },
+    "Multiselect": { "trailing": "Tag §08 chips (status='Neutral', showDot=false, showIcon=true) + options popover on Focus/Active", "mantine": "MultiSelect", "chipComponent": "Tag §08 · status='Neutral' · showDot=false · showIcon=true — same component instance as documented in §08; do not fabricate a separate chip style" },
+    "Input box":   { "trailing": "none (grows vertically)", "mantine": "Textarea", "rename": "Textarea" }
+  },
+  "popover": {
+    "container": "bg/surface + border/default, radius/md (8), shadow-pop, 4px padding",
+    "option":    "Body 14/22, space/8 gap, hover bg/sunken, selected fg accent, check in accent/fg",
+    "note":      "No dedicated popover component in Figma yet — promote to a shared Menu / Select Options component"
+  },
+  "typography": {
+    "label":       "Label 13/18 Medium in text/primary; asterisk in text/destructive at same size",
+    "helper":      "Caption 12/16 Medium in text/secondary",
+    "value":       "Body 14/22 Regular in text/primary; placeholder in text/placeholder",
+    "error":       "Caption 12/16 Medium in text/destructive"
+  },
+  "rules": [
+    "Map Type to Mantine exactly: TextInput / Select / MultiSelect / Textarea; never build from a styled div.",
+    "Medium (36) is default; Small (28) for dense contexts; Large (44) for prominent single-field forms.",
+    "Label = Label 13/18; helper = Caption 12/16 in text/secondary; value = Body 14/22.",
+    "Error always carries a caption line; never rely on the red border alone.",
+    "Mandatory means the submit will reject the field — never a decorative asterisk.",
+    "All fills, strokes, labels and icons bind to semantic tokens (bg/*, text/*, border/*, icon/*, accent/*, status/*)."
+  ],
+  "forbidden": [
+    "Hardcoding a border hex (e.g. #D8D6D0) instead of border/default",
+    "Using a non-Geist family (Outfit, Inter) for the label or asterisk",
+    "Shipping the 40px off-scale height into new work",
+    "A red border in Error with no caption below it",
+    "Binding a container fill to a primitive (neutral/0, brand/*)",
+    "Composing an input from a styled div"
+  ],
+  "changelog": {
+    "date": "2026-09-09",
+    "target": "Input (768:5264) — all 16 variants (bindings only; variable values unchanged)",
+    "fixed": [
+      "Label typography: 16/24 Geist Medium -> 13/18 Geist Medium",
+      "Mandatory asterisk: Outfit Medium 16 -> Geist Medium 13",
+      "Helper caption color: text/primary -> text/secondary",
+      "Container border (Default/Completed): border/strong -> border/default (1px)",
+      "Container border (Active): border/strong -> accent/border (1.5px)",
+      "Container border (Error): border/strong -> border/destructive (1.5px)",
+      "Leading and trailing icon glyphs: raw #7A7A7A -> icon/secondary",
+      "Docs: Error state no longer hides the helper caption; error line renders below it",
+      "Docs: added Show-label toggle mirroring Figma's Label#841:0 property",
+      "Docs: Select and Multiselect render the options popover on Focus/Active",
+      "Docs: Multiselect chips now instantiate the Tag component (§08) with status='Neutral', showDot=false, showIcon=true — replaces the earlier per-hue chip class",
+      "Docs: removed the Type×State variant matrix (redundant with the playground + State→CSS map)",
+      "Docs: removed the Size axis from the playground and the contract's sizes map — Figma ships one height; any Size axis is now an Open item, not a documented API"
+    ],
+    "open": [
+      "Merge 5-variant legacy (39:576) into 16-variant set — restore Hover/Focus/Disabled and keep Type",
+      "Add Size axis (sm/md/lg) bound to size/control-sm/-md/-lg — drop the off-scale 40px height",
+      "Rebind container radius from radius/xs (4) to radius/sm (6) to match every other control",
+      "Swap the external-library variables on the Input Wrapper for local space/* and radius/xs",
+      "Rename properties: 'Place holder text' -> 'Placeholder text'; variant 'Input box' -> 'Textarea'",
+      "Promote the options popover to a shared Menu / Select Options component and instance-swap it into Select and Multiselect variants"
+    ]
+  }
+}
+</script>
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Input component: playground, anatomy ---------- */
+(function(){
+  const USER='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c1.4-3 3.6-4.5 6-4.5s4.6 1.5 6 4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const CARET='<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.5 8 10 12.5 14.5 8Z"/></svg>';
+  const X='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 2.5 9.5 9.5M9.5 2.5 2.5 9.5" stroke-linecap="round"/></svg>';
+  const ALERT='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v3M6 8.4v.2" stroke-linecap="round"/></svg>';
+  const CHECK='<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.5 6.5 5 9l4.5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  // Multiselect chip = the Tag component (§08) with status="Neutral", showDot=false, showIcon=true.
+  // No dot (aria-hidden dot span omitted), close icon rendered, label copy shown.
+  const tagChip=(text)=>`<span class="ip-tag" data-status="Neutral" data-show-dot="false" data-show-icon="true">
+    <span class="tx">${e(text)}</span>
+    <button class="rm" aria-label="Remove ${e(text)}">${X}</button></span>`;
+  const dropdown=(items,active)=>`<div class="pvpop" role="listbox" aria-label="Options">
+    ${items.map((it,i)=>`<div class="pvopt${active===i?' is-active':''}${it.selected?' is-sel':''}" role="option" aria-selected="${it.selected?'true':'false'}">
+      <span class="pvchk" aria-hidden="true">${it.selected?CHECK:''}</span><span>${e(it.label)}</span>
+    </div>`).join('')}
+  </div>`;
+
+  function field(o){
+    const state=o.state||'Default';
+    const type=o.type||'Text';
+    const req=o.req===undefined?true:o.req;
+    const cap=o.cap===undefined?true:o.cap;
+    const lbl=o.lbl===undefined?true:o.lbl;
+    const lead=o.lead===false?false:!!o.lead;
+    const label=o.label||'Username';
+    const ph=o.ph||'Enter your username';
+    const helper=o.helper||'Add the current city you are in';
+    const errText='Please enter a valid value';
+    const isOpen=state==='Focus'||state==='Active';
+    const stCls=[
+      'pvctl','sz-md','tp-'+type,'st-'+state,
+      state==='Focus'?'st-Focus':'',
+      state==='Error'?'st-Error':'',
+      state==='Disabled'?'st-Disabled':'',
+      isOpen&&(type==='Select'||type==='Multiselect')?'is-open':''
+    ].filter(Boolean).join(' ');
+    let leadIcon=lead?`<span class="glyph" aria-hidden="true">${USER}</span>`:'';
+    let content=''; let popover='';
+    if(type==='Select'){
+      const selVal=state==='Completed'?'Editor':'';
+      content=`<input class="val" value="${e(selVal)}" placeholder="${e(ph)}" ${state==='Disabled'?'disabled':''} readonly aria-haspopup="listbox" aria-expanded="${isOpen?'true':'false'}">
+               <span class="glyph caret" aria-hidden="true">${CARET}</span>`;
+      if(isOpen){
+        popover=dropdown([
+          {label:'Admin'},{label:'Editor',selected:state==='Completed'},{label:'Viewer'},{label:'Guest'}
+        ], state==='Focus'?1:0);
+      }
+    } else if(type==='Multiselect'){
+      // Chips = Tag §08 (status="Neutral", showDot=false, showIcon=true). Label copy + close icon.
+      const sels=state==='Completed'||state==='Active'||state==='Focus'
+        ? ['Editor','Viewer','Guest']
+        : (state==='Error'?['Editor']:[]);
+      const chips=sels.map(t=>tagChip(t)).join('');
+      content=chips+
+              `<input class="val" placeholder="${sels.length?'':e(ph)}" ${state==='Disabled'?'disabled':''} aria-haspopup="listbox" aria-expanded="${isOpen?'true':'false'}">
+               <span class="glyph caret" aria-hidden="true">${CARET}</span>`;
+      if(isOpen){
+        const selNames=new Set(sels);
+        popover=dropdown([
+          {label:'Admin'},{label:'Editor',selected:selNames.has('Editor')},{label:'Viewer',selected:selNames.has('Viewer')},{label:'Guest',selected:selNames.has('Guest')},{label:'Owner'}
+        ], 0);
+      }
+    } else if(type==='Textarea'){
+      content=`<textarea class="val" rows="3" placeholder="${e(ph)}" ${state==='Disabled'?'disabled':''}>${state==='Completed'||state==='Active'?'A short answer that the user has typed in.':''}</textarea>`;
+    } else {
+      const val=state==='Completed'||state==='Active'?'user@example.com':'';
+      content=`<input class="val" value="${e(val)}" placeholder="${e(ph)}" ${state==='Disabled'?'disabled':''} ${state==='Error'?'aria-invalid="true"':''}>`;
+    }
+    // helper caption ALWAYS shows (even in Error) — error line is added below it
+    return `<div class="pvfield" data-state="${state}">
+      ${lbl?`<div class="lab"><label>${e(label)}${req?' <span class="req">*</span>':''}</label></div>`:''}
+      ${cap?`<div class="help">${e(helper)}</div>`:''}
+      <div class="pvwrap"><div class="${stCls}" role="group">${leadIcon}${content}</div>${popover}</div>
+      ${state==='Error'?`<div class="err" role="alert"><span class="glyph" style="width:12px;height:12px;">${ALERT}</span>${errText}</div>`:''}
+    </div>`;
+  }
+
+  const st={type:'Text',state:'Default',lead:false,req:true,cap:true,lbl:true,label:'Username',ph:'Enter your username'};
+  const mount=document.getElementById('ip-mount');
+  const codeEl=document.getElementById('ip-code');
+  const figmaEl=document.getElementById('ip-figma');
+  function mantine(o){
+    const map={Text:'TextInput',Select:'Select',Multiselect:'MultiSelect',Textarea:'Textarea'};
+    const cmp=map[o.type]||'TextInput';
+    const a=[];
+    if(o.lbl)a.push(`label="${e(o.label)}"`);
+    a.push(`placeholder="${e(o.ph)}"`);
+    if(o.cap)a.push(`description="${e('Add the current city you are in')}"`);
+    if(o.req&&o.lbl)a.push('withAsterisk');
+    if(o.lead)a.push('leftSection={<IconUser size={18} />}');
+    if(o.state==='Error')a.push('error="Please enter a valid value"');
+    if(o.state==='Disabled')a.push('disabled');
+    if(!o.lbl)a.push('aria-label="'+e(o.label)+'"');
+    return `<${cmp} ${a.join(' ')} />`;
+  }
+  function render(){
+    if(mount)mount.innerHTML=field(st);
+    if(codeEl)codeEl.innerHTML=`<span class="tag">${e(mantine(st))}</span>`;
+    if(figmaEl)figmaEl.textContent=`Type=${st.type}, State=${st.state}, label=${st.lbl}, mandatory=${st.req}, leftIcon=${st.lead}, caption=${st.cap}`;
+  }
+  wireSegs('#input .seg', st, render);
+  const lab=document.getElementById('ip-label');
+  if(lab)lab.addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  const ph=document.getElementById('ip-ph');
+  if(ph)ph.addEventListener('input',ev=>{st.ph=ev.target.value;render();});
+  function sw(id,key){const el=document.getElementById(id);if(!el)return;el.addEventListener('click',()=>{const on=!el.classList.contains('on');el.classList.toggle('on',on);el.setAttribute('aria-checked',String(on));st[key]=on;render();});}
+  sw('ip-lead','lead'); sw('ip-req','req'); sw('ip-cap','cap'); sw('ip-lbl','lbl');
+  render();
+
+  const anat=document.getElementById('anat-ip');
+  if(anat)anat.innerHTML=field({type:'Text',state:'Focus',lead:true,req:true,cap:true,lbl:true,label:'Username',ph:'Enter your username'});
+})();
+</script>
+
+</body></html>

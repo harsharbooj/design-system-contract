@@ -1,0 +1,222 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Spacing & Grid — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item active" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="spacing">
+      <div class="eyebrow"><span class="n">03</span> Spacing &amp; Grid</div>
+      <h2 class="t-title-page">Spacing &amp; grid</h2>
+      <p class="lead">A 4px base with an 8-anchored scale (one 2px half-step). Radius, stroke and named sizes round out 34 dimension tokens. Layout is a fixed 240px sidebar, a 56px top bar and a 1200px max content column; content padding is 32px with a 40px bottom. Spacing is a <b>binding contract</b>: every component gap and padding must bind to a <code>space/*</code> variable, never a typed pixel — see the binding rule below.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Spacing scale</h3><span class="note">base 4px · bars are proportional</span></div>
+      <div class="panel" id="spacing-scale"></div>
+      <p class="usage" style="margin-top:10px;">This is the <b>complete</b> source list — 13 tokens, no implied intermediate steps: <code class="mono">space/0</code>=0, <code class="mono">space/2</code>=2, <code class="mono">space/4</code>=4, <code class="mono">space/8</code>=8, <code class="mono">space/12</code>=12, <code class="mono">space/16</code>=16, <code class="mono">space/20</code>=20, <code class="mono">space/24</code>=24, <code class="mono">space/32</code>=32, <code class="mono">space/40</code>=40, <code class="mono">space/48</code>=48, <code class="mono">space/52</code>=52, <code class="mono">space/64</code>=64. Any value not in this list (6, 10, 14, 18, …) is <b>not</b> a token.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Radius, stroke &amp; sizes</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Token</th><th>Value</th><th>Mantine prop / var</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">radius/xs</td><td class="val">4px</td><td class="mant">radius="xs"</td><td class="usage">Segmented-control segments, small chips</td></tr>
+            <tr><td class="tok">radius/sm</td><td class="val">6px</td><td class="mant">radius="sm" *</td><td class="usage">Buttons, inputs, nav items</td></tr>
+            <tr><td class="tok">radius/md</td><td class="val">8px</td><td class="mant">radius="md"</td><td class="usage">Cards, panels, banners</td></tr>
+            <tr><td class="tok">radius/lg</td><td class="val">12px</td><td class="mant">radius="lg" *</td><td class="usage">Large cards, modals</td></tr>
+            <tr><td class="tok">radius/xl</td><td class="val">16px</td><td class="mant">radius="xl" *</td><td class="usage">Feature surfaces</td></tr>
+            <tr><td class="tok">radius/full</td><td class="val">9999px</td><td class="mant">radius="9999"</td><td class="usage">Pills, avatars, dots</td></tr>
+            <tr><td class="tok">stroke/thin</td><td class="val">1px</td><td class="mant">bd / borderWidth</td><td class="usage">Default borders &amp; dividers</td></tr>
+            <tr><td class="tok">stroke/medium</td><td class="val">1.5px</td><td class="mant">borderWidth</td><td class="usage">Hover / selected emphasis</td></tr>
+            <tr><td class="tok">stroke/thick</td><td class="val">2px</td><td class="mant">borderWidth</td><td class="usage">Focus ring, active tab underline</td></tr>
+            <tr><td class="tok">size/control-sm</td><td class="val">28px</td><td class="mant">size="sm" (h)</td><td class="usage">Compact buttons/inputs</td></tr>
+            <tr><td class="tok">size/control-md</td><td class="val">36px</td><td class="mant">size="md" (h)</td><td class="usage">Default control height</td></tr>
+            <tr><td class="tok">size/control-lg</td><td class="val">44px</td><td class="mant">size="lg" (h)</td><td class="usage">Prominent CTAs</td></tr>
+            <tr><td class="tok">size/icon-sm · md · lg</td><td class="val">16 · 20 · 24px</td><td class="mant">Icon size</td><td class="usage">Icon glyph sizes (default 20)</td></tr>
+            <tr><td class="tok">size/avatar-sm · md · lg</td><td class="val">24 · 28 · 32px</td><td class="mant">Avatar size</td><td class="usage">Avatar diameters</td></tr>
+            <tr><td class="tok">size/sidebar</td><td class="val">240px</td><td class="mant">other.sidebarW</td><td class="usage">Fixed left navigation width</td></tr>
+            <tr><td class="tok">size/topbar</td><td class="val">56px</td><td class="mant">other.topbarH</td><td class="usage">Global top bar height</td></tr>
+            <tr><td class="tok">size/content-max</td><td class="val">1200px</td><td class="mant">Container size="xl"</td><td class="usage">Max content column width</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">* Mantine's default radius scale is xs2 / sm4 / md8 / lg16 / xl32 — only <code class="mono">radius/md</code> maps 1:1. The starred rows need custom <code class="mono">theme.radius</code> keys to preserve 6 / 12 / 16px. No breakpoint variables are defined in Figma — responsive rules are currently unmapped.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p><b>Binding rule (hard requirement).</b> Every Auto Layout gap and padding <b>MUST</b> be bound to a <code>space/*</code> variable. A raw pixel value where a token exists is a <b>defect that must be flagged and the output stopped</b> — it is <b>not</b> an acceptable "matched-number" fallback (a bound <code>space/16</code> and a typed <code>16px</code> are not equivalent).</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>No interpolation.</b> Values that fall between steps (<code>6</code>, <code>10</code>, <code>14</code>, <code>18</code>) are <b>not tokens</b>. Either round to the nearest existing step and bind, or promote the value to a real token first. Never interpolate a between-steps number.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>Layout exception.</b> Page-level / editorial layout spacing — outer page margins and chapter-gap spacing in a documentation layout — <b>MAY</b> be off-scale; this is a sanctioned exception. Component- and content-level spacing (card padding, row/stack gaps, list items) <b>MUST</b> bind — no exceptions, and the page-margin exception must never be used inside a component.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Card padding is <code>space/16</code>; comfortable cards use <code>space/20</code>. The KPI cards' <b>18px</b> vertical padding is off-scale — round to <code>space/16</code> or <code>space/20</code> and bind.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Radius is role-based (<code>radius/sm</code> controls, <code>radius/md</code> cards, <code>radius/full</code> pills), and layout dims — sidebar <code>240</code>, top bar <code>56</code>, content max <code>1200</code>, page padding <code>32</code>/<code>40</code> — come from <code>size/*</code> tokens, never literals.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Avoid the one-off <code>space/52</code> in new work; prefer <code>space/48</code> or <code>space/64</code> so the scale stays legible to the agent.</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Set gaps with <code>gap="md"</code> (16) between card groups</li>
+          <li>Round the KPI card to <code>space/20</code> vertical padding</li>
+          <li>Use <code>radius/md</code> on cards, <code>radius/sm</code> on buttons</li>
+          <li>Pull layout dims from <code>size/sidebar</code>, <code>size/topbar</code></li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Write <code>padding: 18px</code> — no such token exists</li>
+          <li>Introduce new values between scale steps</li>
+          <li>Give every surface the same radius and shadow</li>
+          <li>Hardcode <code>240</code> or <code>1200</code> in a layout</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-spacing"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-spacing</span></div>
+<script type="application/json" id="ds-contract-spacing">
+{
+  "section": "spacing",
+  "baseUnit": 4,
+  "scale": {
+    "0": "space/0", "2": "space/2", "4": "space/4", "8": "space/8",
+    "12": "space/12", "16": "space/16", "20": "space/20", "24": "space/24",
+    "32": "space/32", "40": "space/40", "48": "space/48", "52": "space/52", "64": "space/64"
+  },
+  "scaleNote": "Complete source list — 13 tokens, no implied intermediate steps. Any value not in this map is not a token.",
+  "tokens": [
+    { "name": "space/0",  "value": "0px",  "mantineVar": "0",          "usage": "Reset / no gap" },
+    { "name": "space/2",  "value": "2px",  "mantineVar": "rem(2)",     "usage": "Segmented-track inset, hairline gaps" },
+    { "name": "space/4",  "value": "4px",  "mantineVar": "spacing '4'","usage": "Icon-to-text micro gap" },
+    { "name": "space/8",  "value": "8px",  "mantineVar": "spacing.xs", "usage": "Button icon gap, tight stacks" },
+    { "name": "space/12", "value": "12px", "mantineVar": "spacing.sm", "usage": "Nav item gap, compact padding" },
+    { "name": "space/16", "value": "16px", "mantineVar": "spacing.md", "usage": "Default card padding" },
+    { "name": "space/20", "value": "20px", "mantineVar": "spacing.lg", "usage": "Comfortable card padding, column gap" },
+    { "name": "space/24", "value": "24px", "mantineVar": "spacing '24'","usage": "Section gap within a page" },
+    { "name": "space/32", "value": "32px", "mantineVar": "spacing.xl", "usage": "Page content padding" },
+    { "name": "space/40", "value": "40px", "mantineVar": "spacing '40'","usage": "Page bottom padding" },
+    { "name": "space/48", "value": "48px", "mantineVar": "spacing '48'","usage": "Large section separation" },
+    { "name": "space/52", "value": "52px", "mantineVar": "spacing '52'","usage": "Off-scale one-off — avoid in new work" },
+    { "name": "space/64", "value": "64px", "mantineVar": "spacing '64'","usage": "Major layout separation" }
+  ],
+  "radius":  { "xs": 4, "sm": 6, "md": 8, "lg": 12, "xl": 16, "full": 9999 },
+  "stroke":  { "thin": 1, "medium": 1.5, "thick": 2 },
+  "sizes":   { "control": [28,36,44], "icon": [16,20,24], "avatar": [24,28,32], "sidebar": 240, "topbar": 56, "contentMax": 1200 },
+  "layout":  { "contentPadding": 32, "contentPaddingBottom": 40, "breakpoints": "NOT DEFINED — gap" },
+  "mantineMapping": {
+    "convention": "codeSyntax written on every space/* variable in Figma (2026-09-09): space/<n> -> var(--mantine-spacing-<n>) using numeric theme.spacing keys mirroring the token names.",
+    "space/0": "var(--mantine-spacing-0)",
+    "space/2": "var(--mantine-spacing-2)",
+    "space/4": "var(--mantine-spacing-4)",
+    "space/8": "var(--mantine-spacing-8)",
+    "space/12": "var(--mantine-spacing-12)",
+    "space/16": "var(--mantine-spacing-16)",
+    "space/20": "var(--mantine-spacing-20)",
+    "space/24": "var(--mantine-spacing-24)",
+    "space/32": "var(--mantine-spacing-32)",
+    "space/40": "var(--mantine-spacing-40)",
+    "space/48": "var(--mantine-spacing-48)",
+    "space/52": "var(--mantine-spacing-52)",
+    "space/64": "var(--mantine-spacing-64)",
+    "_note": "The generated Mantine theme (Build Order Step 1) must define theme.spacing with these numeric keys so the CSS vars resolve. radius/* map the same way to var(--mantine-radius-<key>); stroke/* and size/* map to theme.other.*."
+  },
+  "rules": [
+    "BINDING RULE (hard requirement): every Auto Layout gap and padding MUST be bound to a space/* variable. A raw pixel value where a token exists is a defect that must be flagged and the output stopped — it is NOT an acceptable 'matched-number' fallback.",
+    "NO INTERPOLATION: values that fall between steps (6, 10, 14, 18) are NOT tokens. Either round to the nearest existing step and bind, or promote the value to a real token first. Never interpolate a between-steps number.",
+    "Card padding = space/16 (comfortable = space/20); radius is role-based (sm=controls, md=cards, full=pills); layout dims come from size/* tokens, never literals.",
+    "Avoid the off-scale space/52 in new work; prefer space/48 or space/64."
+  ],
+  "layoutExceptions": {
+    "allowed": "Page-level / editorial layout spacing — outer page margins and chapter-gap spacing in a documentation layout — MAY be off-scale. This is a sanctioned exception.",
+    "mustBind": "Component- and content-level spacing (card padding, row/stack gaps, list items) MUST bind to a space/* variable — no exceptions.",
+    "boundary": "The page-margin exception must never be used inside a component."
+  },
+  "forbidden": [
+    "raw px on itemSpacing/padding where a token exists",
+    "interpolating a between-steps value",
+    "using the page-margin exception inside a component"
+  ]
+}
+</script>
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+const SPACES = [["space/0",0],["space/2",2],["space/4",4],["space/8",8],["space/12",12],["space/16",16],["space/20",20],["space/24",24],["space/32",32],["space/40",40],["space/48",48],["space/52",52],["space/64",64]];
+const SPACE_MANT = {0:"0",2:"rem(2)",4:"'4'",8:"xs",12:"sm",16:"md",20:"lg",24:"'24'",32:"xl",40:"'40'",48:"'48'",52:"'52' ⚠",64:"'64'"};
+
+/* full, real list — extracted directly from the Icons section (node 35:219) via the Figma MCP on 2026-09-09; order matches the section's layout */
+const ICONS = ["Dropdown filled","Cancel","Caret","Search","User filled","Edit","Google logo","apple-original logo","Download","chevron","Frame","account","briefcase","cogs","headset","info","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","User","Frame","Frame","Check","Home","Budget","Goal","Calculator","Account","Graph","Frame","Frame","Frame","Arrow up down","Filter","Delete","Add","Calendar","Info filled","Menu","Share","Learn","Tag","Book","Eye open","Eye closed","Arrow","Redeem","Switch","SWP","Pause","Upload","receipt","List","Mobile","Info","Frame","eye-slash","Exclamtion","Emergency","Electronics","Grow your wealth","Retirement plan","Dream bike","Education","Dream car","House","Industry","Vacation","Frame","Reset","Frame","Frame","Jar","bank","Placeholder","camera","folder","cursor click","cpu","article","Arrow under","Clock","training","select","move","back","image","tick","annotate","scan","spinner","Rectangle","Circle","exit","save","stop","toggle","import","Copy","stop","export","Loading"];
+
+/* ---------- render ---------- */
+function rampEl(id, arr, prefix){
+  const el = document.getElementById(id); if(!el) return;
+  el.innerHTML = arr.map(([n,hex])=>`<div class="chip"><div class="fill" style="background:${hex}"></div><div class="meta"><div class="cname">${prefix?prefix+"/":""}${n}</div><div class="chex">${hex}</div></div></div>`).join("");
+}
+rampEl("ramp-neutral", NEUTRAL, "neutral");
+rampEl("ramp-brand", BRAND, "brand");
+rampEl("ramp-lime", LIME, "lime");
+{ const el=document.getElementById("ramp-status"); el.innerHTML = STATUS.map(([n,hex])=>`<div class="chip"><div class="fill" style="background:${hex}"></div><div class="meta"><div class="cname">${n}</div><div class="chex">${hex}</div></div></div>`).join(""); }
+
+document.getElementById("semantic-body").innerHTML = SEMANTIC.map(([tok,l,d,mant,use])=>
+  `<tr><td class="tok">${tok}</td><td><span class="sw-pair"><span class="sw" style="background:${l}"></span><span class="sw" style="background:${d}"></span></span></td><td class="val">${l} → ${d}</td><td class="mant">${mant}</td><td class="usage">${use}</td></tr>`
+).join("");
+
+document.getElementById("labels-grid").innerHTML = LABELS.map(([n,l,d])=>
+  `<div class="lbl"><span class="dot" style="background:${l}"></span><span class="ln">${n}</span><span class="lh">${l}</span></div>`
+).join("");
+
+{ const el=document.getElementById("spacing-scale"); const max=64;
+  el.innerHTML = SPACES.map(([n,v])=>
+    `<div class="spacing-row"><span class="tok">${n}</span><span class="val">${v}px</span><div style="display:flex;align-items:center;gap:12px;"><div class="bar" style="width:${(v/max*100).toFixed(1)}%"></div><span class="mant">p="${SPACE_MANT[v]}"</span></div></div>`
+
+</script>
+</body></html>

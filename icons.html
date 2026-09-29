@@ -1,0 +1,359 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Icons — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
+    <ph-list weight="bold" size="18"></ph-list>
+  </button>
+  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
+  <div class="topbar-spacer"></div>
+  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
+    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
+    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-group">
+      <div class="nav-label">Contract</div>
+      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
+      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
+      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
+      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
+      <a class="nav-item active" href="icons.html"><span class="idx mono">04</span> Icons</a>
+      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
+    </nav>
+    <nav class="nav-group">
+      <div class="nav-label">Components</div>
+      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
+      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
+      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
+      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
+      <a class="nav-item" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
+      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
+      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
+      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
+      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
+      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
+      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
+    </nav>
+    <div class="nav-foot">
+      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
+    </div>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="icons">
+      <div class="eyebrow"><span class="n">04</span> Icons</div>
+      <h2 class="t-title-page">Icons</h2>
+      <p class="lead">116 icon components (re-counted directly from the <span class="mono">Icons</span> section, node <span class="mono">35:219</span>, on 2026-09-09 — up from the 114 estimated earlier), all authored on a 20×20 frame, rendered at <code>size/icon-sm</code> (16), <code>-md</code> (20, default) or <code>-lg</code> (24). Icons are placed by <b>instance-swapping the <code>Placeholder</code></b> component — never hand-drawn on a screen. Color comes from <code>icon/*</code> tokens.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Sizes &amp; contexts</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Context</th><th>Size</th><th>Color token</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Inline</td><td class="val">20 (icon-md)</td><td class="mant">icon/secondary</td><td class="usage">Button leading icon, inline glyph, gap space/8–12</td></tr>
+            <tr><td class="tok">Dense / caption</td><td class="val">16 (icon-sm)</td><td class="mant">icon/tertiary</td><td class="usage">Breadcrumb chevrons, tag glyphs, table cells</td></tr>
+            <tr><td class="tok">Emphasis / empty</td><td class="val">24 (icon-lg)</td><td class="mant">icon/primary</td><td class="usage">Section eyebrows, empty-state marks</td></tr>
+            <tr><td class="tok">On solid fill</td><td class="val">20</td><td class="mant">icon/on-solid</td><td class="usage">Icon inside a filled primary button</td></tr>
+            <tr><td class="tok">Icon button</td><td class="val">20 in 28/36/44</td><td class="mant">Icon button set</td><td class="usage">Standalone action; requires an aria-label</td></tr>
+            <tr><td class="tok">Destructive</td><td class="val">20</td><td class="mant">icon/destructive</td><td class="usage">Delete / exit actions (paired with text/destructive)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">In the set</h3><span class="note">all 116, extracted directly from node 35:219 · name only, no reproduced artwork</span></div>
+      <div class="ph-map-note"><ph-info weight="fill" size="14" color="var(--text-3)"></ph-info> Cards show the Phosphor icon mapped to each Figma name. <span style="color:var(--text-4);">Grey = no mapping yet.</span></div>
+      <div class="icon-grid" id="icon-grid"></div>
+
+      <div class="callout" style="border-color:var(--info-border);background:var(--info-bg);">
+        <ph-info weight="fill" size="18" color="var(--info)" style="flex:none;margin-top:1px;"></ph-info>
+        <div class="body" style="color:var(--info);"><b>~14 icons look inherited from an unrelated personal-finance template</b> — <code>Budget</code>, <code>Goal</code>, <code>SWP</code>, <code>Redeem</code>, <code>Jar</code>, <code>bank</code>, <code>Retirement plan</code>, <code>Dream car</code>, <code>Dream bike</code>, <code>Vacation</code>, <code>House</code>, <code>Industry</code>, <code>Electronics</code>, <code>Emergency</code>, <code>Grow your wealth</code>, <code>Calculator</code>. None of these map to anything in the OCR flows (capture, label, train, verdict) — they read like leftovers from a savings/investing UI kit this icon set was copied from. Worth pruning before agents start pattern-matching against them.</div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Icon library — JSON export</h3><span class="note">name + Figma node id for all 116, machine-readable</span></div>
+      <p class="usage">Extracted directly from the <span class="mono">Icons</span> section (node <span class="mono">35:219</span>) via the Figma MCP — every symbol's real name and node id, nothing invented. No vector paths are included: reproducing all 116 as artwork would mean 116 individual per-node fetches, which wasn't part of this pass — pull a specific icon's vector with <span class="mono">get_design_context</span> on its node id when you need it.</p>
+      <div class="contract">
+        <div class="chead"><span class="lbl2">icons.json</span> <button class="copybtn" data-copytarget="ds-icons-json"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-icons-json</span></div>
+<script type="application/json" id="ds-icons-json">
+{
+  "source": { "file": "Design System Figma", "section": "Icons", "sectionNodeId": "35:219", "extractedOn": "2026-09-09" },
+  "total": 116,
+  "icons": [
+    { "nodeId": "35:220", "name": "Dropdown filled" },
+    { "nodeId": "35:222", "name": "Cancel" },
+    { "nodeId": "35:224", "name": "Caret" },
+    { "nodeId": "35:226", "name": "Search" },
+    { "nodeId": "35:228", "name": "User filled" },
+    { "nodeId": "35:230", "name": "Edit" },
+    { "nodeId": "35:232", "name": "Google logo" },
+    { "nodeId": "35:237", "name": "apple-original logo" },
+    { "nodeId": "35:239", "name": "Download" },
+    { "nodeId": "35:241", "name": "chevron" },
+    { "nodeId": "35:243", "name": "Frame" },
+    { "nodeId": "35:245", "name": "account" },
+    { "nodeId": "35:247", "name": "briefcase" },
+    { "nodeId": "35:249", "name": "cogs" },
+    { "nodeId": "35:251", "name": "headset" },
+    { "nodeId": "35:253", "name": "info" },
+    { "nodeId": "35:255", "name": "Frame" },
+    { "nodeId": "35:257", "name": "Frame" },
+    { "nodeId": "35:259", "name": "Frame" },
+    { "nodeId": "35:261", "name": "Frame" },
+    { "nodeId": "35:263", "name": "Frame" },
+    { "nodeId": "35:265", "name": "Frame" },
+    { "nodeId": "35:267", "name": "Frame" },
+    { "nodeId": "35:269", "name": "Frame" },
+    { "nodeId": "35:271", "name": "Frame" },
+    { "nodeId": "35:273", "name": "Frame" },
+    { "nodeId": "35:275", "name": "Frame" },
+    { "nodeId": "35:277", "name": "Frame" },
+    { "nodeId": "35:279", "name": "Frame" },
+    { "nodeId": "35:281", "name": "Frame" },
+    { "nodeId": "35:283", "name": "Frame" },
+    { "nodeId": "35:285", "name": "Frame" },
+    { "nodeId": "35:287", "name": "Frame" },
+    { "nodeId": "35:289", "name": "User" },
+    { "nodeId": "35:291", "name": "Frame" },
+    { "nodeId": "35:293", "name": "Frame" },
+    { "nodeId": "35:295", "name": "Check" },
+    { "nodeId": "35:297", "name": "Home" },
+    { "nodeId": "35:299", "name": "Budget" },
+    { "nodeId": "35:301", "name": "Goal" },
+    { "nodeId": "35:303", "name": "Calculator" },
+    { "nodeId": "35:305", "name": "Account" },
+    { "nodeId": "35:307", "name": "Graph" },
+    { "nodeId": "35:309", "name": "Frame" },
+    { "nodeId": "35:311", "name": "Frame" },
+    { "nodeId": "35:313", "name": "Frame" },
+    { "nodeId": "35:315", "name": "Arrow up down" },
+    { "nodeId": "35:317", "name": "Filter" },
+    { "nodeId": "35:319", "name": "Delete" },
+    { "nodeId": "35:321", "name": "Add" },
+    { "nodeId": "35:323", "name": "Calendar" },
+    { "nodeId": "35:325", "name": "Info filled" },
+    { "nodeId": "35:327", "name": "Menu" },
+    { "nodeId": "35:329", "name": "Share" },
+    { "nodeId": "35:331", "name": "Learn" },
+    { "nodeId": "35:333", "name": "Tag" },
+    { "nodeId": "35:335", "name": "Book" },
+    { "nodeId": "35:337", "name": "Eye open" },
+    { "nodeId": "35:339", "name": "Eye closed" },
+    { "nodeId": "35:341", "name": "Arrow" },
+    { "nodeId": "35:343", "name": "Redeem" },
+    { "nodeId": "35:345", "name": "Switch" },
+    { "nodeId": "35:347", "name": "SWP" },
+    { "nodeId": "35:349", "name": "Pause" },
+    { "nodeId": "35:351", "name": "Upload" },
+    { "nodeId": "35:353", "name": "receipt" },
+    { "nodeId": "35:355", "name": "List" },
+    { "nodeId": "35:357", "name": "Mobile" },
+    { "nodeId": "35:359", "name": "Info" },
+    { "nodeId": "35:361", "name": "Frame" },
+    { "nodeId": "35:363", "name": "eye-slash" },
+    { "nodeId": "35:365", "name": "Exclamtion", "issue": "misspelled — should be 'Exclamation'" },
+    { "nodeId": "35:367", "name": "Emergency" },
+    { "nodeId": "35:369", "name": "Electronics" },
+    { "nodeId": "35:371", "name": "Grow your wealth" },
+    { "nodeId": "35:373", "name": "Retirement plan" },
+    { "nodeId": "35:375", "name": "Dream bike" },
+    { "nodeId": "35:377", "name": "Education" },
+    { "nodeId": "35:379", "name": "Dream car" },
+    { "nodeId": "35:381", "name": "House" },
+    { "nodeId": "35:383", "name": "Industry" },
+    { "nodeId": "35:385", "name": "Vacation" },
+    { "nodeId": "35:387", "name": "Frame" },
+    { "nodeId": "35:389", "name": "Reset" },
+    { "nodeId": "35:391", "name": "Frame" },
+    { "nodeId": "35:393", "name": "Frame" },
+    { "nodeId": "35:395", "name": "Jar" },
+    { "nodeId": "35:397", "name": "bank" },
+    { "nodeId": "34:157", "name": "Placeholder" },
+    { "nodeId": "80:557", "name": "camera" },
+    { "nodeId": "86:1119", "name": "folder" },
+    { "nodeId": "86:1123", "name": "cursor click" },
+    { "nodeId": "86:1127", "name": "cpu" },
+    { "nodeId": "111:1513", "name": "article" },
+    { "nodeId": "126:3714", "name": "Arrow under" },
+    { "nodeId": "133:6558", "name": "Clock" },
+    { "nodeId": "166:1672", "name": "training" },
+    { "nodeId": "185:2725", "name": "select" },
+    { "nodeId": "185:2729", "name": "move", "issue": "Figma layer name has a trailing space ('move ')" },
+    { "nodeId": "189:2134", "name": "back" },
+    { "nodeId": "189:3905", "name": "image" },
+    { "nodeId": "205:7779", "name": "tick", "issue": "duplicate of Check under a different name" },
+    { "nodeId": "223:9291", "name": "annotate" },
+    { "nodeId": "241:5541", "name": "scan" },
+    { "nodeId": "166:1677", "name": "spinner" },
+    { "nodeId": "277:20197", "name": "Rectangle", "issue": "looks like a leftover shape asset, not an icon" },
+    { "nodeId": "277:20201", "name": "Circle", "issue": "looks like a leftover shape asset, not an icon" },
+    { "nodeId": "291:6241", "name": "exit" },
+    { "nodeId": "291:73432", "name": "save" },
+    { "nodeId": "291:73563", "name": "stop", "issue": "duplicate name — see 285:6443" },
+    { "nodeId": "306:4233", "name": "toggle" },
+    { "nodeId": "374:40991", "name": "import" },
+    { "nodeId": "527:4910", "name": "Copy" },
+    { "nodeId": "285:6443", "name": "stop", "issue": "duplicate name — see 291:73563" },
+    { "nodeId": "710:27452", "name": "export" },
+    { "nodeId": "714:4299", "name": "Loading" }
+  ],
+  "knownIssues": [
+    "27 icons are named 'Frame' (unnamed) — not addressable by intent, up from the ~30 estimate",
+    "Two separate components are both named 'stop' (291:73563 and 285:6443) — a real duplicate, not an alias",
+    "'tick' (205:7779) duplicates 'Check' (35:295) under a different name",
+    "'Exclamtion' (35:365) is misspelled",
+    "'move' (185:2729) carries a trailing space in its Figma layer name",
+    "'Rectangle' (277:20197) and 'Circle' (277:20201) are generic shape names, not really icons — likely stray assets grouped into this section",
+    "~14 icons (Budget, Goal, SWP, Redeem, Jar, bank, Retirement plan, Dream car/bike, Vacation, House, Industry, Electronics, Emergency, Grow your wealth, Calculator) match no OCR flow and look inherited from an unrelated finance-app icon kit"
+  ]
+}
+</script>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Place icons by swapping the <code>Placeholder</code> instance with a real icon component. Never draw an icon directly on a screen.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Default to <b>20px</b> (<code>icon-md</code>). Drop to 16 only in dense rows; go to 24 only for empty states and eyebrows.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Icon color is an <code>icon/*</code> token that matches the adjacent text's emphasis — <code>icon/secondary</code> beside <code>text/secondary</code>, <code>icon/on-solid</code> on a filled button.</p></div>
+        <div class="rule"><span class="num mono"></span><p>A standalone icon action uses the <code>Icon button</code> set and must carry an <code>aria-label</code>; an icon beside a label is decorative (<code>aria-hidden</code>).</p></div>
+        <div class="rule"><span class="num mono"></span><p>Rename the 27 icons still called <code>Frame</code> before agents rely on the set — an icon must be addressable by intent (<code>Search</code>, <code>Delete</code>, <code>Filter</code>). Also resolve the two components both named <code>stop</code>, and prune the ~14 icons that don't map to any OCR flow (see callout above).</p></div>
+      </div>
+
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Swap <code>Placeholder</code> → a named icon component</li>
+          <li>Size icons from <code>size/icon-*</code>; keep 20 as default</li>
+          <li>Tie icon color to the neighbouring <code>text/*</code> emphasis</li>
+          <li>Give icon-only buttons an accessible name</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Draw a one-off vector on the canvas</li>
+          <li>Scale an icon to an arbitrary size like 18 or 22</li>
+          <li>Leave icon fills on a raw primitive</li>
+          <li>Ship icon buttons without a label</li>
+        </ul></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-icons"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-icons</span></div>
+<script type="application/json" id="ds-contract-icons">
+{
+  "section": "icons",
+  "count": 116,
+  "authoredSize": "20x20",
+  "placement": "instance-swap the Placeholder component",
+  "tokens": [
+    { "name": "size/icon-sm", "value": "16px", "mantineVar": "Icon size 16", "usage": "Dense rows, breadcrumb chevrons" },
+    { "name": "size/icon-md", "value": "20px", "mantineVar": "Icon size 20", "usage": "Default — nav, buttons, inline" },
+    { "name": "size/icon-lg", "value": "24px", "mantineVar": "Icon size 24", "usage": "Empty states, section eyebrows" },
+    { "name": "icon/primary",     "value": "#1A1815 → #FAF9F7", "mantineVar": "other.iconPrimary",   "usage": "High-emphasis glyphs" },
+    { "name": "icon/secondary",   "value": "#6B6862 → #BCB8B1", "mantineVar": "other.iconSecondary", "usage": "Default nav / inline icons" },
+    { "name": "icon/tertiary",    "value": "#928E87 → #928E87", "mantineVar": "other.iconTertiary",  "usage": "Low-emphasis, dense contexts" },
+    { "name": "icon/on-solid",    "value": "#FFFFFF → #FFFFFF", "mantineVar": "other.iconOnSolid",   "usage": "Icons on filled buttons" },
+    { "name": "icon/destructive", "value": "#C22E22 → #E56C6C", "mantineVar": "other.iconDestructive","usage": "Delete / exit actions" }
+  ],
+  "fullList": "see the Icon library JSON export (#ds-icons-json) above for the complete, real 116-entry name + nodeId list",
+  "commonIcons": ["Search","Filter","Download","Upload","Add","Delete","Cancel","Edit","Copy","Check","folder","camera","image","annotate","scan","training","cpu","cogs","chevron","exit","Menu","info","Exclamtion","Graph"],
+  "rules": [
+    "Place icons by swapping the Placeholder instance; never hand-draw.",
+    "Default size 20 (icon-md); 16 dense, 24 emphasis only.",
+    "Icon color = icon/* token matching adjacent text emphasis.",
+    "Icon-only actions use the Icon button set with an aria-label."
+  ],
+  "forbidden": [
+    "Hand-drawing a vector directly on a screen",
+    "Arbitrary icon sizes (18, 22)",
+    "Icon fills bound to raw primitives",
+    "Icon buttons without an accessible label"
+  ],
+  "knownIssues": [
+    "27 icons named 'Frame' (unnamed) — not addressable by intent",
+    "Two components both named 'stop' (291:73563, 285:6443) — a real duplicate",
+    "'tick' duplicates 'Check'; 'Exclamtion' is misspelled; 'move' has a trailing space in its layer name",
+    "~14 icons appear inherited from an unrelated personal-finance icon kit and match no OCR flow — see #ds-icons-json"
+  ]
+}
+</script>
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+const ICONS = ["Dropdown filled","Cancel","Caret","Search","User filled","Edit","Google logo","apple-original logo","Download","chevron","Frame","account","briefcase","cogs","headset","info","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","Frame","User","Frame","Frame","Check","Home","Budget","Goal","Calculator","Account","Graph","Frame","Frame","Frame","Arrow up down","Filter","Delete","Add","Calendar","Info filled","Menu","Share","Learn","Tag","Book","Eye open","Eye closed","Arrow","Redeem","Switch","SWP","Pause","Upload","receipt","List","Mobile","Info","Frame","eye-slash","Exclamtion","Emergency","Electronics","Grow your wealth","Retirement plan","Dream bike","Education","Dream car","House","Industry","Vacation","Frame","Reset","Frame","Frame","Jar","bank","Placeholder","camera","folder","cursor click","cpu","article","Arrow under","Clock","training","select","move","back","image","tick","annotate","scan","spinner","Rectangle","Circle","exit","save","stop","toggle","import","Copy","stop","export","Loading"];
+
+/* ---------- render ---------- */
+function rampEl(id, arr, prefix){
+  const el = document.getElementById(id); if(!el) return;
+  el.innerHTML = arr.map(([n,hex])=>`<div class="chip"><div class="fill" style="background:${hex}"></div><div class="meta"><div class="cname">${prefix?prefix+"/":""}${n}</div><div class="chex">${hex}</div></div></div>`).join("");
+}
+rampEl("ramp-neutral", NEUTRAL, "neutral");
+rampEl("ramp-brand", BRAND, "brand");
+rampEl("ramp-lime", LIME, "lime");
+{ const el=document.getElementById("ramp-status"); el.innerHTML = STATUS.map(([n,hex])=>`<div class="chip"><div class="fill" style="background:${hex}"></div><div class="meta"><div class="cname">${n}</div><div class="chex">${hex}</div></div></div>`).join(""); }
+
+document.getElementById("semantic-body").innerHTML = SEMANTIC.map(([tok,l,d,mant,use])=>
+  `<tr><td class="tok">${tok}</td><td><span class="sw-pair"><span class="sw" style="background:${l}"></span><span class="sw" style="background:${d}"></span></span></td><td class="val">${l} → ${d}</td><td class="mant">${mant}</td><td class="usage">${use}</td></tr>`
+).join("");
+
+document.getElementById("labels-grid").innerHTML = LABELS.map(([n,l,d])=>
+  `<div class="lbl"><span class="dot" style="background:${l}"></span><span class="ln">${n}</span><span class="lh">${l}</span></div>`
+).join("");
+
+{ const el=document.getElementById("spacing-scale"); const max=64;
+  el.innerHTML = SPACES.map(([n,v])=>
+    `<div class="spacing-row"><span class="tok">${n}</span><span class="val">${v}px</span><div style="display:flex;align-items:center;gap:12px;"><div class="bar" style="width:${(v/max*100).toFixed(1)}%"></div><span class="mant">p="${SPACE_MANT[v]}"</span></div></div>`
+  ).join(""); }
+
+const PHOSPHOR_MAP = {
+  "Dropdown filled":"caret-down","Cancel":"x","Caret":"caret-down","Search":"magnifying-glass",
+  "User filled":"user-fill","Edit":"pencil-simple","Google logo":"globe","apple-original logo":"apple-logo",
+  "Download":"download-simple","chevron":"caret-right","account":"user-circle","briefcase":"briefcase",
+  "cogs":"gear","headset":"headset","info":"info","User":"user","Check":"check","Home":"house",
+  "Budget":"wallet","Goal":"flag","Calculator":"calculator","Account":"user","Graph":"chart-line",
+  "Arrow up down":"arrows-down-up","Filter":"funnel","Delete":"trash","Add":"plus","Calendar":"calendar",
+  "Info filled":"info","Menu":"list","Share":"share-network","Learn":"book-open","Tag":"tag",
+  "Book":"book","Eye open":"eye","Eye closed":"eye-slash","Arrow":"arrow-right","Redeem":"gift",
+  "Switch":"arrows-left-right","SWP":"repeat","Pause":"pause","Upload":"upload-simple",
+  "receipt":"receipt","List":"list","Mobile":"device-mobile","Info":"info","eye-slash":"eye-slash",
+  "Exclamtion":"warning","Emergency":"first-aid","Electronics":"device-tablet",
+  "Grow your wealth":"trend-up","Retirement plan":"umbrella","Dream bike":"motorcycle",
+  "Education":"graduation-cap","Dream car":"car","House":"house","Industry":"factory",
+  "Vacation":"airplane","Reset":"arrow-counter-clockwise","Jar":"jar","bank":"bank",
+  "Placeholder":"square","camera":"camera","folder":"folder","cursor click":"cursor-click",
+  "cpu":"cpu","article":"article","Arrow under":"arrow-bend-down-right","Clock":"clock",
+  "training":"brain","select":"selection","move":"arrows-out-cardinal","back":"arrow-left",
+  "image":"image","tick":"check","annotate":"pencil","scan":"scan","spinner":"spinner",
+  "Rectangle":"rectangle","Circle":"circle","exit":"sign-out","save":"floppy-disk",
+  "stop":"stop","toggle":"toggle-left","import":"arrow-fat-line-down","Copy":"copy",
+  "export":"export","Loading":"spinner","Frame":null
+};
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+document.getElementById("icon-grid").innerHTML = ICONS.map(n=>{
+  const ph = PHOSPHOR_MAP[n];
+  const slot = ph
+    ? `<ph-${ph} weight="bold" size="20"></ph-${ph}>`
+    : `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><rect x="3" y="3" width="14" height="14" rx="3"/><line x1="7" y1="10" x2="13" y2="10"/></svg>`;
+  const cls = ph ? "icard" : "icard no-ph";
+  const phLabel = ph ? `<span class="iphname">ph-${ph}</span>` : `<span class="iphname" style="color:var(--text-4);">no mapping</span>`;
+  return `<div class="${cls}"><span class="ph-slot">${slot}</span><span class="iname">${esc(n)}</span>${phLabel}</div>`;
+}).join("");
+
+
+</script>
+</body></html>
