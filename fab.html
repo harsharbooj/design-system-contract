@@ -7,50 +7,10 @@
 <script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/+esm"></script>
 <link rel="stylesheet" href="style.css">
 </head><body>
-<header class="topbar">
-  <button class="iconbtn" id="menuBtn" aria-label="Toggle navigation">
-    <ph-list weight="bold" size="18"></ph-list>
-  </button>
-  <div class="brand"><span class="mark">D</span> Design System <span class="sub">Contract</span></div>
-  <div class="topbar-spacer"></div>
-  <span class="mono" style="font-size:11.5px;color:var(--text-4);">v0.9</span>
-  <button class="iconbtn" id="themeBtn" aria-label="Toggle color theme">
-    <ph-sun id="ic-sun" weight="bold" size="18"></ph-sun>
-    <ph-moon id="ic-moon" weight="bold" size="18" style="display:none"></ph-moon>
-  </button>
-</header>
-
-<div class="scrim" id="scrim"></div>
+<div id="nav-mount"></div>
 
 <div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <nav class="nav-group">
-      <div class="nav-label">Contract</div>
-      <a class="nav-item" href="index.html"><span class="idx mono">00</span> Overview</a>
-      <a class="nav-item" href="typography.html"><span class="idx mono">01</span> Typography</a>
-      <a class="nav-item" href="color.html"><span class="idx mono">02</span> Color System</a>
-      <a class="nav-item" href="spacing.html"><span class="idx mono">03</span> Spacing &amp; Grid</a>
-      <a class="nav-item" href="icons.html"><span class="idx mono">04</span> Icons</a>
-      <a class="nav-item" href="patterns.html"><span class="idx mono">05</span> Usage Patterns</a>
-    </nav>
-    <nav class="nav-group">
-      <div class="nav-label">Components</div>
-      <a class="nav-item" href="button.html"><span class="idx mono">06</span> Button</a>
-      <a class="nav-item" href="input.html"><span class="idx mono">07</span> Input</a>
-      <a class="nav-item" href="tag.html"><span class="idx mono">08</span> Tag</a>
-      <a class="nav-item" href="switch.html"><span class="idx mono">09</span> Switch</a>
-      <a class="nav-item active" href="fab.html"><span class="idx mono">10</span> Icon Button (FAB)</a>
-      <a class="nav-item" href="checkbox.html"><span class="idx mono">11</span> Checkbox</a>
-      <a class="nav-item" href="line.html"><span class="idx mono">12</span> Divider</a>
-      <a class="nav-item" href="tooltip.html"><span class="idx mono">15</span> Tooltip</a>
-      <a class="nav-item" href="action-modal.html"><span class="idx mono">17</span> Action Modal</a>
-      <a class="nav-item" href="tab-status.html"><span class="idx mono">18</span> Tab Status</a>
-      <a class="nav-item" href="toast.html"><span class="idx mono">19</span> Toast</a>
-    </nav>
-    <div class="nav-foot">
-      Source of truth: <b>Mantine theme</b>. Figma is a synced view. Every value below is read from the source Figma file.
-    </div>
-  </aside>
+  <div id="sidebar-mount"></div>
 
   <main class="main">
    <div class="wrap">

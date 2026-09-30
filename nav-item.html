@@ -1,0 +1,258 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>NavItem — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/webcomponents@2.1.5/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div id="nav-mount"></div>
+
+<div class="layout">
+  <div id="sidebar-mount"></div>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="nav-item">
+      <div class="eyebrow"><span class="n">20</span> Components · NavItem</div>
+      <h2 class="t-title-page">NavItem <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Figma name: <b style="color:var(--text-2);font-weight:500;">Tab atom</b> · 852:10111 · 3 variants</span></h2>
+      <p class="lead">The clickable row inside a navigation list. One variant axis, <b>Type</b> (Default · Hover · Pressed), and three component properties: a label, a boolean that hides the icon, and an icon instance-swap. The Figma component set is called <b>Tab atom</b>. In code and on this page it's <code>&lt;NavItem&gt;</code>. It is the foundation of <a href="left-side-navigation.html">Left Side Navigation</a>, which holds 447 of its 461 instances.</p>
+
+      <div class="gaps">
+        <div class="gap"><span class="sev med">Naming</span><div class="gtxt"><b><code>Pressed</code> means "selected / current page", not a momentary press.</b> The variant used to be called <code>Selected</code> and was renamed. It still has the active look (<code>selected/bg</code> fill, <code>accent/border</code> stroke, <code>text/label</code>), and all 150 of its instances are the current item in a rail. In code it maps to <code>active</code> / <code>aria-current="page"</code>. There is no separate <code>:active</code> press look. See Open questions.</div></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">the preview and the Mantine snippet update live</span></div>
+      <div class="play">
+        <div class="stage"><div id="pv-mount"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Type</span><div class="seg" data-axis="type"><button data-v="Default" class="on">Default</button><button data-v="Hover">Hover</button><button data-v="Pressed">Pressed</button></div></div>
+          <div class="ctl"><span class="lab">Section heading (label)</span><input class="tin" id="pv-label" value="Project" maxlength="40" aria-label="NavItem label"></div>
+          <div class="ctl"><span class="lab">Instance (icon)</span><select class="tin" id="pv-icon" aria-label="Icon"></select></div>
+          <div class="rowsw"><span>Icon</span><button class="swt on" id="pv-showicon" role="switch" aria-checked="true" aria-label="Show icon"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><span class="lbl2">Mantine · React (proposed)</span><span class="vn" id="pv-figma">Type=Default</span></div>
+        <pre id="pv-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz"><div id="anat-nvi"></div></div>
+        <ol>
+          <li><b>Container</b>: horizontal auto-layout, 174 × 40 fixed, <code>px space/12</code>, <code>radius/sm</code> (6). Fill and stroke depend on Type.</li>
+          <li><b>Icon</b>: 18 × 18 instance-swap (<code>Instance</code>), hidden with the <code>Icon</code> boolean. Colour is <code>icon/secondary</code>, or <code>text/label</code> when Pressed.</li>
+          <li><b>Label</b>: <code>Body/Strong</code> (Geist Medium 14/22), bound to <code>Section heading</code>. Colour is <code>text/secondary</code>, or <code>text/label</code> when Pressed.</li>
+          <li><b>Gap</b>: 12 between icon and label. <span class="ubadge warn">unbound</span> The value is 12, but it isn't bound to <code>space/12</code>.</li>
+          <li><b>Active stroke</b>: 1px <code>accent/border</code> on all four sides, Pressed only.</li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">read from the component set via the Plugin API · Code Connect is not available on this Figma plan</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Figma name</th><th>Code prop</th><th>Mantine equivalent</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Type</td><td class="val">VARIANT</td><td class="val">Default</td><td class="usage">Default · Hover · Pressed</td><td class="val">Type</td><td class="mant">active (Pressed)</td><td class="mant">NavLink active · :hover</td></tr>
+            <tr><td class="tok">Label</td><td class="val">TEXT</td><td class="val">"Project"</td><td class="usage">Any string</td><td class="val">Section heading#271:3 <span class="ubadge warn">rename</span></td><td class="mant">children / label</td><td class="mant">NavLink label</td></tr>
+            <tr><td class="tok">Icon</td><td class="val">BOOLEAN</td><td class="val">true</td><td class="usage">true · false</td><td class="val">Icon#271:0</td><td class="mant">icon present</td><td class="mant">leftSection present</td></tr>
+            <tr><td class="tok">Instance</td><td class="val">INSTANCE_SWAP</td><td class="val">folder (86:1119)</td><td class="usage">Preferred values: <b>folder only</b></td><td class="val">Instance#271:6</td><td class="mant">icon={&lt;Icon/&gt;}</td><td class="mant">leftSection={&lt;Icon/&gt;}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">The text property is still called <code class="mono">Section heading</code>, and the text layer inside is named <code class="mono">Project</code>. The expected rename to <code class="mono">Label</code> has <b>not</b> happened in Figma. The code prop is <code class="mono">children</code> either way.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Size &amp; tokens</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Element</th><th>Property</th><th>Token</th><th>Resolved</th><th>CSS variable</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Container</td><td class="val">width × height</td><td class="val">— <span class="ubadge warn">unbound</span></td><td class="val">174 × 40</td><td class="mant">--nvi-w / --nvi-h (local)</td></tr>
+            <tr><td class="tok">Container</td><td class="val">padding-x</td><td class="val">space/12</td><td class="val">12</td><td class="mant">var(--mantine-spacing-12)</td></tr>
+            <tr><td class="tok">Container</td><td class="val">gap</td><td class="val">— <span class="ubadge warn">unbound</span></td><td class="val">12</td><td class="mant">--nvi-gap (local)</td></tr>
+            <tr><td class="tok">Container</td><td class="val">radius</td><td class="val">radius/sm</td><td class="val">6</td><td class="mant">var(--mantine-radius-sm)</td></tr>
+            <tr><td class="tok">Icon</td><td class="val">size</td><td class="val">— <span class="ubadge warn">unbound</span></td><td class="val">18 × 18</td><td class="mant">--nvi-icon (local)</td></tr>
+            <tr><td class="tok">Label</td><td class="val">text style</td><td class="val">Body/Strong</td><td class="val">Geist 500 14/22</td><td class="mant">font: 500 14px/22px Geist</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Type → token map</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Code selector</th><th>Fill</th><th>Stroke</th><th>Text / icon</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="mant">rest</td><td class="val">none</td><td class="val">none</td><td class="val">text/secondary / icon/secondary</td></tr>
+            <tr><td class="tok">Hover</td><td class="mant">:hover</td><td class="val">bg/hover → var(--mantine-color-bg-hover)</td><td class="val">none</td><td class="val">text/secondary / icon/secondary</td></tr>
+            <tr><td class="tok">Pressed <span class="ubadge warn">= selected</span></td><td class="mant">[aria-current="page"], [data-active]</td><td class="val">selected/bg → var(--mantine-color-selected-bg)</td><td class="val">accent/border 1px</td><td class="val">text/label / text/label</td></tr>
+            <tr><td class="tok">Focus</td><td class="mant">:focus-visible</td><td class="usage" colspan="3"><span class="ubadge warn">⚠ Not designed in Figma</span> Code must still implement it. This page borrows the Button focus ring (<code class="mono">focus/ring</code> 2px, offset 2).</td></tr>
+            <tr><td class="tok">Disabled</td><td class="mant">[aria-disabled="true"]</td><td class="usage" colspan="3"><span class="ubadge warn">⚠ Not designed in Figma</span> Code must still implement it. No visuals are specified.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">Resolved values: Light <code class="mono">bg/hover #F4F3F0</code> · <code class="mono">selected/bg #EAF4F0</code> · <code class="mono">accent/border #045646</code> · <code class="mono">text/label #06463A</code> · <code class="mono">text/secondary #6B6862</code>. Dark <code class="mono">#2C2A26</code> · <code class="mono">#052A23</code> · <code class="mono">#3C9081</code> · <code class="mono">#F4E3AD</code> · <code class="mono">#BCB8B1</code>.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Variant matrix</h3><span class="note">the three designed variants, plus the two states Figma doesn't define</span></div>
+      <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">State machine</h3><span class="note">prototype reactions (ON_CLICK → CHANGE_TO) are for prototyping only, not a component API</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Code selector</th><th>Behaviour</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="mant">—</td><td class="usage">Resting item. Prototype: click → Pressed.</td></tr>
+            <tr><td class="tok">Hover</td><td class="mant">:hover</td><td class="usage"><code class="mono">bg/hover</code> fill. Prototype: click → Pressed. Has 0 instances so far.</td></tr>
+            <tr><td class="tok">Pressed</td><td class="mant">[aria-current="page"]</td><td class="usage">The current destination, and it persists. Prototype: click → Default. Only one per list.</td></tr>
+            <tr><td class="tok">(momentary press)</td><td class="mant">:active</td><td class="usage"><span class="ubadge warn">Not designed</span> No look exists that is separate from the active item.</td></tr>
+            <tr><td class="tok">Focus</td><td class="mant">:focus-visible</td><td class="usage"><span class="ubadge warn">Not designed</span> Uses the ring borrowed from Button.</td></tr>
+            <tr><td class="tok">Disabled</td><td class="mant">[aria-disabled="true"]</td><td class="usage"><span class="ubadge warn">Not designed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Used by</h3><span class="note">461 instances counted across all pages with getInstancesAsync (Pressed 150 · Default 311 · Hover 0)</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Host component</th><th>Instances</th><th>Page</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Left Side Navigation</td><td class="val">447</td><td class="usage"><a href="left-side-navigation.html">left-side-navigation.html</a></td></tr>
+            <tr><td class="tok">Line Status</td><td class="val">9</td><td class="usage">No documentation page yet</td></tr>
+            <tr><td class="tok">Tab Status</td><td class="val">3</td><td class="usage"><a href="tab-status.html">tab-status.html</a> (Segmented)</td></tr>
+            <tr><td class="tok">Line atom</td><td class="val">2</td><td class="usage">No documentation page yet</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>Render a real link (<code>&lt;a href&gt;</code> or a router <code>Link</code>) inside <code>&lt;nav aria-label="Main navigation"&gt;</code>. Never use a <code>div</code> with a click handler.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Give the current item <code>aria-current="page"</code>. The active look uses fill <b>and</b> a 1px border <b>and</b> a text colour change, so it doesn't rely on colour alone.</p></div>
+        <div class="rule"><span class="num mono"></span><p>The icon is decorative, so mark it <code>aria-hidden="true"</code>. The <code>Icon</code> boolean may hide the icon, but the label is always present.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Contrast (computed): <code>text/secondary</code> on <code>bg/surface</code> is 5.55:1 (Light) and 8.97:1 (Dark). On <code>bg/hover</code> it is 5.00 and 7.25. <code>text/label</code> on <code>selected/bg</code> is 9.61 and 12.07. All pass AA 4.5:1.</p></div>
+        <div class="rule"><span class="num mono"></span><p><span style="color:var(--warning-fg);">Gap: no Focus variant exists. Wire <code>:focus-visible</code> to <code>focus/ring</code> in code (borrowed from Button) until Figma adds one.</span></p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Map <code>Type=Pressed</code> to <code>active</code> and <code>aria-current="page"</code></li>
+          <li>Keep exactly one Pressed item per list</li>
+          <li>Leave hover to <code>:hover</code>. Don't pin <code>Type=Hover</code> in screens</li>
+          <li>Swap the icon through <code>Instance</code>, not by detaching</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Use Pressed for a momentary click flash</li>
+          <li>Hide the label to make an icon-only item (not designed)</li>
+          <li>Instantiate the unused <code>NavItem</code> set (271:6610)</li>
+          <li>Hardcode <code>#EAF4F0</code> instead of <code>selected/bg</code></li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Open questions &amp; contract gaps</h3></div>
+      <div class="gaps">
+        <div class="gap"><span class="sev high">High</span><div class="gtxt"><b>Focus and Disabled are not designed.</b> Both are required for keyboard and permission states.</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b><code>Pressed</code> is actually the Selected look.</b> Split it into <code>Selected</code> (persistent) and <code>Pressed</code> (momentary) so they can differ.</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>Duplicate set <code>NavItem</code> (271:6610, Default|Selected) has 0 instances.</b> Delete it or merge it into Tab atom.</div></div>
+        <div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>Unbound values:</b> the gap is 12 (should bind <code>space/12</code>), the size is 174 × 40, and the icon is 18. There is no <code>size/icon</code> token for 18, since Button uses 20/16.</div></div>
+        <div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>The text property is still <code>Section heading</code></b> and the layer is named <code>Project</code>. Rename both to <code>Label</code>.</div></div>
+        <div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>The <code>Instance</code> swap's preferred values list only <code>folder</code>.</b> Add the navigation icon set so designers can pick from it.</div></div>
+        <div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>No Code Connect mapping yet.</b> The Code Connect tools require a Dev/Full seat on an Organization plan. The Mantine <code>NavLink</code> mapping on this page is <i>proposed</i>.</div></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Changelog</h3></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Added</span><div class="ct"><b>2026-09-29.</b> Initial documentation extracted from Figma via MCP (nodes 67:431, 852:10111).</div></div>
+        <div class="cl"><span class="st">Verified</span><div class="ct"><b>Hover variant added</b> (1088:33166) with a <code>bg/hover</code> fill. <code>Selected</code> <span class="arrow">→</span> renamed <code>Pressed</code>. Padding and radius are bound to <code>space/12</code> and <code>radius/sm</code>.</div></div>
+        <div class="cl"><span class="st open">Open</span><div class="ct" style="color:var(--warning-fg);"><b>Focus, Disabled, the Selected/Pressed split, the gap binding and the Label rename</b> are not done yet.</div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-nav-item"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-nav-item</span></div>
+<script type="application/json" id="ds-contract-nav-item">
+{
+  "section": "nav-item",
+  "component": "NavItem",
+  "figmaName": "Tab atom",
+  "nodeId": "852:10111",
+  "componentKey": "e2e9322be783c32e523204122fadd880ae059123",
+  "variantCount": 3,
+  "axes": { "Type": ["Default", "Hover", "Pressed"] },
+  "variants": {
+    "Default": { "node": "852:10112", "fill": null, "stroke": null, "text": "text/secondary", "icon": "icon/secondary", "instances": 311 },
+    "Hover":   { "node": "1088:33166", "fill": "bg/hover", "stroke": null, "text": "text/secondary", "icon": "icon/secondary", "instances": 0 },
+    "Pressed": { "node": "852:10115", "fill": "selected/bg", "stroke": "accent/border 1px", "text": "text/label", "icon": "text/label", "instances": 150, "meaning": "selected / current page" }
+  },
+  "properties": [
+    { "name": "Section heading", "key": "271:3", "type": "TEXT", "default": "Project", "code": "children" },
+    { "name": "Icon", "key": "271:0", "type": "BOOLEAN", "default": true, "code": "icon present" },
+    { "name": "Instance", "key": "271:6", "type": "INSTANCE_SWAP", "default": "folder (86:1119)", "preferredValues": ["folder"], "code": "icon" }
+  ],
+  "layout": { "width": 174, "height": 40, "paddingX": "space/12", "gap": "12 (unbound)", "radius": "radius/sm", "icon": "18 (unbound)", "text": "Body/Strong" },
+  "stateMachine": {
+    "Default": null,
+    "Hover": ":hover",
+    "Pressed": "[aria-current=\"page\"]",
+    "Focus": "NOT DESIGNED — :focus-visible, borrow focus/ring",
+    "Disabled": "NOT DESIGNED — [aria-disabled=\"true\"]"
+  },
+  "mantine": { "component": "NavLink", "status": "proposed — no Code Connect mapping" },
+  "usedBy": { "Left Side Navigation": 447, "Line Status": 9, "Tab Status": 3, "Line atom": 2 },
+  "deprecated": { "NavItem": { "node": "271:6610", "instances": 0, "action": "delete or merge into Tab atom" } }
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from the source <b>Figma file</b> (Paveway OCR · Design system) via the Figma MCP on 2026-09-29 · nodes <span class="mono">852:10111</span> (Tab atom), <span class="mono">852:10112 / 1088:33166 / 852:10115</span> (variants), <span class="mono">271:6610</span> (unused duplicate) · 11 tokens bound across the variants. Code Connect is unavailable on this plan, so every Mantine mapping is proposed.
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- NavItem: playground, anatomy, variant matrix ---------- */
+(function(){
+  const ICONS={'folder-open':'FolderOpen','cursor-click':'CursorClick','cpu':'Cpu','house':'House','chart-bar':'ChartBar','users':'Users','database':'Database','gear':'Gear'};
+  const e=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function item(o){
+    const cls=['nvi'];
+    if(o.type==='Hover')cls.push('is-hover');
+    if(o.na)cls.push('is-na');
+    const cur=o.type==='Pressed'?' aria-current="page"':'';
+    const ic=o.showIcon?`<span class="ic" aria-hidden="true"><ph-${o.icon} weight="regular" size="18"></ph-${o.icon}></span>`:'';
+    return `<a class="${cls.join(' ')}" href="#"${cur}>${ic}<span class="lb">${e(o.label)}</span></a>`;
+  }
+  const st={type:'Default',label:'Project',icon:'folder-open',showIcon:true};
+  const sel=document.getElementById('pv-icon');
+  sel.innerHTML=Object.keys(ICONS).map(k=>`<option value="${k}">${k}</option>`).join('');
+  function render(){
+    document.getElementById('pv-mount').innerHTML=item(st);
+    const a=[];
+    if(st.type==='Pressed')a.push('active');
+    if(st.showIcon)a.push(`leftSection={<${ICONS[st.icon]} size={18} aria-hidden />}`);
+    a.push(`label="${st.label}"`,'component="a"','href="#"');
+    document.getElementById('pv-code').innerHTML=`<span class="tag">&lt;NavLink</span> ${e(a.join(' '))} <span class="tag">/&gt;</span>`;
+    document.getElementById('pv-figma').textContent=`Type=${st.type}`+(st.showIcon?'':', Icon=false');
+  }
+  wireSegs('.seg',st,render);
+  document.getElementById('pv-label').addEventListener('input',ev=>{st.label=ev.target.value;render();});
+  sel.addEventListener('change',ev=>{st.icon=ev.target.value;render();});
+  const sw=document.getElementById('pv-showicon');
+  sw.addEventListener('click',()=>{st.showIcon=!st.showIcon;sw.classList.toggle('on',st.showIcon);sw.setAttribute('aria-checked',String(st.showIcon));render();});
+  document.addEventListener('click',ev=>{if(ev.target.closest('a.nvi'))ev.preventDefault();});
+  render();
+
+  document.getElementById('anat-nvi').innerHTML=item({type:'Pressed',label:'Training Data',icon:'folder-open',showIcon:true});
+
+  const rows=[['Default',{}],['Hover',{}],['Pressed',{}],['Focus ⚠ not designed',{na:true}],['Disabled ⚠ not designed',{na:true}]];
+  document.getElementById('matrix').innerHTML='<thead><tr><th>Type</th><th>Icon = true</th><th>Icon = false</th></tr></thead><tbody>'+
+    rows.map(([t,x])=>`<tr><td>${t}</td><td>${item({type:t,label:'Training Data',icon:'folder-open',showIcon:true,...x})}</td><td>${item({type:t,label:'Training Data',icon:'folder-open',showIcon:false,...x})}</td></tr>`).join('')+'</tbody>';
+})();
+</script>
+
+</body></html>

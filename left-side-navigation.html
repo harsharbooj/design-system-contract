@@ -1,0 +1,466 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>try{const t=localStorage.getItem('ds-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<title>Left Side Navigation — Design System Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@phosphor-icons/webcomponents@2.1.5/+esm"></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div id="nav-mount"></div>
+
+<div class="layout">
+  <div id="sidebar-mount"></div>
+
+  <main class="main">
+   <div class="wrap">
+
+    <section class="section" id="left-side-navigation">
+      <div class="eyebrow"><span class="n">21</span> Components · Left Side Navigation</div>
+      <h2 class="t-title-page">Left Side Navigation <span class="mono" style="font-size:13px;color:var(--text-4);font-weight:400;">Design System Contract v0.9 · 67:431 · 1 slot · 148 instances</span></h2>
+      <p class="lead">The app-level navigation rail, with one fixed structure and one slot. It is a single <code>COMPONENT</code> with no variant axes. Its only property is <b>Nav Slot</b>, which holds <a href="nav-item.html">NavItem</a> (Figma: <b>Tab atom</b>) instances. The brand block and the Settings / Exit footer are built into the component.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">every control updates the preview and both code tabs · click or use the keyboard (Tab / Enter / Space) in the preview to select</span></div>
+      <div class="play">
+        <div class="stage rail-stage" id="rail-stage"><div class="rail-box" id="rail-box"></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Product name</span><input class="tin" id="pv-name" value="Product Name" maxlength="24" aria-label="Product name"></div>
+          <div class="ctl"><span class="lab">Logo letter</span><input class="tin" id="pv-logo" value="P" maxlength="1" aria-label="Logo letter" style="width:56px;"></div>
+          <div class="ctl"><span class="lab">Nav items (slot) · 1–8</span><div class="items-ed" id="items-ed"></div><button class="mini" id="add-item" style="margin-top:8px;">+ Add item</button></div>
+          <div class="ctl"><span class="lab">Selected item</span><select class="tin" id="pv-sel" aria-label="Selected item"></select></div>
+          <div class="rowsw"><span>Show footer</span><button class="swt on" id="pv-footer" role="switch" aria-checked="true" aria-label="Show footer"></button></div>
+          <div class="ctl" style="margin-top:10px;"><span class="lab">Footer items</span><div class="chk"><label><input type="checkbox" id="pv-settings" checked> Settings</label><label><input type="checkbox" id="pv-exit" checked> Exit</label></div></div>
+          <div class="ctl"><span class="lab">Height</span><div class="seg" data-axis="height"><button data-v="fill" class="on">Fill</button><button data-v="fit">Fit</button></div></div>
+          <div class="ctl"><span class="lab">Theme (Figma modes)</span><div class="seg" data-axis="theme"><button data-v="site" class="on">Site</button><button data-v="light">Light</button><button data-v="dark">Dark</button></div></div>
+          <div class="rowsw"><span>Overflow demo (+12) <span class="ubadge prop">proposed</span></span><button class="swt" id="pv-overflow" role="switch" aria-checked="false" aria-label="Overflow demo"></button></div>
+          <div class="rowsw"><span>Show token overlay</span><button class="swt" id="pv-tok" role="switch" aria-checked="false" aria-label="Show token overlay"></button></div>
+        </div>
+      </div>
+      <div class="codeout">
+        <div class="ch"><div class="tabs" role="tablist"><button class="on" data-tab="react" role="tab" aria-selected="true">Mantine · React</button><button data-tab="html" role="tab" aria-selected="false">HTML + CSS variables</button></div><span class="vn" id="pv-figma"></span><button class="copybtn" data-copytarget="pv-code" style="font:inherit;font-size:11px;background:none;border:1px solid var(--border);border-radius:6px;padding:2px 8px;color:var(--text-2);cursor:pointer;">Copy</button></div>
+        <pre id="pv-code"></pre>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3></div>
+      <div class="anat">
+        <div class="viz anat-rail"><div style="position:relative;margin:0 32px;" id="anat-wrap"></div></div>
+        <ol>
+          <li><b>Container</b>: 200 wide, full height, vertical <code>SPACE_BETWEEN</code>, <code>pt space/16</code>, <code>bg/surface</code>, 1px right stroke <code>border/subtle</code>.</li>
+          <li><b>Brand block</b>: a 32 × 32 logo mark (<code>action/primary/bg</code>, <code>radius/md</code>, "P" in <code>Title/Sub</code> <code>text/inverse</code>) plus the product name (<code>Body/Strong</code>, <code>text/primary</code>). It doesn't scroll.</li>
+          <li><b>Nav Slot</b>: the only extension point. Vertical, hug, <code>px space/12</code>, <code>gap space/12</code>, clips content.</li>
+          <li><b>NavItem</b>: an instance of <a href="nav-item.html">Tab atom</a>, 174 × 40. The first item is <code>Type=Pressed</code> (active).</li>
+          <li><b>Footer group</b>: Settings and Exit pinned to the bottom, <code>gap space/0</code>. Each row is 52 high (<code>space/52</code>), <code>px space/24</code>, <code>gap space/12</code>, <code>Body</code> 400.</li>
+          <li><b>Footer divider</b>: a <a href="line.html">Divider</a> instance (40:626) above each row, fill overridden to <code>border/subtle</code>.</li>
+          <li><b>Destructive footer action</b>: Exit uses <code>text/destructive</code> and <code>icon/destructive</code>.</li>
+        </ol>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Spacing &amp; tokens</h3><span class="note">every binding re-read from the Plugin API on 2026-09-29</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Element</th><th>Property</th><th>Token</th><th>Resolved (Light / Dark)</th><th>Mantine / CSS variable</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Container</td><td class="val">padding-top</td><td class="val">space/16</td><td class="val">16</td><td class="mant">var(--mantine-spacing-16)</td></tr>
+            <tr><td class="tok">Container</td><td class="val">fill</td><td class="val">bg/surface</td><td class="val">#FFFFFF / #1A1815</td><td class="mant">var(--mantine-color-bg-surface)</td></tr>
+            <tr><td class="tok">Container</td><td class="val">right stroke 1px</td><td class="val">border/subtle</td><td class="val">#E4E2DD / #2C2A26</td><td class="mant">var(--mantine-color-border-subtle)</td></tr>
+            <tr><td class="tok">Container</td><td class="val">width</td><td class="val">— <span class="ubadge warn">unbound</span></td><td class="val">200 (size/sidebar = 240)</td><td class="mant">--lsn-w (local)</td></tr>
+            <tr><td class="tok">Top Group</td><td class="val">gap</td><td class="val">space/8</td><td class="val">8</td><td class="mant">var(--mantine-spacing-8)</td></tr>
+            <tr><td class="tok">Header</td><td class="val">gap</td><td class="val">space/32</td><td class="val">32</td><td class="mant">var(--mantine-spacing-32)</td></tr>
+            <tr><td class="tok">Brand Nav</td><td class="val">gap / padding-x</td><td class="val">space/16 / space/12</td><td class="val">16 / 12</td><td class="mant">var(--mantine-spacing-16) / -12</td></tr>
+            <tr><td class="tok">Brand row</td><td class="val">padding-y / gap</td><td class="val">space/8 / space/12</td><td class="val">8 / 12</td><td class="mant">var(--mantine-spacing-8) / -12</td></tr>
+            <tr><td class="tok">Logo</td><td class="val">fill / radius</td><td class="val">action/primary/bg / radius/md</td><td class="val">#045646 / #10735F · 8</td><td class="mant">var(--mantine-color-action-primary-bg) · var(--mantine-radius-md)</td></tr>
+            <tr><td class="tok">Logo</td><td class="val">size</td><td class="val">— <span class="ubadge warn">unbound</span></td><td class="val">32 × 32</td><td class="mant">--lsn-logo (local)</td></tr>
+            <tr><td class="tok">Logo glyph</td><td class="val">color / style</td><td class="val">text/inverse · Title/Sub</td><td class="val">#FFFFFF / #1A1815 · 500 16/24</td><td class="mant">var(--mantine-color-text-inverse)</td></tr>
+            <tr><td class="tok">BrandText</td><td class="val">gap / width</td><td class="val">space/2 / — <span class="ubadge warn">unbound</span></td><td class="val">2 / 100</td><td class="mant">var(--mantine-spacing-2) / --lsn-brandtext-w</td></tr>
+            <tr><td class="tok">Product name</td><td class="val">color / style</td><td class="val">text/primary · Body/Strong</td><td class="val">#1A1815 / #FAF9F7 · 500 14/22</td><td class="mant">var(--mantine-color-text)</td></tr>
+            <tr><td class="tok">Nav Slot</td><td class="val">gap / padding-x</td><td class="val">space/12 / space/12</td><td class="val">12 / 12</td><td class="mant">var(--mantine-spacing-12)</td></tr>
+            <tr><td class="tok">NavItem</td><td class="val">padding-x / radius</td><td class="val">space/12 / radius/sm</td><td class="val">12 / 6</td><td class="mant">var(--mantine-spacing-12) · var(--mantine-radius-sm)</td></tr>
+            <tr><td class="tok">NavItem</td><td class="val">gap · size · icon</td><td class="val">— <span class="ubadge warn">unbound</span></td><td class="val">12 · 174 × 40 · 18</td><td class="mant">--nvi-gap · --nvi-w/h · --nvi-icon</td></tr>
+            <tr><td class="tok">NavItem (selected)</td><td class="val">fill / stroke</td><td class="val">selected/bg / accent/border</td><td class="val">#EAF4F0 · #045646 / #052A23 · #3C9081</td><td class="mant">var(--mantine-color-selected-bg) · var(--mantine-color-accent-border)</td></tr>
+            <tr><td class="tok">NavItem (selected)</td><td class="val">text / icon</td><td class="val">text/label</td><td class="val">#06463A / #F4E3AD</td><td class="mant">var(--mantine-color-text-label)</td></tr>
+            <tr><td class="tok">NavItem (default)</td><td class="val">text / icon</td><td class="val">text/secondary / icon/secondary</td><td class="val">#6B6862 / #BCB8B1</td><td class="mant">var(--mantine-color-text-secondary) · var(--mantine-color-icon-secondary)</td></tr>
+            <tr><td class="tok">Footer</td><td class="val">gap</td><td class="val">space/0</td><td class="val">0</td><td class="mant">var(--mantine-spacing-0)</td></tr>
+            <tr><td class="tok">Footer rows</td><td class="val">height / padding-x / gap</td><td class="val">space/52 / space/24 / space/12</td><td class="val">52 / 24 / 12</td><td class="mant">var(--mantine-spacing-52) · -24 · -12</td></tr>
+            <tr><td class="tok">Footer divider</td><td class="val">fill (Divider override)</td><td class="val">border/subtle</td><td class="val">#E4E2DD / #2C2A26</td><td class="mant">var(--mantine-color-border-subtle)</td></tr>
+            <tr><td class="tok">Settings</td><td class="val">text / icon · style</td><td class="val">text/secondary / icon/secondary · Body</td><td class="val">#6B6862 · 400 14/22</td><td class="mant">var(--mantine-color-text-secondary)</td></tr>
+            <tr><td class="tok">Exit</td><td class="val">text / icon · style</td><td class="val">text/destructive / icon/destructive · Body</td><td class="val">#C22E22 / #DE4133 · 400 14/22</td><td class="mant">var(--mantine-color-text-destructive) · var(--mantine-color-icon-destructive)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;">The top group's gap is now bound to <code class="mono">space/8</code>, so the unbound "10" noted earlier has been resolved in Figma. All text is bound to the <code class="mono">Title/Sub</code>, <code class="mono">Body/Strong</code> and <code class="mono">Body</code> text styles. The only unbound values left are the fixed sizes marked <span class="ubadge warn">unbound</span>.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3><span class="note">read via the Plugin API · Code Connect is not available on this plan</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Figma name</th><th>Code prop</th><th>Mantine equivalent</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Nav Slot</td><td class="val">SLOT</td><td class="val">3 NavItems (Training Data active, Manual Test, Auto Test)</td><td class="usage">preferredValues: <b>Tab atom</b> set (key <span class="mono">e2e9322b…</span>)</td><td class="val">Nav Slot#859:0</td><td class="mant">children</td><td class="mant">AppShell.Navbar children</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="subhead" style="margin-top:24px;"><h4 style="margin:0;font-size:15px;">Content not exposed as a property</h4><span class="note">shown in the design, so code needs a prop decision · all proposed</span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Proposed prop</th><th>Type</th><th>Default</th><th>Figma today</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">productName</td><td class="val">string</td><td class="val">"Product Name"</td><td class="usage">Plain text layer. Changing it means overriding text per instance.</td><td class="usage"><span class="ubadge prop">Proposed — not in Figma</span></td></tr>
+            <tr><td class="tok">logo</td><td class="val">ReactNode</td><td class="val">letter mark "P"</td><td class="usage">Local frame, not a component</td><td class="usage"><span class="ubadge prop">Proposed — not in Figma</span></td></tr>
+            <tr><td class="tok">footer</td><td class="val">('settings' | 'exit')[]</td><td class="val">['settings','exit']</td><td class="usage">Hand-built frames, not a slot</td><td class="usage"><span class="ubadge prop">Proposed — not in Figma</span></td></tr>
+            <tr><td class="tok">width</td><td class="val">number</td><td class="val">200</td><td class="usage">Fixed 200. The <code class="mono">size/sidebar</code> token is 240.</td><td class="usage"><span class="ubadge prop">Proposed — not in Figma</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Slots</h3><span class="note">the most important part of this component's API</span></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p><b>What a slot is here.</b> A Figma <code>SLOT</code> property marks a region where a designer can drop in, remove and reorder children while the structure around it stays locked. In code a SLOT maps to <code>children</code>. If the team later adds more regions, each one becomes a named <code>ReactNode</code> prop. By contrast, an <code>INSTANCE_SWAP</code> maps to a single <code>ReactNode</code> prop, and a <code>BOOLEAN</code> maps to a conditional render.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>This component's one slot.</b> The layer is <code>Nav Slot</code> (node <code>859:17392</code>), with property key <code>Nav Slot#859:0</code>. It's vertical, hugs its content, has <code>px space/12</code> and <code>gap space/12</code>, and clips content. By default it holds 3 NavItems. <code>preferredValues</code> is the <b>Tab atom</b> set, added during the Figma cleanup and verified.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>What belongs in it:</b> <a href="nav-item.html">NavItem</a> only. Section labels or dividers could come later, but only if design approves them. <b>What doesn't:</b> buttons, inputs, cards, the brand block, or footer actions.</p></div>
+      </div>
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Fill the slot with NavItems only</li>
+          <li>Keep exactly one item in the active (Figma <code>Pressed</code>) state</li>
+          <li>Order items the way the information architecture is ordered</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Nest a second slot or sub-menu. No nested navigation is defined</li>
+          <li>Override NavItem width. It's 174 inside the 200 rail (12 + 174 + 12, with a 2px clip margin)</li>
+          <li>Put destructive actions in the slot. They belong in the footer (Exit)</li>
+        </ul></div>
+      </div>
+      <div class="contract" style="margin-top:16px;">
+        <div class="chead"><span class="lbl2">slot → children (Mantine, proposed)</span></div>
+<pre><span class="k">&lt;LeftSideNavigation</span> productName=<span class="s">"Paveway OCR"</span> logo={<span class="k">&lt;LogoMark&gt;</span>P<span class="k">&lt;/LogoMark&gt;</span>}<span class="k">&gt;</span>
+  <span class="c">{/* Nav Slot#859:0 → children */}</span>
+  <span class="k">&lt;NavItem</span> active icon={<span class="k">&lt;FolderOpen /&gt;</span>}<span class="k">&gt;</span>Training Data<span class="k">&lt;/NavItem&gt;</span>
+  <span class="k">&lt;NavItem</span> icon={<span class="k">&lt;CursorClick /&gt;</span>}<span class="k">&gt;</span>Manual Test<span class="k">&lt;/NavItem&gt;</span>
+  <span class="k">&lt;NavItem</span> icon={<span class="k">&lt;Cpu /&gt;</span>}<span class="k">&gt;</span>Auto Test<span class="k">&lt;/NavItem&gt;</span>
+<span class="k">&lt;/LeftSideNavigation&gt;</span></pre>
+      </div>
+      <div class="tbl-wrap" style="margin-top:16px;">
+        <table class="ref">
+          <thead><tr><th>Mechanism</th><th>Where</th><th>What the designer can change</th><th>Code</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">SLOT</td><td class="val">Rail · Nav Slot#859:0</td><td class="usage">Any number, order and set of child NavItems</td><td class="mant">children</td></tr>
+            <tr><td class="tok">INSTANCE_SWAP</td><td class="val">NavItem · Instance#271:6</td><td class="usage">Which single icon component fills the 18 × 18 box</td><td class="mant">icon={&lt;Icon/&gt;}</td></tr>
+            <tr><td class="tok">BOOLEAN</td><td class="val">NavItem · Icon#271:0</td><td class="usage">Whether that icon is shown at all</td><td class="mant">{icon &amp;&amp; …}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Internal components</h3><span class="note">the rail is a composition of these</span></div>
+      <div class="comp-cards">
+        <div class="cc"><h4>NavItem <span class="nid">852:10111</span></h4>Figma name <b>Tab atom</b>, 3 variants, 461 instances. It's the clickable row in the slot. Its text property is still called <code>Section heading</code>. <a href="nav-item.html">NavItem page →</a></div>
+        <div class="cc"><h4>Icon <span class="nid">instance swap · 86:1119</span></h4>An 18 × 18 icon box. Glyphs seen: folder, cursor click, cpu. The swap's preferred values list only <code>folder</code> (key <span class="mono">65e51995…</span>). <a href="icons.html">Icons →</a></div>
+        <div class="cc"><h4>Logo mark <span class="ubadge warn">not a component</span></h4>A local 32 × 32 frame (859:17380) with a text "P". You can't swap it per product without overriding it or detaching.</div>
+        <div class="cc"><h4>Footer row <span class="ubadge warn">not NavItem</span></h4>Local frames (285:6465, 67:460) with <code>cogs</code> / <code>exit</code> icon instances. They don't share NavItem states and have no hover. Both layers are named "Settings".</div>
+        <div class="cc"><h4>Divider <span class="nid">40:626</span></h4>Separates the footer rows, with fill overridden to <code>border/subtle</code>. It replaced the old local rectangles. <a href="line.html">Divider →</a></div>
+      </div>
+      <div class="tbl-wrap" style="margin-top:16px;">
+        <table class="ref">
+          <thead><tr><th>Figma icon</th><th>Node</th><th>Used in</th><th>Phosphor (web component)</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">folder</td><td class="val">86:1119</td><td class="usage">Training Data</td><td class="mant"><ph-folder-open size="16"></ph-folder-open> &lt;ph-folder-open&gt;</td></tr>
+            <tr><td class="tok">cursor click</td><td class="val">86:1123</td><td class="usage">Manual Test</td><td class="mant"><ph-cursor-click size="16"></ph-cursor-click> &lt;ph-cursor-click&gt;</td></tr>
+            <tr><td class="tok">cpu</td><td class="val">86:1127</td><td class="usage">Auto Test</td><td class="mant"><ph-cpu size="16"></ph-cpu> &lt;ph-cpu&gt;</td></tr>
+            <tr><td class="tok">cogs</td><td class="val">35:249</td><td class="usage">Settings</td><td class="mant"><ph-gear size="16"></ph-gear> &lt;ph-gear&gt;</td></tr>
+            <tr><td class="tok">exit</td><td class="val">291:6241</td><td class="usage">Exit</td><td class="mant"><ph-sign-out size="16"></ph-sign-out> &lt;ph-sign-out&gt;</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Layout behaviour</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p><b>Fixed width of 200</b>, full height. In code, use <code>height: 100vh</code> (or fill the shell) rather than Figma's 1024.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b><code>SPACE_BETWEEN</code></b> pins the top group (brand + slot) to the top and the footer to the bottom, whatever the height. Toggle <i>Height → Fit</i> in the playground to see the footer hug the items instead.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>Fixed:</b> the brand block, the footer rows and the widths. <b>Flexible:</b> the slot's contents only.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>Min / max height:</b> not defined in Figma. <b>Overflow:</b> not defined. The top group clips. <span class="ubadge prop">Proposed</span> The slot scrolls while the brand and footer stay fixed.</p></div>
+        <div class="rule"><span class="num mono"></span><p><b>Responsive:</b> not defined in Figma, and there are no breakpoint variables. <span class="ubadge prop">Proposed only</span> Below the tablet breakpoint, collapse to an icon rail or a drawer. This needs a design, including a Tooltip for collapsed labels.</p></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Variant / state matrix</h3><span class="note">no variant axes, so these are slot configurations</span></div>
+      <div class="rail-grid" id="rail-grid"></div>
+
+      <div class="subhead"><h3 class="t-title-section">State machine</h3><span class="note">NavItem states inside the rail · details on the <a href="nav-item.html">NavItem page</a></span></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Figma state</th><th>Code selector</th><th>Behaviour</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="mant">—</td><td class="usage">A destination that isn't the current one</td></tr>
+            <tr><td class="tok">Hover</td><td class="mant">:hover</td><td class="usage"><code class="mono">bg/hover</code> fill</td></tr>
+            <tr><td class="tok">Pressed <span class="ubadge warn">= selected</span></td><td class="mant">[aria-current="page"]</td><td class="usage">The current route. Exactly one per rail. It follows the router, not the click (prototype CHANGE_TO is for prototyping only)</td></tr>
+            <tr><td class="tok">Focus</td><td class="mant">:focus-visible</td><td class="usage"><span class="ubadge warn">⚠ Not designed</span> The preview uses the <code class="mono">focus/ring</code> 2px ring, borrowed from Button</td></tr>
+            <tr><td class="tok">Disabled</td><td class="mant">[aria-disabled="true"]</td><td class="usage"><span class="ubadge warn">⚠ Not designed</span></td></tr>
+            <tr><td class="tok">Footer rows</td><td class="mant">—</td><td class="usage"><span class="ubadge warn">No states</span> Settings / Exit have no hover, focus or active designs</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Use cases</h3></div>
+      <div class="comp-cards">
+        <div class="cc"><h4>Primary app navigation</h4><b>Scenario:</b> the Paveway OCR web app, with 3–7 top-level destinations (Training Data, Manual Test, Auto Test). <b>Why:</b> it's persistent and one item is always active. <b>Config:</b> slot of NavItems, one <code>active</code>. <b>Anti-pattern:</b> two active items at once.</div>
+        <div class="cc"><h4>Workspace with utility actions</h4><b>Scenario:</b> Settings and Exit must always be reachable. <b>Why:</b> the footer is pinned by <code>SPACE_BETWEEN</code>, so it never scrolls away. <b>Config:</b> <code>footer={['settings','exit']}</code>. <b>Anti-pattern:</b> putting Settings in the slot.</div>
+        <div class="cc"><h4>Branded shell</h4><b>Scenario:</b> the product name and logo come from the tenant or product config. <b>Config:</b> <code>productName</code> and <code>logo</code> (proposed props). <b>Anti-pattern:</b> detaching the component to change the name.</div>
+        <div class="cc"><h4>Section switching without reload</h4><b>Scenario:</b> SPA routing. <b>Config:</b> <code>active</code> is derived from the current route and sets <code>aria-current="page"</code>. <b>Anti-pattern:</b> local click state that goes out of sync with the URL.</div>
+        <div class="cc"><h4>Not for</h4>In-page tabs (use <a href="tab-status.html">Tab Status</a>). Breadcrumbs, contextual or overflow menus, and mobile bottom nav have <b>no library component</b>, so flag them rather than inventing one. Also not for more than ~8 destinations or nested trees.</div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="rules">
+        <div class="rule"><span class="num mono"></span><p>The container is <code>&lt;nav aria-label="Main navigation"&gt;</code>. The brand block is not a landmark.</p></div>
+        <div class="rule"><span class="num mono"></span><p>NavItems are real links (<code>&lt;a href&gt;</code>). The current one has <code>aria-current="page"</code>. The active item isn't shown by colour alone: it also has a fill and a 1px border, which is a good property of the design.</p></div>
+        <div class="rule"><span class="num mono"></span><p>Icons are decorative, so they get <code>aria-hidden="true"</code>. The label is always present, because the <code>Icon</code> boolean hides only the icon.</p></div>
+        <div class="rule"><span class="num mono"></span><p><span style="color:var(--warning-fg);">Focus: a visible <code>:focus-visible</code> ring is required but isn't in Figma. The preview borrows Button's <code>focus/ring</code>.</span></p></div>
+        <div class="rule"><span class="num mono"></span><p>Exit is styled as destructive but isn't a destructive <i>action</i>. Ask for confirmation only if leaving discards unsaved work.</p></div>
+      </div>
+      <div class="tbl-wrap" style="margin-top:12px;">
+        <table class="ref">
+          <thead><tr><th>Foreground</th><th>Background</th><th>Light</th><th>Dark</th><th>AA 4.5:1</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">text/secondary</td><td class="val">bg/surface</td><td class="val">5.55:1</td><td class="val">8.97:1</td><td class="usage"><span class="ubadge ok">Pass</span></td></tr>
+            <tr><td class="tok">text/secondary</td><td class="val">bg/hover</td><td class="val">5.00:1</td><td class="val">7.25:1</td><td class="usage"><span class="ubadge ok">Pass</span></td></tr>
+            <tr><td class="tok">text/label</td><td class="val">selected/bg</td><td class="val">9.61:1</td><td class="val">12.07:1</td><td class="usage"><span class="ubadge ok">Pass</span></td></tr>
+            <tr><td class="tok">text/primary</td><td class="val">bg/surface</td><td class="val">17.72:1</td><td class="val">16.84:1</td><td class="usage"><span class="ubadge ok">Pass</span></td></tr>
+            <tr><td class="tok">text/destructive</td><td class="val">bg/surface</td><td class="val">5.66:1</td><td class="val">4.14:1</td><td class="usage"><span class="ubadge ok">Light</span> <span class="ubadge bad">Dark fails</span></td></tr>
+            <tr><td class="tok">text/inverse (logo "P", 16px)</td><td class="val">action/primary/bg</td><td class="val">8.66:1</td><td class="val">3.07:1</td><td class="usage"><span class="ubadge ok">Light</span> <span class="ubadge bad">Dark fails</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:8px;">These are WCAG 2.x relative-luminance ratios, computed from the resolved Semantic variable values (Light and Dark modes). 14px and 16px Medium text counts as normal text, so the 4.5:1 threshold applies.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="dd">
+        <div class="col do"><div class="head">Do</div><ul>
+          <li>Instantiate the component and fill <code>Nav Slot</code> with Tab atom instances</li>
+          <li>Drive the active item from the route (<code>aria-current="page"</code>)</li>
+          <li>Keep Settings / Exit in the footer, where they're pinned</li>
+          <li>Use the <code>--mantine-*</code> tokens for every colour and spacing value</li>
+        </ul></div>
+        <div class="col dont"><div class="head">Don't</div><ul>
+          <li>Detach the component to change the product name or logo</li>
+          <li>Widen the rail to 240 because <code>size/sidebar</code> says so, until that's decided</li>
+          <li>Invent a collapsed or icon-only mode or a tooltip. None is designed</li>
+          <li>Hardcode <code>#E4E2DD</code> for the edge instead of <code>border/subtle</code></li>
+        </ul></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Open questions &amp; contract gaps</h3></div>
+      <div class="gaps">
+        <div class="gap"><span class="sev high">High</span><div class="gtxt"><b>1 · Focus and Disabled are not designed</b> on Tab atom. Hover and Pressed now exist.</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>1b · <code>Pressed</code> is really the selected / active look.</b> It was renamed from <code>Selected</code> and still marks the current page (150 instances). Recommendation: add a separate <code>Selected</code> variant. Also: Hover has 0 instances, and the duplicate <code>NavItem</code> set (271:6610, 0 instances) should be deleted or merged.</div></div>
+        <div class="gap"><span class="sev low">Resolved</span><div class="gtxt"><b>2 · The top group gap</b> is now bound to <code>space/8</code>, so the "unbound 10" question no longer applies.</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>3 · The footer isn't a slot and doesn't use NavItem.</b> Settings and Exit are hand-built frames in <code>Body</code> (400), while NavItem uses <code>Body/Strong</code> (500). They have no hover or focus states, and both row layers are named "Settings". The icon x-positions do line up (12 slot padding + 12 item padding = 24 footer padding).</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>4 · The logo mark and product name are not properties.</b> You can't change them per product without overriding them. The logo is a local frame, not a component.</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>5 · Width mismatch.</b> The component is 200 wide, but the <code>size/sidebar</code> token (Dimensions) is 240. Either bind the width or retire the token.</div></div>
+        <div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>6 · Not defined:</b> collapsed or icon-only mode, responsive behaviour, scroll overflow, and long-label truncation. The playground shows proposals only.</div></div>
+        <div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>7 · Prototype reactions</b> (<code>ON_CLICK → CHANGE_TO</code>) are for prototyping only. There's no real selection contract.</div></div>
+        <div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>8 · Code Connect:</b> <code>get_code_connect_map</code> and <code>get_context_for_code_connect</code> return "needs a Dev or Full seat on an Organization or Enterprise plan" for 67:431 and 852:10111. No Code Connect mapping exists yet, so the Mantine mapping on this page is <i>proposed</i>.</div></div>
+        <div class="gap"><span class="sev low">Resolved</span><div class="gtxt"><b>9 · Text styles are all bound</b> (Title/Sub, Body/Strong, Body). Still unbound: NavItem gap 12, the 174 × 40 item size, the 18 icon box (no token), the 32 logo, and the 100 BrandText width.</div></div>
+        <div class="gap"><span class="sev high">High</span><div class="gtxt"><b>10 · Dark-mode contrast.</b> <code>text/destructive</code> (Exit) on <code>bg/surface</code> is 4.14:1, and the logo glyph <code>text/inverse</code> on <code>action/primary/bg</code> is 3.07:1. Both fail AA.</div></div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Changelog</h3></div>
+      <div class="clog">
+        <div class="cl"><span class="st">Added</span><div class="ct"><b>2026-09-29.</b> Initial documentation extracted from Figma via MCP (nodes 67:431, 852:10111).</div></div>
+        <div class="cl"><span class="st">Verified</span><div class="ct"><b>Figma cleanup (2026-09-29):</b> the slot's preferred value is Tab atom. Bound: right stroke <code>border/subtle</code>, slot and Brand Nav <code>px space/12</code>, brand gap <code>space/12</code>, BrandText gap <code>space/2</code>, logo <code>radius/md</code> (was an unbound 9), footer rows <code>space/24</code> / <code>space/12</code> / <code>space/52</code>, top group gap <code>space/8</code>. Layers renamed to <code>Top Group</code> / <code>Header</code> / <code>Brand Nav</code> / <code>Brand</code> / <code>Footer</code>. Footer dividers are now <code>Divider</code> instances.</div></div>
+        <div class="cl"><span class="st open">Open</span><div class="ct" style="color:var(--warning-fg);"><b>See Open questions 1, 1b and 3–10.</b></div></div>
+      </div>
+
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-lsn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-lsn</span></div>
+<script type="application/json" id="ds-contract-lsn">
+{
+  "section": "left-side-navigation",
+  "component": "Left Side Navigation",
+  "nodeId": "67:431",
+  "type": "COMPONENT",
+  "variantAxes": [],
+  "instances": 148,
+  "properties": [
+    { "name": "Nav Slot", "key": "Nav Slot#859:0", "type": "SLOT", "node": "859:17392", "preferredValues": ["Tab atom (852:10111)"], "code": "children" }
+  ],
+  "proposedProps": { "productName": "string", "logo": "ReactNode", "footer": "('settings'|'exit')[]", "width": 200 },
+  "layout": {
+    "width": "200 (unbound; size/sidebar=240)", "height": "fill / 100vh", "direction": "vertical", "align": "SPACE_BETWEEN",
+    "paddingTop": "space/16", "fill": "bg/surface", "stroke": "border/subtle (right, 1px)",
+    "topGroupGap": "space/8", "headerGap": "space/32", "brandNav": { "gap": "space/16", "px": "space/12" },
+    "brand": { "py": "space/8", "gap": "space/12" }, "logo": { "size": "32 (unbound)", "fill": "action/primary/bg", "radius": "radius/md" },
+    "slot": { "px": "space/12", "gap": "space/12", "clip": true },
+    "footer": { "gap": "space/0", "row": { "height": "space/52", "px": "space/24", "gap": "space/12", "text": "Body" }, "divider": "Divider 40:626 · border/subtle" }
+  },
+  "internal": ["Tab atom 852:10111", "Divider 40:626", "icons folder/cursor click/cpu/cogs/exit", "Logo (local frame)", "Footer rows (local frames)"],
+  "iconMap": { "folder": "ph-folder-open", "cursor click": "ph-cursor-click", "cpu": "ph-cpu", "cogs": "ph-gear", "exit": "ph-sign-out" },
+  "a11y": { "landmark": "nav[aria-label='Main navigation']", "current": "aria-current='page'", "icons": "aria-hidden", "focus": "NOT DESIGNED — borrow focus/ring" },
+  "notDefined": ["Focus", "Disabled", "collapsed/icon-only", "responsive", "scroll overflow", "label truncation", "footer states"],
+  "codeConnect": "unavailable on plan — mappings proposed"
+}
+</script>
+      </div>
+
+      <div class="foot">
+        Extracted from the source <b>Figma file</b> (Paveway OCR · Design system · Side Navigation) via the Figma MCP (<span class="mono">get_design_context</span>, Plugin API reads) on 2026-09-29 · nodes <span class="mono">67:431</span>, <span class="mono">859:17392</span> (slot), <span class="mono">852:10111</span> (Tab atom), <span class="mono">40:626</span> (Divider), <span class="mono">271:6610</span> (unused duplicate) · 22 variables + 3 text styles bound. Code Connect is unavailable on this plan. Re-run after any token change.
+      </div>
+    </section>
+
+   </div>
+  </main>
+</div>
+<script src="app.js"></script>
+<script>
+/* ---------- Left Side Navigation: playground, anatomy, matrix ---------- */
+(function(){
+  const ICONS={'folder-open':'FolderOpen','cursor-click':'CursorClick','cpu':'Cpu','house':'House','chart-bar':'ChartBar','users':'Users','database':'Database','image':'Image'};
+  const e=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const ph=(n,sz=18)=>`<ph-${n} weight="regular" size="${sz}"></ph-${n}>`;
+  const MAX=8;
+
+  function rail(o){
+    const items=o.items.slice();
+    if(o.overflow) for(let i=0;i<12;i++) items.push({label:'Destination '+(items.length+1),icon:'folder-open',showIcon:true,demo:true});
+    const cls=['lsn']; if(o.height!=='fit')cls.push('fill'); if(o.overflow)cls.push('scroll');
+    const T=k=>o.tok?` data-tok="${k}"`:'';
+    const slot=items.map((it,i)=>`<li><a class="nvi" href="#" data-i="${i}"${i===o.sel?' aria-current="page"':''}${o.tok&&i===0?' data-tok="px space/12 · radius/sm"':''}>${it.showIcon?`<span class="ic" aria-hidden="true">${ph(it.icon)}</span>`:''}<span class="lb">${e(it.label)}</span></a></li>`).join('');
+    const foot=[];
+    if(o.footer&&o.settings)foot.push(`<a class="fi" href="#"${T('h space/52 · px space/24 · gap space/12')}><span class="ic" aria-hidden="true">${ph('gear')}</span>Settings</a>`);
+    if(o.footer&&o.exit)foot.push(`<a class="fi exit" href="#"><span class="ic" aria-hidden="true">${ph('sign-out')}</span>Exit</a>`);
+    return `<nav class="${cls.join(' ')}" aria-label="Main navigation"${T('pt space/16 · bg/surface')}>`+
+      `<div class="top"><div class="hdr"><div class="bnav"${T('px space/12')}><div class="brand-row"${T('py space/8 · gap space/12')}>`+
+      `<span class="logo" aria-hidden="true">${e(o.logo)}</span><div class="btext"><span class="pname">${e(o.name)}</span></div></div></div></div>`+
+      `<ul class="slot"${T('SLOT · gap space/12')}>${slot}</ul></div>`+
+      (foot.length?`<div class="foot-g">${foot.join('')}</div>`:'')+`</nav>`;
+  }
+
+  const st={name:'Product Name',logo:'P',items:[
+    {label:'Training Data',icon:'folder-open',showIcon:true},
+    {label:'Manual Test',icon:'cursor-click',showIcon:true},
+    {label:'Auto Test',icon:'cpu',showIcon:true}],
+    sel:0,footer:true,settings:true,exit:true,height:'fill',theme:'site',overflow:false,tok:false,tab:'react'};
+
+  const box=document.getElementById('rail-box'), stage=document.getElementById('rail-stage');
+  const ed=document.getElementById('items-ed'), selEl=document.getElementById('pv-sel'), code=document.getElementById('pv-code');
+
+  function renderEditor(){
+    ed.innerHTML=st.items.map((it,i)=>`<div class="row" data-i="${i}">
+      <input type="radio" name="selitem" aria-label="Selected" ${i===st.sel?'checked':''} data-f="sel">
+      <input class="tin" value="${e(it.label)}" maxlength="32" aria-label="Label ${i+1}" data-f="label">
+      <select aria-label="Icon ${i+1}" data-f="icon">${Object.keys(ICONS).map(k=>`<option ${k===it.icon?'selected':''}>${k}</option>`).join('')}</select>
+      <div class="acts"><label><input type="checkbox" data-f="showIcon" ${it.showIcon?'checked':''}> icon</label>
+      <button class="mini" data-f="up" ${i===0?'disabled':''} aria-label="Move up">↑</button><button class="mini" data-f="down" ${i===st.items.length-1?'disabled':''} aria-label="Move down">↓</button><button class="mini" data-f="rm" ${st.items.length<=1?'disabled':''} aria-label="Remove">✕</button></div></div>`).join('');
+    document.getElementById('add-item').disabled=st.items.length>=MAX;
+    selEl.innerHTML=st.items.map((it,i)=>`<option value="${i}" ${i===st.sel?'selected':''}>${e(it.label)||'(empty)'}</option>`).join('');
+  }
+
+  function reactCode(){
+    const used=[...new Set(st.items.filter(i=>i.showIcon).map(i=>ICONS[i.icon]))];
+    const f=[]; if(st.footer&&st.settings)f.push("'settings'"); if(st.footer&&st.exit)f.push("'exit'");
+    let s=used.length?`import { ${used.join(', ')} } from '@phosphor-icons/react';\n\n`:'';
+    s+=`<LeftSideNavigation productName="${st.name}" logo="${st.logo}" footer={[${f.join(',')}]}>\n`;
+    st.items.forEach((it,i)=>{ s+=`  <NavItem${i===st.sel?' active':''}${it.showIcon?` icon={<${ICONS[it.icon]} />}`:''} href="#">${it.label}</NavItem>\n`; });
+    if(st.overflow)s+=`  {/* +12 demo items — overflow scroll is PROPOSED, not in Figma */}\n`;
+    return s+`</LeftSideNavigation>`;
+  }
+  function htmlCode(){
+    let s=`<nav class="lsn" aria-label="Main navigation">\n  <div class="lsn-top">\n    <div class="lsn-brand"><span class="lsn-logo" aria-hidden="true">${st.logo}</span><span class="lsn-name">${st.name}</span></div>\n    <ul class="lsn-slot">\n`;
+    st.items.forEach((it,i)=>{ s+=`      <li><a class="nav-item" href="#"${i===st.sel?' aria-current="page"':''}>${it.showIcon?`<ph-${it.icon} aria-hidden="true"></ph-${it.icon}>`:''}${it.label}</a></li>\n`; });
+    s+=`    </ul>\n  </div>\n`;
+    if(st.footer&&(st.settings||st.exit)){ s+=`  <div class="lsn-footer">\n`; if(st.settings)s+=`    <a class="lsn-row" href="#"><ph-gear aria-hidden="true"></ph-gear>Settings</a>\n`; if(st.exit)s+=`    <a class="lsn-row exit" href="#"><ph-sign-out aria-hidden="true"></ph-sign-out>Exit</a>\n`; s+=`  </div>\n`; }
+    s+=`</nav>\n\n<style>
+.lsn{width:200px /* unbound — size/sidebar is 240 */;height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+  padding-top:var(--mantine-spacing-16);background:var(--mantine-color-bg-surface);border-right:1px solid var(--mantine-color-border-subtle);}
+.lsn-top{display:flex;flex-direction:column;gap:var(--mantine-spacing-8);min-height:0;}
+.lsn-brand{display:flex;align-items:center;gap:var(--mantine-spacing-12);padding:var(--mantine-spacing-8) var(--mantine-spacing-12);margin-bottom:var(--mantine-spacing-0);}
+.lsn-logo{width:32px;height:32px /* unbound */;display:grid;place-items:center;border-radius:var(--mantine-radius-md);
+  background:var(--mantine-color-action-primary-bg);color:var(--mantine-color-text-inverse);font:500 16px/24px Geist;}
+.lsn-name{color:var(--mantine-color-text);font:500 14px/22px Geist;}
+.lsn-slot{display:flex;flex-direction:column;gap:var(--mantine-spacing-12);padding:0 var(--mantine-spacing-12);margin:0;list-style:none;${st.overflow?'overflow-y:auto; /* PROPOSED */':''}}
+.nav-item{display:flex;align-items:center;gap:12px /* unbound */;height:40px /* unbound */;padding:0 var(--mantine-spacing-12);
+  border:1px solid transparent;border-radius:var(--mantine-radius-sm);color:var(--mantine-color-text-secondary);font:500 14px/22px Geist;}
+.nav-item ph-*{color:var(--mantine-color-icon-secondary);}
+.nav-item:hover{background:var(--mantine-color-bg-hover);}
+.nav-item[aria-current="page"]{background:var(--mantine-color-selected-bg);border-color:var(--mantine-color-accent-border);color:var(--mantine-color-text-label);}
+.nav-item:focus-visible{outline:2px solid var(--mantine-color-focus-ring);outline-offset:2px; /* borrowed from Button */}
+.lsn-row{display:flex;align-items:center;gap:var(--mantine-spacing-12);height:var(--mantine-spacing-52);padding:0 var(--mantine-spacing-24);
+  border-top:1px solid var(--mantine-color-border-subtle);color:var(--mantine-color-text-secondary);font:400 14px/22px Geist;}
+.lsn-row.exit{color:var(--mantine-color-text-destructive);}
+</style>`;
+    return s;
+  }
+
+  function render(){
+    if(st.sel>=st.items.length)st.sel=st.items.length-1;
+    box.className='rail-box'+(st.height==='fit'?' fit':'');
+    box.innerHTML=rail(st)+(st.overflow?'<div class="spec-note">⚠ Behaviour not specified in Figma. Proposed: the slot scrolls while the brand and footer stay fixed.</div>':'');
+    stage.classList.toggle('tok-on',st.tok);
+    stage.style.outline=st.overflow?'2px dashed var(--warning-border)':'';
+    stage.style.outlineOffset='-6px';
+    if(st.theme==='site')stage.removeAttribute('data-ds-theme'); else stage.setAttribute('data-ds-theme',st.theme);
+    code.textContent=st.tab==='react'?reactCode():htmlCode();
+    const it=st.items[st.sel];
+    document.getElementById('pv-figma').textContent=`Nav Slot: ${st.items.length} × Tab atom · Pressed = "${it?it.label:''}"`;
+  }
+  function full(){renderEditor();render();}
+
+  ed.addEventListener('input',ev=>{
+    const row=ev.target.closest('.row'); if(!row)return; const i=+row.dataset.i, f=ev.target.dataset.f, it=st.items[i];
+    if(f==='label'){it.label=ev.target.value; selEl.options[i].textContent=it.label||'(empty)'; render();}
+  });
+  ed.addEventListener('change',ev=>{
+    const row=ev.target.closest('.row'); if(!row)return; const i=+row.dataset.i, f=ev.target.dataset.f, it=st.items[i];
+    if(f==='icon')it.icon=ev.target.value;
+    else if(f==='showIcon')it.showIcon=ev.target.checked;
+    else if(f==='sel')st.sel=i;
+    else return;
+    full();
+  });
+  ed.addEventListener('click',ev=>{
+    const b=ev.target.closest('button'); if(!b)return; const i=+b.closest('.row').dataset.i, f=b.dataset.f, a=st.items;
+    const selItem=a[st.sel];
+    if(f==='up'&&i>0)[a[i-1],a[i]]=[a[i],a[i-1]];
+    else if(f==='down'&&i<a.length-1)[a[i+1],a[i]]=[a[i],a[i+1]];
+    else if(f==='rm'&&a.length>1)a.splice(i,1);
+    else return;
+    st.sel=Math.max(0,a.indexOf(selItem)); full();
+  });
+  document.getElementById('add-item').addEventListener('click',()=>{ if(st.items.length<MAX){st.items.push({label:'New item',icon:'house',showIcon:true});full();} });
+  selEl.addEventListener('change',ev=>{st.sel=+ev.target.value;full();});
+  document.getElementById('pv-name').addEventListener('input',ev=>{st.name=ev.target.value;render();});
+  document.getElementById('pv-logo').addEventListener('input',ev=>{st.logo=ev.target.value.slice(0,1);render();});
+  function sw(id,key,after){const el=document.getElementById(id);el.addEventListener('click',()=>{st[key]=!st[key];el.classList.toggle('on',st[key]);el.setAttribute('aria-checked',String(st[key]));(after||render)();});}
+  sw('pv-footer','footer'); sw('pv-overflow','overflow'); sw('pv-tok','tok');
+  document.getElementById('pv-settings').addEventListener('change',ev=>{st.settings=ev.target.checked;render();});
+  document.getElementById('pv-exit').addEventListener('change',ev=>{st.exit=ev.target.checked;render();});
+  wireSegs('.cfg .seg',st,render);
+  document.querySelectorAll('.codeout .tabs button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.codeout .tabs button').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',String(x===b));});
+    st.tab=b.dataset.tab; render();
+  }));
+
+  // selection inside the preview: click, Enter (native on <a>), Space
+  function pick(a){ const i=+a.dataset.i; if(i<st.items.length){st.sel=i;full();} const n=box.querySelector(`a.nvi[data-i="${Math.min(i,st.items.length-1)}"]`); if(n)n.focus(); }
+  box.addEventListener('click',ev=>{const a=ev.target.closest('a'); if(!a)return; ev.preventDefault(); if(a.classList.contains('nvi'))pick(a);});
+  box.addEventListener('keydown',ev=>{const a=ev.target.closest('a.nvi'); if(a&&ev.key===' '){ev.preventDefault();pick(a);}});
+  full();
+
+  /* anatomy */
+  const defaults={name:'Product Name',logo:'P',items:st.items.slice(0,3).map(x=>({...x})),sel:0,footer:true,settings:true,exit:true,height:'fill'};
+  const pins=[[1,'r',250],[2,'r',30],[3,'l',134],[4,'r',134],[5,'r',431],[6,'l',404],[7,'r',484]];
+  document.getElementById('anat-wrap').innerHTML=rail(defaults)+pins.map(([n,s,t])=>`<span class="pin" style="top:${t}px;${s==='r'?'left:calc(var(--lsn-w) + 6px)':'left:-26px'}">${n}</span>`).join('');
+
+  /* matrix: slot configurations */
+  const base=[{label:'Training Data',icon:'folder-open',showIcon:true},{label:'Manual Test',icon:'cursor-click',showIcon:true},{label:'Auto Test',icon:'cpu',showIcon:true}];
+  const cfgs=[
+    ['First selected (default)',{items:base,sel:0}],
+    ['Middle selected',{items:base,sel:1}],
+    ['Last selected',{items:base,sel:2}],
+    ['Icon = false',{items:base.map(x=>({...x,showIcon:false})),sel:0}],
+    ['Long label · truncation PROPOSED',{items:[{label:'Training Data Management Console',icon:'folder-open',showIcon:true},...base.slice(1)],sel:0}],
+    ['No footer',{items:base,sel:0,footer:false}]
+  ];
+  document.getElementById('rail-grid').innerHTML=cfgs.map(([cap,c])=>`<figure><figcaption>${cap}</figcaption>${rail({...defaults,...c})}</figure>`).join('');
+  document.getElementById('rail-grid').addEventListener('click',ev=>{if(ev.target.closest('a'))ev.preventDefault();});
+  document.getElementById('anat-wrap').addEventListener('click',ev=>{if(ev.target.closest('a'))ev.preventDefault();});
+})();
+</script>
+
+</body></html>
