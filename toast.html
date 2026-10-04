@@ -37,21 +37,6 @@
         <div class="body" style="color:var(--info);"><b>Updated 2026-09-11 (re-sync).</b> Figma's Action button dropped its trailing icon across all four states — it now renders <code>leftSection</code> only. The playground, anatomy and contract below have been corrected to match; no other part of the Toast component changed in this pass.</div>
       </div>
 
-      <div class="subhead"><h3 class="t-title-section">Token reference</h3></div>
-      <div class="tbl-wrap">
-        <table class="ref">
-          <thead><tr><th>State</th><th>Container fill</th><th>Container border</th><th>Status glyph</th><th>Title / Description</th><th>Action button</th></tr></thead>
-          <tbody>
-            <tr><td class="tok">Default</td><td class="val">bg/surface</td><td class="val">border/default</td><td class="val">icon/primary · <code>Info filled</code></td><td class="val">text/primary · text/secondary</td><td class="val">Secondary (§06)</td></tr>
-            <tr><td class="tok">Success</td><td class="val">status/success/bg</td><td class="val">status/success/border</td><td class="val">status/success/fg · <code>Check</code></td><td class="val">status/success/fg (both)</td><td class="val">Secondary (§06)</td></tr>
-            <tr><td class="tok">Info</td><td class="val">status/info/bg</td><td class="val">status/info/border</td><td class="val">status/info/fg · <code>info</code></td><td class="val">status/info/fg (both)</td><td class="val">Secondary (§06)</td></tr>
-            <tr><td class="tok">Danger</td><td class="val">status/danger/bg</td><td class="val">status/danger/border</td><td class="val">status/danger/fg · <code>Exclamtion</code></td><td class="val">status/danger/fg (both)</td><td class="val">Destructive (§06)</td></tr>
-            <tr><td class="tok">Disabled</td><td class="val">bg/sunken</td><td class="val">border/subtle</td><td class="val">text/disabled</td><td class="val">text/disabled (both)</td><td class="val">disabled (shared rule)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="usage" style="margin-top:10px;max-width:74ch;">Shared geometry across every state: <code>space/16</code> padding · <code>space/12</code> child gap · <code>space/8</code> body gap · <code>space/4</code> title/description gap · <code>radius/md</code> container · <code>radius/xs</code> dismiss box · icon 20 · dismiss 30 · action-button height 28 · width 440.</p>
-
       <div class="subhead"><h3 class="t-title-section">Properties</h3><span class="note">Figma component set 943:475</span></div>
       <div class="tbl-wrap">
         <table class="ref">
@@ -66,6 +51,21 @@
           </tbody>
         </table>
       </div>
+
+      <div class="subhead"><h3 class="t-title-section">Token reference</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>State</th><th>Container fill</th><th>Container border</th><th>Status glyph</th><th>Title / Description</th><th>Action button</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Default</td><td class="val">bg/surface</td><td class="val">border/default</td><td class="val">icon/primary · <code>Info filled</code></td><td class="val">text/primary · text/secondary</td><td class="val">Secondary (§06)</td></tr>
+            <tr><td class="tok">Success</td><td class="val">status/success/bg</td><td class="val">status/success/border</td><td class="val">status/success/fg · <code>Check</code></td><td class="val">status/success/fg (both)</td><td class="val">Secondary (§06)</td></tr>
+            <tr><td class="tok">Info</td><td class="val">status/info/bg</td><td class="val">status/info/border</td><td class="val">status/info/fg · <code>info</code></td><td class="val">status/info/fg (both)</td><td class="val">Secondary (§06)</td></tr>
+            <tr><td class="tok">Danger</td><td class="val">status/danger/bg</td><td class="val">status/danger/border</td><td class="val">status/danger/fg · <code>Exclamtion</code></td><td class="val">status/danger/fg (both)</td><td class="val">Destructive (§06)</td></tr>
+            <tr><td class="tok">Disabled</td><td class="val">bg/sunken</td><td class="val">border/subtle</td><td class="val">text/disabled</td><td class="val">text/disabled (both)</td><td class="val">disabled (shared rule)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="usage" style="margin-top:10px;max-width:74ch;">Shared geometry across every state: <code>space/16</code> padding · <code>space/12</code> child gap · <code>space/8</code> body gap · <code>space/4</code> title/description gap · <code>radius/md</code> container · <code>radius/xs</code> dismiss box · icon 20 · dismiss 30 · action-button height 28 · width 440.</p>
 
       <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
       <div class="rules">

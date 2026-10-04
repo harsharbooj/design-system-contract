@@ -130,16 +130,8 @@
         </ul></div>
       </div>
 
-      <div class="subhead"><h3 class="t-title-section">Changelog — consistency pass</h3><span class="note">applied to Button New in Figma on 2026-09-08 · 9 fixes across 30 variant edits</span></div>
+      <div class="subhead"><h3 class="t-title-section">Changelog — consistency pass</h3><span class="note">applied to Button New in Figma on 2026-09-08</span></div>
       <div class="clog">
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Danger · Disabled raw hex.</b> Both sizes filled with an unbound <code>#CE5C54</code> <span class="arrow">→</span> rebound to <code>bg/sunken</code> + <code>text/disabled</code>, matching every other disabled Type.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Primary · Loading label token.</b> Bound to <code>action/destructive/fg</code> <span class="arrow">→</span> corrected to <code>action/primary/fg</code> (Medium + Small).</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Danger · Hover (Medium) had no hover color</b> (<code>action/destructive/bg</code> = Default) <span class="arrow">→</span> rebound to <code>action/destructive/bg-hover</code>.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Primary · Hover used the pressed token.</b> <code>action/primary/bg-pressed</code> <span class="arrow">→</span> <code>action/primary/bg-hover</code> (both sizes); hover/pressed no longer collapsed.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Tertiary · Default / Hover inverted.</b> Default carried a grey <code>bg-pressed</code> fill <span class="arrow">→</span> made transparent (true ghost); Hover stays <code>action/secondary/bg-hover</code>.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Small · Tertiary padding.</b> Used 8px pad + 8 gap, breaking the Small 4/4 rule <span class="arrow">→</span> reset to <code>space/4</code> across all four Small Tertiary variants.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Medium · Primary Hover asymmetric padding</b> (8/9) <span class="arrow">→</span> normalized to 8/8.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Secondary · Disabled inconsistency across sizes</b> (Medium <code>bg-hover</code>, Small <code>bg/sunken</code>+subtle border) <span class="arrow">→</span> unified to <code>bg/sunken</code> + <code>text/disabled</code>, no border. Small · Secondary Hover label <code>text/primary</code> <span class="arrow">→</span> <code>action/secondary/fg</code>.</div></div>
         <div class="cl"><span class="st">Open</span><div class="ct" style="color:var(--warning-fg);"><b>No Focus variant.</b> Not auto-added (it changes the 32-variant matrix). Recommend adding a <code>State=Focus</code> row bound to <code>focus/ring</code>; wired via <code>:focus-visible</code> in code meanwhile.</div></div>
       </div>
       <p class="usage" style="margin-top:10px;">These are edits to the <b>Button New</b> component's variants in Figma (fills, label bindings, padding/gap) — the underlying variable definitions were already correct, so no primitive or semantic <i>values</i> changed; only the component's <i>bindings</i> were corrected to use them consistently.</p>

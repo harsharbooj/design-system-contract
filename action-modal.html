@@ -93,13 +93,6 @@
         </ul></div>
       </div>
 
-      <div class="subhead"><h3 class="t-title-section">Findings from this pass</h3></div>
-      <div class="clog">
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Trigger click now wires via <code>addEventListener</code></b> — no inline <code>onclick</code>, no ordering issue with the script tag. The overlay uses <code>z-index: 100</code> and <code>position: fixed; inset: 0</code>, so nothing on the page can occlude it.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Layout is responsive.</b> Dialog max-width is <code>min(560px, calc(100vw - 32px))</code>, padding <code>24px</code>, header/body/footer stack vertically. Verified at 360px, 768px, 1200px viewports.</div></div>
-        <div class="cl"><span class="st">Fixed</span><div class="ct"><b>Section now lives inside the <code>.main</code> container.</b> Previously it rendered outside the layout wrapper, which broke the sidebar/content grid and produced the distorted appearance.</div></div>
-      </div>
-
       <div class="contract">
         <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-action-modal"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-action-modal</span></div>
 <script type="application/json" id="ds-contract-action-modal">
