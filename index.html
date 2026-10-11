@@ -26,6 +26,7 @@
         <div class="stat"><div class="k mono">34</div><div class="l">Dimension tokens</div></div>
         <div class="stat"><div class="k mono">116</div><div class="l">Icon components</div></div>
         <div class="stat"><div class="k mono">142</div><div class="l">Library components</div></div>
+        <div class="stat"><div class="k mono">14</div><div class="l">Documented components</div></div>
       </div>
       <p class="usage" style="margin-top:6px;">162 color variables = 53 primitives + 109 semantic (light/dark). 34 dimension tokens = 13 spacing + 6 radius + 3 stroke + 12 size. 142 components across 14 component sets.</p>
 
@@ -72,8 +73,91 @@
       </div>
     </section>
 
+    <section class="section" id="table">
+      <div class="eyebrow"><span class="n">22</span> Components · Table</div>
+      <h2 class="t-title-page">Table</h2>
+      <p class="mono table-meta">Table · 3 Figma components + 1 variable collection · node 1112:32846</p>
+      <p class="lead">A row-based Core table for list screens. Instantiate Header Cell, Body Cell, and Body Row; set density on the parent Table frame so Figma and Mantine React Table share the same spacing contract.</p>
+
+      <div class="subhead"><h3 class="t-title-section">Playground</h3><span class="note">table-level properties → Mantine options</span></div>
+      <div class="play table-play" id="table-play">
+        <div class="stage"><div class="table-demo-wrap"><table class="table-demo" aria-label="Inspection runs demo"><thead><tr><th class="sel"><input class="t-check" type="checkbox" aria-label="Toggle select all"></th><th>Run <button class="sort-demo" aria-label="Sort by run">⇅</button></th><th>Part</th><th class="num">Yield</th><th>Status</th><th class="actions">☰</th></tr></thead><tbody>
+          <tr><td class="sel"><input class="t-check" type="checkbox" aria-label="Toggle select RUN-2102"></td><td class="mono">RUN-2102</td><td>Seal inspection</td><td class="num">98.4%</td><td><span class="table-tag">Passed</span></td><td class="actions">☰</td></tr>
+          <tr><td class="sel"><input class="t-check" type="checkbox" aria-label="Toggle select RUN-2103"></td><td class="mono">RUN-2103</td><td>Drive housing</td><td class="num">94.1%</td><td><span class="table-tag warn">Review</span></td><td class="actions">☰</td></tr>
+          <tr><td class="sel"><input class="t-check" type="checkbox" aria-label="Toggle select RUN-2104"></td><td class="mono">RUN-2104</td><td>Pressure test</td><td class="num">99.0%</td><td><span class="table-tag">Passed</span></td><td class="actions">☰</td></tr>
+        </tbody></table><div class="table-pager"><span>1–3 of 64</span><span class="pager-mode">Default pagination</span></div></div></div>
+        <div class="cfg">
+          <div class="ctl"><span class="lab">Density</span><div class="seg" data-axis="density"><button data-v="Compact">Compact</button><button class="on" data-v="Default">Default</button><button data-v="Comfortable">Comfortable</button></div></div>
+          <div class="ctl"><span class="lab">Dividers</span><div class="seg" data-axis="dividers"><button class="on" data-v="Rows">Rows</button><button data-v="Grid">Grid</button><button data-v="None">None</button></div></div>
+          <label class="table-switch"><span>Striped</span><input type="checkbox" data-table-toggle="striped"><i></i></label>
+          <label class="table-switch"><span>Hover</span><input type="checkbox" data-table-toggle="hover" checked><i></i></label>
+          <div class="ctl"><span class="lab">Filter display</span><div class="seg" data-axis="filters"><button class="on" data-v="Subheader">Subheader</button><button data-v="Popover">Popover</button></div></div>
+          <div class="ctl"><span class="lab">Pagination</span><div class="seg" data-axis="pagination"><button class="on" data-v="Default">Default</button><button data-v="Pages">Pages</button></div></div>
+          <label class="table-switch"><span>Selection</span><input type="checkbox" data-table-toggle="selection" checked><i></i></label>
+        </div>
+      </div>
+      <div class="codeout"><div class="ch"><span class="lbl2">Mantine React Table</span><span class="vn">live configuration</span></div><pre id="table-codeout"></pre></div>
+
+      <div class="subhead"><h3 class="t-title-section">All variants</h3><span class="note">static component-set reference</span></div>
+      <div class="panel variant-grid"><div><p class="t-caption">Header Cell · sort states</p><div class="variant-row"><span>None <b>⇅</b></span><span>Asc <b>↑</b></span><span>Desc <b>↓</b></span><span>Priority <b>↑ 1</b></span><span>Filtered <b>⌕</b></span></div></div><div><p class="t-caption">Body Row · states</p><div class="variant-rows"><span>Default</span><span class="is-hover">Hover</span><span class="is-selected">Selected</span><span class="is-selected is-hover">Selected + hover</span><span class="is-focus">Focus</span><span class="is-disabled">Disabled</span><span class="is-striped">Striped</span></div></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Anatomy</h3><span class="note">Body Row</span></div>
+      <div class="anat"><div class="viz"><div class="anatomy-row"><span class="marker m1">1</span><span class="marker m2">2</span><span class="marker m3">3</span><span class="marker m4">4</span><span class="marker m5">5</span><span class="marker m6">6</span><span class="marker m7">7</span><span class="marker m8">8</span><span class="a-sel">□</span><span class="a-mono">RUN-2102</span><span>Seal inspection</span><span class="a-tag">Passed</span><span class="a-num">98.4%</span><span class="a-act">☰</span></div></div><ol><li><b>Selection cell</b> — fixed 44px display column.</li><li><b>Mono cell</b> — identifiers use Geist Mono.</li><li><b>Text cell</b> — primary data, truncates before wrapping.</li><li><b>Tag cell</b> — a nested Tags instance.</li><li><b>Number cell</b> — right-aligned, tabular values.</li><li><b>Actions cell</b> — fixed 56px, intentional Menu icon.</li><li><b>Divider</b> — <code>border/subtle</code> at row edge.</li><li><b>Row fill</b> — owned by Body Row state.</li></ol></div>
+
+      <div class="subhead"><h3 class="t-title-section">Component properties</h3></div>
+      <div class="tbl-wrap"><table class="ref"><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Values</th><th>Mantine mapping</th></tr></thead><tbody>
+        <tr><td class="tok">Body Cell · Type</td><td>VARIANT</td><td>Text</td><td>Text · Mono · Number · Tag · Checkbox · Actions · Slot</td><td class="mant">columnDef.Cell</td></tr><tr><td class="tok">Body Cell · State</td><td>VARIANT</td><td>Default</td><td>Default · Loading</td><td class="mant">showSkeletons</td></tr>
+        <tr><td class="tok">Header Cell · Type</td><td>VARIANT</td><td>Data</td><td>Data · Selection · Actions</td><td class="mant">columnDefType</td></tr><tr><td class="tok">Header Cell · Sort</td><td>VARIANT</td><td>None</td><td>None · Asc · Desc</td><td class="mant">column.getIsSorted()</td></tr><tr><td class="tok">Header Cell · State</td><td>VARIANT</td><td>Default</td><td>Default · Hover</td><td class="mant">:hover</td></tr><tr><td class="tok">Header Cell · Align</td><td>VARIANT</td><td>Left</td><td>Left · Right</td><td class="mant">mantineTableHeadCellProps.align</td></tr>
+        <tr><td class="tok">Body Row · State</td><td>VARIANT</td><td>Default</td><td>Default · Hover · Selected · Selected+Hover · Focus · Disabled</td><td class="mant">row.getIsSelected()</td></tr><tr><td class="tok">Body Row · Striped</td><td>VARIANT</td><td>False</td><td>False · True</td><td class="mant">mantineTableProps.striped</td></tr>
+      </tbody></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">Density → spacing map</h3></div>
+      <div class="tbl-wrap"><table class="ref"><thead><tr><th>Variable</th><th>Compact</th><th>Default</th><th>Comfortable</th></tr></thead><tbody><tr><td class="tok">table/cell-py</td><td>space/8</td><td>space/12</td><td>space/16</td></tr><tr><td class="tok">table/cell-px</td><td>space/12</td><td>space/16</td><td>space/16</td></tr><tr><td class="tok">table/head-py</td><td>space/8</td><td>space/12</td><td>space/12</td></tr><tr><td class="tok">MRT density key</td><td>xs</td><td>md</td><td>xl</td></tr><tr><td class="tok">Resulting row height</td><td>40</td><td>48</td><td>56</td></tr></tbody></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">State → Mantine map</h3></div>
+      <div class="tbl-wrap"><table class="ref"><thead><tr><th>Figma state</th><th>Fill token</th><th>Border token</th><th>Mantine prop/state</th></tr></thead><tbody><tr><td>Default</td><td class="tok">bg/surface</td><td class="tok">border/subtle</td><td class="mant">—</td></tr><tr><td>Hover</td><td class="tok">bg/hover</td><td class="tok">border/subtle</td><td class="mant">highlightOnHover</td></tr><tr><td>Selected</td><td class="tok">selected/bg</td><td class="tok">selected/border</td><td class="mant">row.getIsSelected()</td></tr><tr><td>Focus</td><td>inherit</td><td class="tok">focus/ring</td><td class="mant">:focus-visible</td></tr><tr><td>Disabled</td><td class="tok">bg/disabled</td><td class="tok">border/subtle</td><td class="mant">enableRowSelection(row)</td></tr><tr><td>Striped</td><td class="tok">table/row-striped</td><td class="tok">border/subtle</td><td class="mant">striped</td></tr></tbody></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">Icon map</h3></div>
+      <div class="tbl-wrap"><table class="ref"><thead><tr><th>MRT_Default_Icons key</th><th>What it’s for</th><th>Figma icon component ID</th></tr></thead><tbody><tr><td class="tok">IconSortAscending</td><td>Sorted ascending <span class="new-note">new swap</span></td><td class="mant">1116:33898</td></tr><tr><td class="tok">IconSortDescending</td><td>Sorted descending <span class="new-note">new swap</span></td><td class="mant">1116:33897</td></tr><tr><td class="tok">IconArrowsSort</td><td>Unsorted</td><td class="mant">35:315</td></tr><tr><td class="tok">IconDotsVertical</td><td>Column actions — Menu / hamburger choice is intentional; do not change.</td><td class="mant">35:327</td></tr></tbody></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">Loading states</h3><span class="note">library-level variants</span></div>
+      <div class="panel loading-list"><p><b>Tags · Status=Loading</b> <span class="mono">1117:34215</span> — table loading cascades to status tags automatically.</p><p><b>Checkboxes · State=Loading</b> <span class="mono">1117:34221</span> — selection cells inherit the loading state without a duplicate skeleton.</p><p><b>Icon button small · Variant=Loading, Size=MD</b> <span class="mono">1117:34223</span> — row and column actions stay structurally present while loading.</p></div>
+
+      <div class="subhead"><h3 class="t-title-section">Accessibility</h3></div>
+      <div class="tbl-wrap"><table class="ref"><thead><tr><th>Concern</th><th>Requirement</th></tr></thead><tbody><tr><td class="tok">Semantics</td><td>Use <code>role=table</code> and native table structure.</td></tr><tr><td class="tok">Sort</td><td>Header Cell exposes <code>aria-sort</code>.</td></tr><tr><td class="tok">Selection</td><td>Selected Body Rows expose <code>aria-selected</code>; Space toggles selection.</td></tr><tr><td class="tok">Popovers</td><td>Esc closes filter and column-action popovers and returns focus to their trigger.</td></tr></tbody></table></div>
+
+      <div class="subhead"><h3 class="t-title-section">Usage rules</h3></div>
+      <div class="dd"><div class="col do"><div class="head">Do</div><ul><li>Build from Header Cell, Body Cell, and Body Row instances; set density on the Table frame.</li><li>Let table-level Loading cascade to Tags, Checkboxes, and Icon buttons.</li><li>Use the intentional Menu icon for the column-actions kebab.</li></ul></div><div class="col dont"><div class="head">Don’t</div><ul><li>Bind Selection or Actions horizontal padding to <code>table/cell-px</code>: they use fixed widths 44 / 56 and 12px sides.</li><li>Hand-type cell padding or row heights.</li><li>Enable every feature on every table.</li></ul></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Changelog</h3></div>
+      <div class="panel changelog mono">2026-10-10&nbsp; v0.1&nbsp; Scope decided — HTML-first, row-based, Core features only<br>2026-10-10&nbsp; v0.1&nbsp; Contract artifact published for review<br>2026-10-11&nbsp; v0.2&nbsp; Table density collection + 3 Figma components built in Paveway OCR<br>2026-10-11&nbsp; v0.2&nbsp; Loading variants added to Tags / Checkboxes / Icon button small (library-level fix)<br>2026-10-11&nbsp; v0.2&nbsp; Sort-ascending and Sort-descending icons swapped in<br>2026-10-11&nbsp; v0.2&nbsp; Selection and Actions cells unbound from density horizontal padding; fixed widths 44 / 56</div>
+
+      <div class="contract"><div class="chead"><span class="lbl2">machine-readable contract</span></div><script type="application/json" id="ds-contract-table">
+{
+ "section": "table", "id":"table", "component": "Table", "figmaFile": "VYWsNXXNHWHNgDUspt1vYF", "sectionNode": "1112:32846", "scope": "core",
+ "children": { "Table/Body Cell": { "nodeId": "1112:32908", "variants": 14, "axes": {"Type": ["Text","Mono","Number","Tag","Checkbox","Actions","Slot"], "State": ["Default","Loading"]} }, "Table/Header Cell": { "nodeId": "1112:33005", "variants": 16, "axes": {"Type": ["Data","Selection","Actions"], "Sort": ["None","Asc","Desc"], "State": ["Default","Hover"], "Align": ["Left","Right"]} } },
+ "parents": { "Table/Body Row": { "nodeId": "1112:33169", "variants": 8, "axes": {"State": ["Default","Hover","Selected","Selected+Hover","Focus","Disabled"], "Striped": ["False","True"]} } },
+ "density": { "collection": "Table density", "collectionId": "VariableCollectionId:1112:32847", "modes": { "Default": { "id": "1112:0", "cellPy": "space/12", "cellPx": "space/16", "headPy": "space/12", "mrt": "md", "rowHeight": 48 }, "Compact": { "id": "1112:1", "cellPy": "space/8", "cellPx": "space/12", "headPy": "space/8", "mrt": "xs", "rowHeight": 40 }, "Comfortable": { "id": "1112:2", "cellPy": "space/16", "cellPx": "space/16", "headPy": "space/12", "mrt": "xl", "rowHeight": 56 } } },
+ "icons": { "sortAsc": { "figma": "1116:33898", "mrt": "IconSortAscending" }, "sortDesc": { "figma": "1116:33897", "mrt": "IconSortDescending" }, "sortNone": { "figma": "35:315", "mrt": "IconArrowsSort" }, "columnActions": { "figma": "35:327", "mrt": "IconDotsVertical", "note": "intentional — keep the Menu icon per Pat 2026-10-11" } },
+ "mantine": { "component": "MantineReactTable", "theme": "see table-theme.ts in artifact §16", "defaults": { "pageSize": 10, "density": "md", "enableColumnFilterModes": true, "enableStickyHeader": true } }
+}
+</script></div>
+
+      <div class="subhead"><h3 class="t-title-section">Open gaps</h3></div>
+      <div class="gaps"><div class="gap"><span class="sev high">High</span><div class="gtxt"><b>Library-wide icon fill bug</b> — icon vectors bind to a light cream primitive and vanish on light surfaces. Table instances work around it with per-icon overrides. Needs a repo-level rebind to <code>icon/primary</code>.</div></div><div class="gap"><span class="sev med">Med</span><div class="gtxt"><b><code>bg/dissable</code> typo and wrong code syntax</b> — rename to <code>bg/disabled</code> and fix the WEB code syntax.</div></div><div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>Missing tokens</b> — <code>selected/bg-hover</code> and <code>table/row-striped</code> are needed so selected hover and striped rows read distinctly.</div></div><div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>Header Cell property definition error</b> — variants work, but the Figma plugin property-definitions endpoint fails. Recombine variants later to clear it.</div></div></div>
+    </section>
+
    </div>
   </main>
 </div>
 <script src="app.js"></script>
+<script>
+(() => {
+  const root=document.getElementById('table-play'); if(!root) return;
+  const st={density:'Default',dividers:'Rows',filters:'Subheader',pagination:'Default',striped:false,hover:true,selection:true};
+  const cls=root.querySelector('.table-demo'), code=document.getElementById('table-codeout');
+  const render=()=>{ cls.dataset.density=st.density; cls.dataset.dividers=st.dividers; cls.classList.toggle('striped',st.striped); cls.classList.toggle('no-hover',!st.hover); cls.classList.toggle('no-selection',!st.selection); root.querySelector('.pager-mode').textContent=st.pagination+' pagination'; code.textContent=`<MantineReactTable\n  density="${({Compact:'xs',Default:'md',Comfortable:'xl'})[st.density]}"\n  mantineTableProps={{ striped: ${st.striped}, highlightOnHover: ${st.hover} }}\n  columnFilterDisplayMode="${st.filters.toLowerCase()}"\n  paginationDisplayMode="${st.pagination.toLowerCase()}"\n  enableRowSelection={${st.selection}}\n/>`; };
+  wireSegs('#table-play .seg',st,render); root.querySelectorAll('[data-table-toggle]').forEach(el=>el.addEventListener('change',()=>{st[el.dataset.tableToggle]=el.checked;render()})); render();
+})();
+</script>
 </body></html>

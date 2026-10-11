@@ -6,7 +6,7 @@ fetch("nav.html").then(r=>r.text()).then(html=>{
   document.getElementById("sidebar-mount").replaceWith(tmp.querySelector("aside"));
 
   const here=location.pathname.split("/").pop()||"index.html";
-  document.querySelectorAll(".nav-item").forEach(a=>{ if(a.getAttribute("href")===here) a.classList.add("active"); });
+  document.querySelectorAll(".nav-item").forEach(a=>{ const href=a.getAttribute("href"); if(href===here || href===`${here}${location.hash}`) a.classList.add("active"); });
 
   /* ---------- theme ---------- */
   const root=document.documentElement, sun=document.getElementById("ic-sun"), moon=document.getElementById("ic-moon");
