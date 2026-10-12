@@ -68,8 +68,8 @@
             <tr><td class="tok">Checked</td><td class="val">accent/solid #045646</td><td class="val">11×8 check, accent/fg (white)</td><td class="mant">checked={true} color="brand"</td></tr>
             <tr><td class="tok">Indeterminate</td><td class="val">accent/solid #045646</td><td class="val">8×1 bar, accent/fg (white)</td><td class="mant">indeterminate checked={false} color="brand"</td></tr>
             <tr><td class="tok">Disabled Uncheck</td><td class="val">bg/surface + text/tertiary border</td><td class="val">none</td><td class="mant">checked={false} disabled</td></tr>
-            <tr><td class="tok">Disabled Checked</td><td class="val">bg/dissable #BCB8B1 (--text-3)</td><td class="val">11×8 check in --text-2</td><td class="mant">checked={true} disabled</td></tr>
-            <tr><td class="tok">Disabled Indetermined</td><td class="val">bg/dissable #BCB8B1 (--text-3)</td><td class="val">8×1 bar in --text-2</td><td class="mant">indeterminate disabled</td></tr>
+            <tr><td class="tok">Disabled Checked</td><td class="val">bg/disabled #BCB8B1 (--text-3)</td><td class="val">11×8 check in --text-2</td><td class="mant">checked={true} disabled</td></tr>
+            <tr><td class="tok">Disabled Indetermined</td><td class="val">bg/disabled #BCB8B1 (--text-3)</td><td class="val">8×1 bar in --text-2</td><td class="mant">indeterminate disabled</td></tr>
           </tbody>
         </table>
       </div>
@@ -145,8 +145,8 @@
     "Checked":                { "fill": "accent/solid #045646",           "mark": "11x8 check in accent/fg",    "mantine": "checked={true} color='brand'" },
     "Indeterminate":          { "fill": "accent/solid #045646",           "mark": "8x1 bar in accent/fg",       "mantine": "indeterminate checked={false} color='brand'" },
     "Disabled Uncheck":       { "fill": "bg/surface + text/tertiary border", "mark": "none",                    "mantine": "checked={false} disabled" },
-    "Disabled Checked":       { "fill": "bg/dissable #BCB8B1",            "mark": "11x8 check in text/secondary","mantine": "checked={true} disabled" },
-    "Disabled Indetermined":  { "fill": "bg/dissable #BCB8B1",            "mark": "8x1 bar in text/secondary",  "mantine": "indeterminate disabled" }
+    "Disabled Checked":       { "fill": "bg/disabled #BCB8B1",            "mark": "11x8 check in text/secondary","mantine": "checked={true} disabled" },
+    "Disabled Indetermined":  { "fill": "bg/disabled #BCB8B1",            "mark": "8x1 bar in text/secondary",  "mantine": "indeterminate disabled" }
   },
   "dimensions": {
     "box":   { "px": 16, "token": "size/icon-sm" },
@@ -172,7 +172,7 @@
   "iconSource": null,
   "knownIssues": [
     "No Focus/Hover state in the Figma component set — wire :focus-visible to focus/ring in code (same open gap as Switch, Button, Input)",
-    "Disabled fill token bg/dissable is misspelled and its codeSyntax points at --mantine-color-bg-active (see Overview gaps)"
+    "Disabled fill token bg/disabled uses --mantine-color-bg-disabled"
   ],
   "positives": [
     "Every value that has a token uses it: size/icon-sm (16), radius/xs, accent/solid, border/strong, stroke/thin — only the 14px check glyph and 8x2 dash are untokened, and both are intrinsic to the mark, not layout",
