@@ -103,7 +103,7 @@
 <script type="application/json" id="ds-contract-color">
 {
   "section": "color",
-  "layers": { "primitives": 53, "semantic": 109, "modes": ["Light", "Dark"] },
+  "layers": { "primitives": 53, "semantic": 111, "modes": ["Light", "Dark"] },
   "primitiveScales": {
     "neutral": ["#FFFFFF","#FAF9F7","#F4F3F0","#ECEBE7","#E4E2DD","#D8D6D0","#BCB8B1","#928E87","#6B6862","#47443F","#2C2A26","#1A1815","#0E0D0B"],
     "brand":   ["#EAF4F0","#CFE7E0","#A2CFC4","#6FB2A4","#3C9081","#10735F","#045646","#06463A","#06382E","#052A23"],
@@ -117,6 +117,8 @@
     { "name": "bg/canvas",        "value": "#FAF9F7 → #0E0D0B", "mantineVar": "--mantine-color-body",        "usage": "Page background" },
     { "name": "bg/surface",       "value": "#FFFFFF → #1A1815", "mantineVar": "other.bgSurface",             "usage": "Cards, panels, sidebar" },
     { "name": "bg/sunken",        "value": "#F4F3F0 → #141210", "mantineVar": "other.bgSunken",              "usage": "Wells, segmented tracks" },
+    { "name": "selected/bg-hover", "value": "#DCEDE6 → #0A3A30", "mantineVar": "var(--mantine-color-selected-bg-hover)", "usage": "Selected row or cell on hover" },
+    { "name": "table/row-striped", "value": "#FAF9F7 → #211F1B", "mantineVar": "var(--mantine-color-table-row-striped)", "usage": "Alternating table row fill" },
     { "name": "border/subtle",    "value": "#E4E2DD → #2C2A26", "mantineVar": "other.borderSubtle",          "usage": "Dividers, low-emphasis edges" },
     { "name": "border/default",   "value": "#D8D6D0 → #47443F", "mantineVar": "other.borderDefault",         "usage": "Card and control borders" },
     { "name": "text/primary",     "value": "#1A1815 → #FAF9F7", "mantineVar": "--mantine-color-text",        "usage": "Headings, primary text" },
@@ -203,6 +205,8 @@ const SEMANTIC = [
   ["accent-2/solid","#93B941","#93B941","lime.5","Secondary accent solid"],
   ["focus/ring","#10735F","#3C9081","--mantine-color-focus","Keyboard focus ring"],
   ["selected/bg","#EAF4F0","#052A23","brand.0 / brand.9","Selected row / cell"],
+  ["selected/bg-hover","#DCEDE6","#0A3A30","var(--mantine-color-selected-bg-hover)","Selected row or cell on hover"],
+  ["table/row-striped","#FAF9F7","#211F1B","var(--mantine-color-table-row-striped)","Alternating table row fill"],
   ["status/success/fg","#1B6633","#CDE9D3","green.7 / green.1","Success text"],
   ["status/success/bg","#EAF6EC","#1B6633","green.0 / green.7","Success surface"],
   ["status/success/solid","#2FA24F","#2FA24F","green.5","Success solid / dot"],

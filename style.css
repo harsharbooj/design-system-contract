@@ -654,7 +654,7 @@ html{scroll-behavior:smooth;}
     :root,[data-ds-theme="light"]{
       --mantine-spacing-0:0px;--mantine-spacing-2:2px;--mantine-spacing-8:8px;--mantine-spacing-12:12px;--mantine-spacing-16:16px;--mantine-spacing-24:24px;--mantine-spacing-32:32px;--mantine-spacing-52:52px;
       --mantine-radius-sm:6px;--mantine-radius-md:8px;
-      --mantine-color-bg-surface:#FFFFFF;--mantine-color-bg-hover:#F4F3F0;--mantine-color-bg-sunken:#F4F3F0;--mantine-color-bg-disabled:#BCB8B1;--mantine-color-border-subtle:#E4E2DD;
+      --mantine-color-bg-surface:#FFFFFF;--mantine-color-bg-hover:#F4F3F0;--mantine-color-bg-sunken:#F4F3F0;--mantine-color-bg-disabled:#BCB8B1;--mantine-color-selected-bg-hover:#DCEDE6;--mantine-color-table-row-striped:#FAF9F7;--mantine-color-border-subtle:#E4E2DD;
       --mantine-color-text:#1A1815;--mantine-color-text-secondary:#6B6862;--mantine-color-text-inverse:#FFFFFF;--mantine-color-text-label:#06463A;--mantine-color-text-destructive:#C22E22;
       --mantine-color-icon-secondary:#6B6862;--mantine-color-icon-destructive:#C22E22;
       --mantine-color-action-primary-bg:#045646;--mantine-color-selected-bg:#EAF4F0;--mantine-color-accent-border:#045646;--mantine-color-focus-ring:#10735F;
@@ -662,13 +662,13 @@ html{scroll-behavior:smooth;}
       --lsn-w:200px;--lsn-logo:32px;--lsn-brandtext-w:100px;--nvi-w:174px;--nvi-h:40px;--nvi-icon:18px;--nvi-gap:12px;
     }
     @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-      --mantine-color-bg-surface:#1A1815;--mantine-color-bg-hover:#2C2A26;--mantine-color-bg-sunken:#0E0D0B;--mantine-color-bg-disabled:#47443F;--mantine-color-border-subtle:#2C2A26;
+      --mantine-color-bg-surface:#1A1815;--mantine-color-bg-hover:#2C2A26;--mantine-color-bg-sunken:#0E0D0B;--mantine-color-bg-disabled:#47443F;--mantine-color-selected-bg-hover:#0A3A30;--mantine-color-table-row-striped:#211F1B;--mantine-color-border-subtle:#2C2A26;
       --mantine-color-text:#FAF9F7;--mantine-color-text-secondary:#BCB8B1;--mantine-color-text-inverse:#1A1815;--mantine-color-text-label:#F4E3AD;--mantine-color-text-destructive:#DE4133;
       --mantine-color-icon-secondary:#BCB8B1;--mantine-color-icon-destructive:#DE4133;
       --mantine-color-action-primary-bg:#10735F;--mantine-color-selected-bg:#052A23;--mantine-color-accent-border:#3C9081;--mantine-color-focus-ring:#3C9081;
     }}
     :root[data-theme="dark"],[data-ds-theme="dark"]{
-      --mantine-color-bg-surface:#1A1815;--mantine-color-bg-hover:#2C2A26;--mantine-color-bg-sunken:#0E0D0B;--mantine-color-bg-disabled:#47443F;--mantine-color-border-subtle:#2C2A26;
+      --mantine-color-bg-surface:#1A1815;--mantine-color-bg-hover:#2C2A26;--mantine-color-bg-sunken:#0E0D0B;--mantine-color-bg-disabled:#47443F;--mantine-color-selected-bg-hover:#0A3A30;--mantine-color-table-row-striped:#211F1B;--mantine-color-border-subtle:#2C2A26;
       --mantine-color-text:#FAF9F7;--mantine-color-text-secondary:#BCB8B1;--mantine-color-text-inverse:#1A1815;--mantine-color-text-label:#F4E3AD;--mantine-color-text-destructive:#DE4133;
       --mantine-color-icon-secondary:#BCB8B1;--mantine-color-icon-destructive:#DE4133;
       --mantine-color-action-primary-bg:#10735F;--mantine-color-selected-bg:#052A23;--mantine-color-accent-border:#3C9081;--mantine-color-focus-ring:#3C9081;

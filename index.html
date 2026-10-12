@@ -22,13 +22,13 @@
 
       <div class="stat-grid">
         <div class="stat"><div class="k mono">14</div><div class="l">Text styles</div></div>
-        <div class="stat"><div class="k mono">162</div><div class="l">Color variables</div></div>
+        <div class="stat"><div class="k mono">164</div><div class="l">Color variables</div></div>
         <div class="stat"><div class="k mono">34</div><div class="l">Dimension tokens</div></div>
         <div class="stat"><div class="k mono">116</div><div class="l">Icon components</div></div>
         <div class="stat"><div class="k mono">142</div><div class="l">Library components</div></div>
         <div class="stat"><div class="k mono">14</div><div class="l">Documented components</div></div>
       </div>
-      <p class="usage" style="margin-top:6px;">162 color variables = 53 primitives + 109 semantic (light/dark). 34 dimension tokens = 13 spacing + 6 radius + 3 stroke + 12 size. 142 components across 14 component sets.</p>
+      <p class="usage" style="margin-top:6px;">164 color variables = 53 primitives + 111 semantic (light/dark). 34 dimension tokens = 13 spacing + 6 radius + 3 stroke + 12 size. 142 components across 14 component sets.</p>
 
       <div class="subhead"><h3 class="t-title-section">How to read this contract</h3></div>
       <p class="usage" style="max-width:74ch; font-size:13.5px; line-height:21px;">Each section carries four things: a <b>token reference table</b> (name · value · recommended Mantine prop · usage), a short set of numbered <b>usage rules</b>, a <b>do / don't</b> pair, and a <b>machine-readable contract block</b> (<span class="mono">&lt;script type="application/json"&gt;</span>) that a future Claude session parses to know what to reuse and what is forbidden. Coverage is what the agent may reuse; the <span class="mono">forbidden</span> array is what it must never do.</p>
@@ -137,7 +137,7 @@
  "section": "table", "id":"table", "component": "Table", "figmaFile": "VYWsNXXNHWHNgDUspt1vYF", "sectionNode": "1112:32846", "scope": "core",
  "children": { "Table/Body Cell": { "nodeId": "1112:32908", "variants": 14, "axes": {"Type": ["Text","Mono","Number","Tag","Checkbox","Actions","Slot"], "State": ["Default","Loading"]} }, "Table/Header Cell": { "nodeId": "1112:33005", "variants": 16, "axes": {"Type": ["Data","Selection","Actions"], "Sort": ["None","Asc","Desc"], "State": ["Default","Hover"], "Align": ["Left","Right"]} } },
  "parents": { "Table/Body Row": { "nodeId": "1112:33169", "variants": 8, "axes": {"State": ["Default","Hover","Selected","Selected+Hover","Focus","Disabled"], "Striped": ["False","True"]} } },
- "density": { "collection": "Table density", "collectionId": "VariableCollectionId:1112:32847", "modes": { "Default": { "id": "1112:0", "cellPy": "space/12", "cellPx": "space/16", "headPy": "space/12", "mrt": "md", "rowHeight": 48 }, "Compact": { "id": "1112:1", "cellPy": "space/8", "cellPx": "space/12", "headPy": "space/8", "mrt": "xs", "rowHeight": 40 }, "Comfortable": { "id": "1112:2", "cellPy": "space/16", "cellPx": "space/16", "headPy": "space/12", "mrt": "xl", "rowHeight": 56 } } },
+ "density": { "collection": "Table density", "collectionId": "VariableCollectionId:1112:32847", "modes": { "Default": { "id": "1112:0", "cellPy": "space/12", "cellPx": "space/16", "headPy": "space/12", "mrt": "md", "rowHeight": 48 }, "Compact": { "id": "1112:1", "cellPy": "space/8", "cellPx": "space/12", "headPy": "space/8", "mrt": "xs", "rowHeight": 40 }, "Comfortable": { "id": "1112:2", "cellPy": "space/16", "cellPx": "space/16", "headPy": "space/12", "mrt": "xl", "rowHeight": 56 } }, "rowFills": { "selectedHover": "selected/bg-hover", "striped": "table/row-striped" } },
  "icons": { "sortAsc": { "figma": "1116:33898", "mrt": "IconSortAscending" }, "sortDesc": { "figma": "1116:33897", "mrt": "IconSortDescending" }, "sortNone": { "figma": "35:315", "mrt": "IconArrowsSort" }, "columnActions": { "figma": "35:327", "mrt": "IconDotsVertical", "note": "intentional — keep the Menu icon per Pat 2026-10-11" } },
  "mantine": { "component": "MantineReactTable", "theme": "see table-theme.ts in artifact §16", "defaults": { "pageSize": 10, "density": "md", "enableColumnFilterModes": true, "enableStickyHeader": true } }
 }
