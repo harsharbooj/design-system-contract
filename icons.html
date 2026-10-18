@@ -207,6 +207,58 @@
         </ul></div>
       </div>
 
+      <div class="subhead"><h3 class="t-title-section">Icon Color Token Rules</h3></div>
+      <div class="tbl-wrap">
+        <table class="ref">
+          <thead><tr><th>Context</th><th>Token</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="tok">Icon inside a Button New instance</td><td class="val">Handled internally by the component. Do not override.</td><td class="usage">action/primary/fg or action/secondary/fg depending on button type</td></tr>
+            <tr><td class="tok">Icon on a dark or solid-color background</td><td class="val">icon/on-solid or icon/inverse</td><td class="usage">—</td></tr>
+            <tr><td class="tok">Icon on a light or surface background (default use)</td><td class="val">icon/primary or icon/secondary</td><td class="usage">—</td></tr>
+            <tr><td class="tok">Sort icon inside Table/Header Cell instance</td><td class="val">Handled internally by the component. Do not override.</td><td class="usage">—</td></tr>
+            <tr><td class="tok">Raw icon instance on any light background</td><td class="val" style="color:var(--warning-fg);font-weight:600;">MUST override fill to icon/secondary or icon/primary</td><td class="usage">The default fill resolves to neutral/50 (~#FAF9F7) — near-white and invisible on light surfaces</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-icon-color-tokens"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-icon-color-tokens</span></div>
+<script type="application/json" id="ds-contract-icon-color-tokens">
+{
+  "pattern": "Icon Color Tokens",
+  "description": "Which icon/* semantic token to use depending on where the icon is placed.",
+  "rules": [
+    {
+      "context": "Icon inside a Button New instance",
+      "token": "Handled internally by the component. Do not override.",
+      "note": "action/primary/fg or action/secondary/fg depending on button type"
+    },
+    {
+      "context": "Icon on a dark or solid-color background",
+      "token": "icon/on-solid or icon/inverse"
+    },
+    {
+      "context": "Icon on a light or surface background (default use)",
+      "token": "icon/primary or icon/secondary"
+    },
+    {
+      "context": "Sort icon inside Table/Header Cell instance",
+      "token": "Handled internally by the component. Do not override."
+    },
+    {
+      "context": "Raw icon instance on any light background",
+      "token": "MUST override fill to icon/secondary or icon/primary",
+      "warning": "The default fill resolves to neutral/50 (VariableID:29:4) which maps to var(--mantine-color-neutral-1), approximately #FAF9F7 — near-white. This is invisible on light surfaces and must always be overridden."
+    }
+  ],
+  "forbidden": [
+    "Do not use neutral/50 as an icon fill on light surfaces",
+    "Do not use raw hex values for icon fills",
+    "Do not use Primitive tokens (neutral/*, brand/*) for icon fills on screens"
+  ]
+}
+</script>
+      </div>
+
       <div class="contract">
         <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-icons"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-icons</span></div>
 <script type="application/json" id="ds-contract-icons">

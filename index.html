@@ -145,6 +145,105 @@
 
       <div class="subhead"><h3 class="t-title-section">Open gaps</h3></div>
       <div class="gaps"><div class="gap"><span class="sev high">High</span><div class="gtxt"><b>Library-wide icon fill bug</b> — icon vectors bind to a light cream primitive and vanish on light surfaces. Table instances work around it with per-icon overrides. Needs a repo-level rebind to <code>icon/primary</code>.</div></div><div class="gap"><span class="sev med">Med</span><div class="gtxt"><b>Missing tokens</b> — <code>selected/bg-hover</code> and <code>table/row-striped</code> are needed so selected hover and striped rows read distinctly.</div></div><div class="gap"><span class="sev low">Low</span><div class="gtxt"><b>Header Cell property definition error</b> — variants work, but the Figma plugin property-definitions endpoint fails. Recombine variants later to clear it.</div></div></div>
+
+      <div class="subhead"><h3 class="t-title-section">Table/Body Cell — component contract</h3></div>
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-table-body-cell"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-table-body-cell</span></div>
+<script type="application/json" id="ds-contract-table-body-cell">
+{
+  "component": "Table/Body Cell",
+  "figmaNodeId": "1112:32908",
+  "coverage": {
+    "Type": ["Text", "Mono", "Number", "Tag", "Checkbox", "Actions", "Slot"],
+    "State": ["Default", "Loading"]
+  },
+  "typeGuidance": {
+    "Text": "General text content. Left-aligned.",
+    "Mono": "Monospaced text — use for IDs, codes, short identifiers.",
+    "Number": "Numeric values. Right-aligned.",
+    "Tag": "Renders a Tag component inside the cell. Use for status, category labels.",
+    "Checkbox": "Row selection checkbox. Always the leftmost column.",
+    "Actions": "Action icon buttons. Always the rightmost column. Use this type for any actions column — never build a custom frame.",
+    "Slot": "Accepts injected content via Figma slot property. Use when no other type fits."
+  },
+  "forbidden": [
+    "Do not build a custom frame for an Actions column — Table/Body Cell Type=Actions exists and must be used",
+    "Do not use Primitive tokens for cell fills — always use Semantic tokens",
+    "Do not detach instances"
+  ],
+  "tokenBindings": {
+    "cellPaddingVertical": "table/cell-py (set via Table density mode on parent frame)",
+    "cellPaddingHorizontal": "table/cell-px (set via Table density mode on parent frame)"
+  },
+  "densityModes": {
+    "Default": "cell-py: 12px, cell-px: 16px",
+    "Compact": "cell-py: 8px, cell-px: 12px",
+    "Comfortable": "cell-py: 16px, cell-px: 16px"
+  }
+}
+</script>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Table/Header Cell — component contract</h3></div>
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-table-header-cell"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-table-header-cell</span></div>
+<script type="application/json" id="ds-contract-table-header-cell">
+{
+  "component": "Table/Header Cell",
+  "figmaNodeId": "1112:33005",
+  "coverage": {
+    "Type": ["Data", "Control"],
+    "Sort": ["None", "Asc", "Desc"],
+    "State": ["Default", "Hover"],
+    "Align": ["Left", "Right"]
+  },
+  "variantCount": 16,
+  "mandatoryRule": "Always instantiate one Table/Header Cell per column. Never build raw header frames (e.g. a frame named 'HCell / [Column]'). Building raw header frames is forbidden.",
+  "forbidden": [
+    "Do not build raw frames for table column headers",
+    "Do not override the sort icon fill inside a Table/Header Cell instance — the component handles it internally",
+    "Do not use neutral/50 as a sort icon fill — this token is near-white (#FAF9F7) and invisible on light surfaces"
+  ],
+  "iconColorRule": "Sort icons inside Table/Header Cell are token-bound internally and correct by default. When placing sort icons OUTSIDE a Header Cell instance on a light background, override fill to icon/secondary or icon/primary. Never use neutral/50 on light surfaces.",
+  "tokenBindings": {
+    "headerPaddingVertical": "table/head-py (set via Table density mode on parent frame)"
+  }
+}
+</script>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Table/Body Row — component contract</h3></div>
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-table-body-row"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-table-body-row</span></div>
+<script type="application/json" id="ds-contract-table-body-row">
+{
+  "component": "Table/Body Row",
+  "figmaNodeId": "1112:33169",
+  "coverage": {
+    "State": ["Default", "Hover", "Selected", "Selected+Hover", "Focus", "Disabled"],
+    "Striped": [true, false]
+  },
+  "variantCount": 8,
+  "fixedSchema": {
+    "description": "Table/Body Row has a fixed internal structure of exactly 6 cells in a fixed order. This cannot be reconfigured.",
+    "columnOrder": ["Checkbox", "Mono", "Text", "Tag", "Number", "Actions"],
+    "columnCount": 6
+  },
+  "usageRule": "Use Table/Body Row ONLY when your table matches the fixed 6-column schema (Checkbox → Mono → Text → Tag → Number → Actions) in that exact order.",
+  "manualAssemblyFallback": {
+    "trigger": "Table needs more than 6 columns, fewer than 6 columns, or a different column order",
+    "procedure": "Place individual Table/Body Cell instances (correct Type= variant per column) side by side in a horizontal auto-layout frame. Apply the Table density variable collection mode to the parent Table frame. Report this deviation.",
+    "forbidden": "Do not modify or detach Table/Body Row to accommodate a different schema. Use the fallback instead."
+  },
+  "architectureNote": "The fixed schema is a known gap. Slots will be added to Table/Body Row in a future update to enable dynamic column composition.",
+  "forbidden": [
+    "Do not use Table/Body Row for tables with a different column count or order",
+    "Do not detach Table/Body Row instances",
+    "Do not build a custom Actions cell — use Table/Body Cell Type=Actions"
+  ]
+}
+</script>
+      </div>
     </section>
 
    </div>

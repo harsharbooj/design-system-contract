@@ -185,6 +185,12 @@
     "Instantiate the Button New component; never rebuild from a div or hardcode a fill.",
     "Icon-only actions use the Icon button set with an aria-label."
   ],
+  "iconSlots": {
+    "description": "Button New has left and right icon slot properties.",
+    "rule": "Always specify the exact icon name when using a Button with an icon (e.g. 'Download', 'Add', 'Filter'). Never leave icon slots at their default placeholder.",
+    "removeIfUnused": "If a button does not need an icon, remove the icon layer — do not leave it as the default placeholder icon.",
+    "namedIcons": "See the Icons section of the contract site for the full list of named icon components."
+  },
   "forbidden": [
     "Hardcoding a hex (e.g. #045646) instead of an action/* token",
     "A Focus/hover style bound to the wrong token (see resolved changelog)",

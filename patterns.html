@@ -68,6 +68,35 @@
         </div>
       </div>
 
+      <div class="pattern">
+        <div class="ptitle"><span class="pn">P8</span><h4>Toolbar / Bar Layout</h4></div>
+        <p class="pbody">A horizontal row where one group of elements is left-aligned and another is right-aligned (e.g. a label on the left, action buttons on the right). Use <b>Space Between</b> on the parent frame — no spacer frames needed or allowed.</p>
+        <div class="recipe">
+          <span class="r">layout <b>Space Between</b></span><span class="r">figma <b>primaryAxisAlignItems = SPACE_BETWEEN</b></span><span class="r">gap <b>space/16</b></span><span class="r">no spacer frames</span>
+        </div>
+      </div>
+
+      <div class="subhead"><h3 class="t-title-section">Toolbar / Bar Layout — contract</h3></div>
+      <div class="contract">
+        <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-toolbar-layout"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-toolbar-layout</span></div>
+<script type="application/json" id="ds-contract-toolbar-layout">
+{
+  "pattern": "Toolbar / Bar Layout",
+  "description": "A horizontal row where one group of elements is left-aligned and another is right-aligned (e.g. a label on the left, action buttons on the right).",
+  "correctApproach": {
+    "method": "Space Between",
+    "figmaProperty": "primaryAxisAlignItems = SPACE_BETWEEN",
+    "instruction": "Set the parent frame's horizontal layout alignment to Space Between. No additional frames needed."
+  },
+  "forbidden": [
+    "Do not insert a spacer frame (a frame with layoutGrow: 1) between elements to push them apart",
+    "Spacer frames pollute the layer hierarchy and are not a valid layout pattern in this system"
+  ],
+  "example": "A Bulk Action Bar with '3 users selected' text on the left and Download + Delete buttons on the right: one horizontal auto-layout frame, Space Between, gap = space/16. No spacer frame."
+}
+</script>
+      </div>
+
       <div class="contract">
         <div class="chead"><span class="lbl2">contract</span> <button class="copybtn" data-copytarget="ds-contract-patterns"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"/></svg>Copy</button> <span class="id">#ds-contract-patterns</span></div>
 <script type="application/json" id="ds-contract-patterns">
